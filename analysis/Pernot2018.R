@@ -1,0 +1,189 @@
+source('0-Setup.R')
+
+caseName = 'Pernot2018'
+units    = 'kcal/mol'
+
+# Get data ####
+DF = read.csv(
+  file=paste0(dataRepo,caseName,'/dataG399.csv'),
+  header=TRUE,
+  stringsAsFactors = FALSE,
+  check.names = FALSE)
+
+# Select adequate columns
+Data = DF[,c(1,4:ncol(DF))]
+colnames(Data)[1] = 'System'
+systems = Data$System
+
+nAtoms  = DF$nAtoms
+names(nAtoms) = systems
+
+Eref  = Data$Eref
+names(Eref) = systems
+
+# uEref = 1 / DF$nAtoms
+
+Errors  = Data[,3:ncol(Data)] / nAtoms
+
+write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
+
+methList = colnames(Errors)
+nMeth = length(methList)
+
+nColors = length(methList)
+colsExt     = rev(inlmisc::GetColors(nColors+1))[1:nColors]
+colsExt_tr  = rev(inlmisc::GetColors(nColors+1, alpha = 0.2))[1:nColors]
+colsExt_tr2 = rev(inlmisc::GetColors(nColors+1, alpha = 0.5))[1:nColors]
+
+gParsExt = gPars
+gParsExt$cols     = colsExt
+gParsExt$cols_tr  = colsExt_tr
+gParsExt$cols_tr2 = colsExt_tr2
+
+
+# Generate stats ####
+
+statBS = estBS1(Errors, eps = 1)
+df1     = genTabStat(statBS,comp=TRUE)
+
+sink(paste0(tabRepo,caseName,'_tabStats.tex'))
+print(
+  xtable::xtable(
+    df1,
+    type = 'latex',
+    caption = 'Error statistics',
+    label = paste0("tab:scanStats_",caseName)
+  ),
+  comment = FALSE,
+  include.rownames = FALSE,
+  caption.placement ='bottom'
+)
+sink()
+
+# Figures ####
+
+# Fig 1 ####
+png(
+  file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
+  width = 13/12*gPars$reso,
+  height = gPars$reso
+)
+plotSIPMat(statBS$sip, gPars = gPars)
+dev.off()
+
+###
+# Figs 3 and 6 ####
+for (score in c('mue','q95hd','msip'))
+  for (type in c('levels','ci')) {
+    png(
+      file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'.png'),
+      width = 13/12*gPars$reso,
+      height = gPars$reso
+    )
+    plotRankMat(E = Errors, score = score, type = type, gPars = gPars)
+    dev.off()
+  }
+###
+
+# Fig. 4 ####
+png(
+  file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
+  width = 1300,
+  height = 1200
+)
+cErr = cor(as.data.frame(Errors),method = "spearman")
+ord = plotCorMat(cErr, order = 'hclust', gPars=gPars)
+dev.off()
+
+png(
+  file = paste0(figRepo, caseName,'_CorrMat_MUE_Spearman.png'),
+  width = 1300,
+  height = 1200
+)
+cErr = statBS$mue$corr[ord,ord]
+plotCorMat(cErr, order = 'original', gPars=gPars)
+dev.off()
+
+png(
+  file = paste0(figRepo, caseName,'_CorrMat_Q95_Spearman.png'),
+  width = 1300,
+  height = 1200
+)
+cErr = statBS$q95hd$corr[ord,ord]
+plotCorMat(cErr, order = 'original', gPars=gPars)
+dev.off()
+
+png(
+  file = paste0(figRepo, caseName,'_HistCorrs.png'),
+  width = 2300,
+  height = 1000
+)
+par(
+  mfrow = c(1,3),
+  mar = mar,
+  mgp = mgp,
+  pty = pty,
+  tcl = tcl,
+  cex = cex,
+  lwd = lwd
+)
+X = cor(as.data.frame(Errors),method = "spearman")
+h = hist(X[lower.tri(X)],breaks = seq(-1.1,1.1,by=0.2),
+         col= cols_tr2[2], border = cols[2], main = 'Errors',
+         xlab = 'Correlation')
+X = statBS$mue$corr
+h = hist(X[lower.tri(X)],breaks = seq(-1.1,1.1,by=0.2),
+         col= cols_tr2[4], border = cols[4], main = 'MUE',
+         xlab = 'Correlation')
+X = statBS$q95hd$corr
+h = hist(X[lower.tri(X)],breaks = seq(-1.1,1.1,by=0.2),
+         col= cols_tr2[6], border = cols[6], main = 'Q95',
+         xlab = 'Correlation')
+
+dev.off()
+###
+
+# Fig. 5 ####
+ifig =1
+png(file=paste0(figRepo,caseName,'_compareECDF.png'),
+    width=gPars$reso,height=gPars$reso)
+plotUncEcdf(
+  abs(Errors)[,c(2,5,8)],
+  xmax = 6,
+  title = '',
+  show.MAE = TRUE,
+  units = units,
+  label = ifig,
+  col.index = c(1,3,5),
+  gPars = gPars)
+dev.off()
+
+ifig=ifig+1
+png(file=paste0(figRepo,caseName,'_deltaECDF.png'),
+    width=gPars$reso,height=gPars$reso)
+plotDeltaCDF(
+  abs(Errors),
+  'CAM-B3LYP',
+  'B97-1',
+  # xmax = 60,
+  eps = 1,
+  units = units,
+  label = ifig,
+  gPars = gPars)
+dev.off()
+
+ifig=ifig+1
+png(file=paste0(figRepo,caseName,'_deltaECDF2.png'),
+    width=gPars$reso,height=gPars$reso)
+plotDeltaCDF(
+  abs(Errors),
+  'CAM-B3LYP',
+  'PBE0',
+  # xmax = 20,
+  eps = 1,
+  units = units,
+  label = ifig,
+  gPars = gPars)
+dev.off()
+###
+

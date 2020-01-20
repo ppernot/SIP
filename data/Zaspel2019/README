@@ -1,0 +1,48 @@
+
+For all cases, regularization param=1e-10, training set size=1000 (fixed), the rest (6211) molecules for test
+
+Model: KRR (Gaussian/Laplacian) kernel, kernel width= coeff*\sigma_opt
+where sigma_opt = D_{max}/\ln (2.0) (for Laplacian kernel), D_{max}/\sqrt(2.0 * \ln (2.0)) (for Gaussian kernel)
+
+# Aliases used below
+l1: Laplacian kernel
+l2: Gaussian kernel 
+c:  coeff (optimized values are shown below)
+vdz: ccpvdz basis set
+
+# values of `coeff
+vdz+cm+l1    c=0.5
+vdz+cm+l2    c=0.06
+vdz+slatm+l1 c=10.0
+vdz+slatm+l2 c=10.0
+631g+cm+l1      c=0.5000
+631g+cm+l2      c=0.1000
+631g+slatm+l1   c=50.0000
+631g+slatm+l2   c=100.0000
+sto3g+cm+l1     c=2.0000
+sto3g+cm+l2     c=0.1000
+sto3g+slatm+l1  c=100.0000
+sto3g+slatm+l2  c=100.0000
+
+# files 
+Etot_sto3g.txt                     total energy of molecules in kcal/mol, basis=sto3g
+Etot_631g.txt                      total energy of molecules in kcal/mol, basis=631g
+Etot_ccpvdz.txt                    total energy of molecules in kcal/mol, basis=ccpvdz
+E_dressed_atom.txt                 Dressed atom energies (or effective averaged atomic energies of the all molecules in the dataset)
+atom_counts.txt                    counts of each type of atom in each molecule, complementary to the file E_dressed_atom.txt
+                                   Estar = E_tot - \sum_I n_I*E_I^{dressed}, where n_I is the number of atoms of type I, E_I is the energy of
+                                     dressed atom of type I.
+                                   Delta_Estar = Estar^{ML} - Estar
+Delta_Estar_ccpvdz_slatm_l2.txt    train & test errors for the model KRR/Gaussian kernel/SLATM, with reference data calculated using ccpvdz basis
+Delta_Estar_ccpvdz_cm_l1.txt       train & test errors for the model KRR/Laplacian kernel/CM, with reference data calculated using ccpvdz basis
+Delta_Estar_ccpvdz_slatm_l1.txt    train & test errors for the model KRR/Laplacian kernel/SLATM, with reference data calculated using ccpvdz basis
+Delta_Estar_ccpvdz_cm_l2.txt       train & test errors for the model KRR/Gaussian kernel/CM, with reference data calculated using ccpvdz basis 
+Delta_Estar_631g_slatm_l2.txt      train & test errors for the model KRR/Gaussian kernel/SLATM, with reference data calculated using 631g basis
+Delta_Estar_631g_cm_l1.txt         train & test errors for the model KRR/Laplacian kernel/CM, with reference data calculated using 631g basis
+Delta_Estar_631g_slatm_l1.txt      train & test errors for the model KRR/Laplacian kernel/SLATM, with reference data calculated using 631g basis
+Delta_Estar_631g_cm_l2.txt         train & test errors for the model KRR/Gaussian kernel/CM, with reference data calculated using 631g basis
+Delta_Estar_sto3g_slatm_l2.txt     train & test errors for the model KRR/Gaussian kernel/SLATM, with reference data calculated using sto3g basis
+Delta_Estar_sto3g_cm_l1.txt        train & test errors for the model KRR/Laplacian kernel/CM, with reference data calculated using sto3g basis
+Delta_Estar_sto3g_slatm_l1.txt     train & test errors for the model KRR/Laplacian kernel/SLATM, with reference data calculated using sto3g basis
+Delta_Estar_sto3g_cm_l2.txt        train & test errors for the model KRR/Gaussian kernel/CM, with reference data calculated using sto3g basis 
+
