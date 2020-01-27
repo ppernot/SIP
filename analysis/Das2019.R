@@ -22,6 +22,8 @@ methList = colnames(Errors)
 nMeth = length(methList)
 
 write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
+write.csv(cbind(Ref = Eref,Data[,1:6]),
+          file=paste0(dataRepo,caseName,'/DAS2019_Data.csv'))
 
 nColors = length(methList)
 colsExt     = rev(inlmisc::GetColors(nColors+1))[1:nColors]

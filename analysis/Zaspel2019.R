@@ -49,6 +49,7 @@ testMeths = c('HF','MP2',meths)
 
 Errors = eTot = list()
 for (bas in basis) {
+
   # Errs for Qchem meths
   for (meth in testMeths[1:2]) {
     key = paste0(bas, '_', meth)
@@ -58,19 +59,23 @@ for (bas in basis) {
     eTot[[key]] = Estar[[bas]][idValid, meth] #/ (nAtoms - 1)
     Errors[[key]] = eTot[[key]] - eRef
   }
+
   # Errs for ML methods
-  for (meth in testMeths[3:5]) {
+  for (meth in testMeths[3:3]) {
     key = paste0(bas, '_', meth)
     idValid = Delta_Estar[[key]][, 'System']
     eRef = Estar[[bas]][idValid, ref1] #/ (nAtoms - 1)
     Errors[[key]] = Delta_Estar[[key]][, ref1] #/ (nAtoms - 1)
     eTot[[key]] =  eRef + Errors[[key]]
   }
+
 }
 Errors = data.frame(Errors)
 colnames(Errors) = prettyNames[colnames(Errors)]
 
 write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
+write.csv(data.frame(Ref = eRef,eTot[1:3]),
+          file=paste0(dataRepo,caseName,'/ZAS2019_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)

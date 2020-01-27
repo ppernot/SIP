@@ -27,6 +27,10 @@ Errors  = Data[,3:ncol(Data)] / nAtoms
 
 write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
 
+Data0 = Eref -Data[,3:ncol(Data)]
+write.csv(cbind(Ref = Eref/nAtoms,Data0/nAtoms),
+          file=paste0(dataRepo,caseName,'/PER2018_Data.csv'))
+
 methList = colnames(Errors)
 nMeth = length(methList)
 

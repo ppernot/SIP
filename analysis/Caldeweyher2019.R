@@ -26,6 +26,8 @@ for (it in 15:18) {
 Errors  = Eref - Data
 
 write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
+write.csv(cbind(Ref = Eref,Data),
+          file=paste0(dataRepo,caseName,'/CAL2019_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)

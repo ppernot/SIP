@@ -18,6 +18,8 @@ Errors = Eref - Data
 Erel   = 100*Errors/Eref
 
 write.csv(Erel, file=paste0(dataRepo,caseName,'/Erel.csv'))
+write.csv(cbind(Ref = Eref,Data),
+          file=paste0(dataRepo,caseName,'/WU2015_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)

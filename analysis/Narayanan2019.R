@@ -21,6 +21,8 @@ names(Eref) = systems
 Errors  = Eref - Data[,3:ncol(Data)]
 
 write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
+write.csv(cbind(Ref = Eref,Data[,3:ncol(Data)]),
+          file=paste0(dataRepo,caseName,'/NAR2019_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)
