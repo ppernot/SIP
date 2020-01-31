@@ -25,8 +25,6 @@ names(Eref) = systems
 
 Errors  = Data[,3:ncol(Data)] / nAtoms
 
-write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
-
 Data0 = Eref -Data[,3:ncol(Data)]
 write.csv(cbind(Ref = Eref/nAtoms,Data0/nAtoms),
           file=paste0(dataRepo,caseName,'/PER2018_Data.csv'))
@@ -47,8 +45,8 @@ gParsExt$cols_tr2 = colsExt_tr2
 
 # Generate stats ####
 
-statBS = estBS1(Errors, eps = 1)
-df1     = genTabStat(statBS,comp=TRUE)
+statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
+df1    = ErrViewLib::genTabStat(statBS,units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
@@ -66,17 +64,17 @@ sink()
 
 # Figures ####
 
-# Fig 1 ####
+# Fig 2 ####
 png(
   file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
   width = 13/12*gPars$reso,
   height = gPars$reso
 )
-plotSIPMat(statBS$sip, gPars = gPars)
+ErrViewLib::plotSIPMat(statBS$sip, gPars = gPars)
 dev.off()
 
 ###
-# Figs 3 and 6 ####
+# Figs 4 and 7 ####
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')) {
     png(
@@ -84,19 +82,20 @@ for (score in c('mue','q95hd','msip'))
       width = 13/12*gPars$reso,
       height = gPars$reso
     )
-    plotRankMat(E = Errors, score = score, type = type, gPars = gPars)
+    ErrViewLib::plotRankMat(
+      E = Errors, score = score, type = type, gPars = gPars)
     dev.off()
   }
 ###
 
-# Fig. 4 ####
+# Fig. 5 ####
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
   width = 1300,
   height = 1200
 )
 cErr = cor(as.data.frame(Errors),method = "spearman")
-ord = plotCorMat(cErr, order = 'hclust', gPars=gPars)
+ord = ErrViewLib::plotCorMat(cErr, order = 'hclust', gPars=gPars)
 dev.off()
 
 png(
@@ -105,7 +104,7 @@ png(
   height = 1200
 )
 cErr = statBS$mue$corr[ord,ord]
-plotCorMat(cErr, order = 'original', gPars=gPars)
+ErrViewLib::plotCorMat(cErr, order = 'original', gPars=gPars)
 dev.off()
 
 png(
@@ -114,7 +113,7 @@ png(
   height = 1200
 )
 cErr = statBS$q95hd$corr[ord,ord]
-plotCorMat(cErr, order = 'original', gPars=gPars)
+ErrViewLib::plotCorMat(cErr, order = 'original', gPars=gPars)
 dev.off()
 
 png(
@@ -147,11 +146,11 @@ h = hist(X[lower.tri(X)],breaks = seq(-1.1,1.1,by=0.2),
 dev.off()
 ###
 
-# Fig. 5 ####
+# Fig. 6 ####
 ifig =1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(Errors)[,c(2,5,8)],
   xmax = 6,
   title = '',
@@ -165,7 +164,7 @@ dev.off()
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'CAM-B3LYP',
   'B97-1',
@@ -179,7 +178,7 @@ dev.off()
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF2.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'CAM-B3LYP',
   'PBE0',

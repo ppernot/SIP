@@ -1,4 +1,5 @@
 # Install packages if necessary
+## CRAN packages
 libs <- c(
   "xtable","mixtools","inlmisc","rlist","boot","corrplot",
   "repmis","sessioninfo","ggplot2","dplyr","grid","WRS2","WRS",
@@ -13,15 +14,21 @@ for (lib in libs) {
     )
   }
 }
-# Load packages and generate biblio
+## Load packages and generate biblio
 repmis::LoadandCite(libs,file='../article/packages.bib')
+
+## Github package
+lib = "ErrViewLib"
+if(!require(lib,character.only = TRUE))
+  devtools::install_github(paste0("ppernot/",lib))
+library(lib,character.only = TRUE)
 
 # Parallel options for bootstrap
 options(boot.parallel = "multicore")
 options(boot.ncpus = 4)
 
 # Load misc.
-source('./functions.R')
+# source('./functions.R')
 
 # Set graphical params
 gPars = list(

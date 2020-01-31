@@ -1,5 +1,12 @@
 # Check and extent table 2 of Wilcox2012
 # larger sets and Q95
+## Standalone code (can be run on cloud)
+## Two parts
+## 1- calculation
+## 2- plot
+## takes Va few hours to run !!!!!!!!
+stop()
+
 libs <- c(
   "boot","MASS"
 )
@@ -159,6 +166,8 @@ for (N in seq(20,70,by=10))
 stop()
 
 # Analysis ####
+
+## Fig. 31
 
 source('0-Setup.R')
 

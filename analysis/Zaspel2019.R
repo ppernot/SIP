@@ -73,7 +73,6 @@ for (bas in basis) {
 Errors = data.frame(Errors)
 colnames(Errors) = prettyNames[colnames(Errors)]
 
-write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
 write.csv(data.frame(Ref = eRef,eTot[1:3]),
           file=paste0(dataRepo,caseName,'/ZAS2019_Data.csv'))
 
@@ -90,10 +89,16 @@ gParsExt$cols     = colsExt
 gParsExt$cols_tr  = colsExt_tr
 gParsExt$cols_tr2 = colsExt_tr2
 
+# Test Wasserstein
+library(transport)
+for(meth in names(eTot))
+  cat(meth,wasserstein1d(eTot[[meth]],eRef),'\n')
+
+
 # Generate stats ####
 
-statBS = estBS1(Errors, eps = 0)
-df1    = genTabStat(statBS)
+statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
+df1    = ErrViewLib::genTabStat(statBS,units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
@@ -111,14 +116,14 @@ sink()
 
 # Figures ####
 
-# Fig. 27 ####
+# Fig. 28 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
   width =  13/12*gPars$reso,
   height = gPars$reso)
 cErr = cor(as.data.frame(Errors),method = "spearman")
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main = 'Errors',
@@ -132,7 +137,7 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso)
 cErr = statBS$mue$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = 'MUE',
@@ -146,7 +151,7 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso)
 cErr = statBS$q95hd$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = expression(bold(Q[95])),
@@ -155,11 +160,11 @@ plotCorMat(
 dev.off()
 ###
 
-# Fig. 28 ####
+# Fig. 29 ####
 ifig=1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width= gPars$reso,height= gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(Errors),
   xmax = max(statBS$q95hd$val),
   title = '',
@@ -174,13 +179,13 @@ png(
   file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
   width =  13/12*gPars$reso,
   height = gPars$reso)
-plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
+ErrViewLib::plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
 dev.off()
 
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF.png'),
     width= gPars$reso,height= gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'SLATM-L2',
   'HF',
@@ -194,7 +199,7 @@ dev.off()
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF2.png'),
     width= gPars$reso,height= gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'SLATM-L2',
   'MP2',

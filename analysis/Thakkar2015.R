@@ -20,9 +20,9 @@ Erel   = 100*Errors/Eref
 uErel  = 100*uEref/Eref
 rownames(Erel) = names(uErel) = systems
 
-write.csv(Erel, file=paste0(dataRepo,caseName,'/Erel.csv'))
-write.csv(cbind(Ref = Eref,Data),
-          file=paste0(dataRepo,caseName,'/THA2015_Data.csv'))
+df = cbind(Ref = Eref,Data)
+rownames(df) = make.unique(systems)
+write.csv(df,file=paste0(dataRepo,caseName,'/THA2015_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)
@@ -67,17 +67,10 @@ outliers = as.numeric(names(X))[1:8]
 outNames = systems[outliers]
 ErelNO = Erel[-outliers,]
 
-# png(
-#   filename = paste0(figRepo,caseName,'_ParPlot.png'),
-#   width=reso,height=reso
-# )
-# plotParallel(Erel, rescale = TRUE, labels = systems, gPars=gPars)
-# dev.off()
-
 # Generate stats ####
 
-statBS = estBS1(Erel, eps = 0)
-df1    = genTabStat(statBS,numDig = 1)
+statBS = ErrViewLib::estBS1(Erel,props = c("mue", "q95hd"))
+df1    = ErrViewLib::genTabStat(statBS,units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
@@ -93,8 +86,8 @@ print(
 )
 sink()
 
-statBSNO = estBS1(ErelNO, eps=0)
-df2    = genTabStat(statBSNO)
+statBSNO = ErrViewLib::estBS1(ErelNO,props = c("mue", "q95hd"))
+df2      = ErrViewLib::genTabStat(statBSNO,units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats_out.tex'))
 print(
@@ -113,13 +106,13 @@ sink()
 
 # Figures ####
 
-# Fig. 22 ####
+# Fig. 23 ####
 ifig = 1
 png(file = paste0(figRepo, caseName,'_CorrMat_Errors.png'),
     width =  13/12*gPars$reso,
     height = gPars$reso)
 cErr = cor(as.data.frame(Erel))
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main = 'Errors / Pearson (N=135)',
@@ -131,20 +124,19 @@ png(file = paste0(figRepo, caseName,'_CorrMat_Errors_Pruned.png'),
     width =  13/12*gPars$reso,
     height = gPars$reso)
 cErr = cor(as.data.frame(ErelNO))
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main  = 'Errors / Pearson (N=127)',
   gPars = gPars)
 dev.off()
 
-
 ifig=ifig+1
 png(file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
     width =  13/12*gPars$reso,
     height = gPars$reso)
 cErr = cor(as.data.frame(Erel),method = "spearman")
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main  = 'Errors / Spearman (N=135)',
@@ -156,7 +148,7 @@ png(file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman_Pruned.png'),
     width =  13/12*gPars$reso,
     height = gPars$reso)
 cErr = cor(as.data.frame(ErelNO),method = "spearman")
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main  = 'Errors (N=127)',
@@ -169,7 +161,7 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso)
 cErr = statBSNO$mue$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main  = 'MUE  (N=127)',
@@ -182,7 +174,7 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso)
 cErr = statBSNO$q95hd$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   label = ifig,
   main  = expression(bold(Q[95])~group("(",list("N=127"),")")),
@@ -190,12 +182,12 @@ plotCorMat(
 dev.off()
 ###
 
-# Fig.24 ####
+# Fig.25 ####
 sel = c(1,2,4,7)
 ifig = 1
 png(file=paste0(figRepo,caseName,'_compareECDF_Pruned.png'),
     width=gPars$reso,height=gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(ErelNO[,sel]),
   xlab = '|Rel. Errors| [%]',
   show.MAE = TRUE,
@@ -210,7 +202,7 @@ sel = c(3,5,6)
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_compareECDF2_Pruned.png'),
     width=gPars$reso,height=gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(ErelNO[,sel]),
   xlab = '|Rel. Errors| [%]',
   show.MAE = TRUE,
@@ -222,25 +214,30 @@ plotUncEcdf(
 dev.off()
 ###
 
-# Fig. 25(a) ####
+# Fig. 26(a) ####
 ifig = 1
 png(file = paste0(figRepo, caseName,'_SIPHeatmap_Pruned.png'),
     width =  13/12*gPars$reso,
     height = gPars$reso)
-plotSIPMat(statBSNO$sip, label = ifig, gPars=gPars)
+ErrViewLib::plotSIPMat(statBSNO$sip, label = ifig, gPars=gPars)
 dev.off()
 ###
 
 
-# Fig. 26 top-middle ####
+# Fig. 27 top-middle ####
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
       file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'.png'),
       width =  13/12*gPars$reso,
       height = gPars$reso)
-    plotRankMat(E = Erel, score = score, type = type,
-            nMC = 1000, gPars = gPars)
+    ErrViewLib::plotRankMat(
+      E = Erel,
+      score = score,
+      type = type,
+      nMC = 1000,
+      gPars = gPars
+    )
     dev.off()
   }
 for (score in c('mue','q95hd','msip'))
@@ -249,8 +246,13 @@ for (score in c('mue','q95hd','msip'))
       file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'_Pruned.png'),
       width =  13/12*gPars$reso,
       height = gPars$reso)
-    plotRankMat(E = ErelNO, score = score, type = type,
-            nMC = 1000, gPars = gPars)
+    ErrViewLib::plotRankMat(
+      E = ErelNO,
+      score = score,
+      type = type,
+      nMC = 1000,
+      gPars = gPars
+    )
     dev.off()
   }
 ###

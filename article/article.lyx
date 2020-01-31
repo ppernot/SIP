@@ -231,15 +231,57 @@ n uncertainty.
 \end_layout
 
 \begin_layout Standard
-\begin_inset VSpace bigskip
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
 \end_inset
 
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList figure
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset FloatList algorithm
 
 \end_inset
 
@@ -403,7 +445,7 @@ literal "false"
 .
  Besides, there are several properties for which the reference data are
  rather sparse, leading to rather small datasets.
- Another trend, fueled by the development of machine learning is to replace
+ Another trend, enhanced by the development of machine learning is to replace
  experimental values by gold standard calculations, with limitations on
  the size of accessible systems 
 \begin_inset CommandInset citation
@@ -487,7 +529,7 @@ ssbauer isomer shifts estimated by a dozen of DFAs.
 \begin_inset Formula $N=39$
 \end_inset
 
- values, at least three methods were competing for the first rank, with
+ values, at least three methods were competing for the first place, with
  a slight probabilistic advantage for PBE0.
  This is a very interesting contribution to the quality assessment of benchmarki
 ng tools.
@@ -584,6 +626,13 @@ Statistical methods
 
 \begin_layout Subsection
 Error sets, their uncertainty and correlation
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Error-sets,-their"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -653,9 +702,9 @@ where
 \end_inset
 
 .
- This formula assumes safely that the individual errors on the reference
- data and calculated values are uncorrelated.
- For a reference datum 
+ This formula assumes that the individual errors on the reference data and
+ calculated values are uncorrelated.
+ For an experimental reference value 
 \begin_inset Formula $r_{i}$
 \end_inset
 
@@ -663,12 +712,12 @@ where
 \begin_inset Formula $u(r_{i})$
 \end_inset
 
- would typically be a measurement uncertainty for experimental data.
- For a computed reference datum 
+ would typically be a measurement uncertainty.
+ For a computed reference value 
 \begin_inset Formula $r_{i}$
 \end_inset
 
- and for a calculated datum 
+ and for a calculated value 
 \begin_inset Formula $c_{i}$
 \end_inset
 
@@ -705,7 +754,7 @@ literal "false"
 
 \end_inset
 
-), or careful calibration of computational protocols 
+), or calibration of computational protocols 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bakowies2019,Bakowies2020"
@@ -760,25 +809,67 @@ where, for brevity, we use shortened notations such as
 \end_inset
 
 .
- It is not possible to predict the values of the individual terms and of
- their sum, but a few considerations might be helpful:
+ It is not possible to predict the sign and amplitude of  
+\begin_inset Formula $\mathrm{cov}(E_{i},E_{j})$
+\end_inset
+
+ from this decomposition, but a few considerations might be helpful:
 \end_layout
 
 \begin_layout Itemize
+
+\color teal
+when comparing computational chemistry methods, it is very likely that their
+ prediction sets are strongly positively correlated (covariant).
+ It is also very likely that the predictions of good methods have a strong
+ positive covariance with the reference data, if the latter are not dominated
+ by measurement errors.
+ Besides, one can expect that the variance of the reference data is of the
+ same order (possibly larger if there are notable experimental errors) as
+ the variance/covariances of the predictions.
+ So, in a typical comparison scenario, 
+\begin_inset Formula $\mathrm{cov}(E_{i},E_{j})$
+\end_inset
+
+ results from the compensation of terms with similar magnitudes, and one
+ should not expect a null covariance of error sets.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+
+\color red
 even if the predictions of two methods are statistically independent (
 \begin_inset Formula $\mathrm{cov}(C_{1},C_{2})=0$
 \end_inset
 
-, an unlikely occurrence), their errors are not; 
+), it is likely (and desirable) that they have positive correlations with
+ the reference data.
+ 
+\begin_inset Formula 
+\begin{align*}
+cov(R,C_{i}) & \le\sqrt{var(R)var(C_{i})}\\
+cov(R,C_{j}) & \le\sqrt{var(R)var(C_{j})}\\
+cov(E_{i},E_{j}) & \ge var(R)-\sqrt{var(R)}(\sqrt{(var(C_{i})}+\sqrt{(var(C_{i})})
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
 if reference data uncertainties are larger than prediction errors, the covarianc
-e will be dominated by 
+e should be dominated by 
 \begin_inset Formula $\mathrm{var}(R)$
 \end_inset
 
-, and all error sets will be strongly positively correlated.
+, and all error sets should be strongly positively correlated.
 \end_layout
 
 \begin_layout Standard
@@ -816,6 +907,137 @@ is the standard deviation of the error set
 , assumed finite.
  We will show through case studies that the correlation matrix contains
  relevant information on the quality of datasets and the proximity of methods.
+\end_layout
+
+\begin_layout Paragraph
+Representation.
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+Correlation matrices can be represented by combining a color scheme and
+ an ellipse model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Murdoch1996"
+literal "false"
+
+\end_inset
+
+ (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), such that a white circle stands for a null correlation, a blue right-slanted
+ ellipse for a positive correlation and a red left-slanted ellipse for a
+ negative one.
+ The larger the absolute value of the correlation, the darker the color
+ and the thinner the ellipse.
+
+\color inherit
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/Wu2015_CorrMat_Data_Spearman.png
+	lyxscale 20
+	width 32text%
+	BoundingBox 0bp 0bp 1300bp 1200bp
+	clip
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/Wu2015_CorrMat_Errors_Spearman0.png
+	lyxscale 20
+	width 32text%
+	BoundingBox 0bp 0bp 1300bp 1200bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cmat-example"
+
+\end_inset
+
+Rank correlation matrices between (a) data sets and (b) errors sets for
+ case WU2015.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+For the example showcased in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, one sees that the datasets 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ are all strongly positively correlated.
+ By contrast, the error sets 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ present a more relaxed pattern, with weaker positive correlations, and
+ even a very small negative correlation for MP2 with other error sets.
+ Having noticed this, one remarks that MP2 data present also smaller correlation
+ coefficients with other datasets, although this is barely visible on the
+ figure (the difference bears on the third digit of the correlation coefficients
+).
+ In the following, one will present only correlation matrices for error
+ sets.
 \end_layout
 
 \begin_layout Subsection
@@ -857,11 +1079,25 @@ The value
 \begin_inset Formula $N$
 \end_inset
 
- of the reference data sample, and (2) the error set uncertainties, 
+ of the reference data sample, and (2) the errors uncertainties, 
 \begin_inset Formula $u(e_{i})$
 \end_inset
 
-.
+ (Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Error-sets,-their"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
  Unless the dataset is exhaustive (
 \emph on
 e.g.
@@ -932,8 +1168,9 @@ ty values.
 \end_layout
 
 \begin_layout Standard
-Simple formulae for standard errors, such as those for the mean, are not
- available for non-linear statistics such as the MUE or 
+Simple formulae for standard errors, such as those for the mean (a linear
+ statistic), are not available for non-linear statistics such as the MUE
+ or 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
@@ -1020,7 +1257,7 @@ To estimate
 \begin_inset Formula $\mathrm{cov}(s_{1},s_{2})$
 \end_inset
 
- in the case of linear statistics, one can directly apply the generalization
+ in the case of a linear statistic, one can directly apply the generalization
  of the combination of variances to several model outputs 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -1045,8 +1282,7 @@ literal "false"
 \begin_inset Formula $Q_{95}$
 \end_inset
 
-, the combination of covariances is unsuitable, and one has to refer to
- Monte Carlo strategies.
+, the combination of covariances is unsuitable, and uses Monte Carlo strategies.
  
 \end_layout
 
@@ -1268,11 +1504,23 @@ Representation.
 \end_layout
 
 \begin_layout Standard
-The SIP matrix can be represented by a levels image, where the color scale
- goes from blue (0.0) to red (1.0) with a white midpoint (0.5).
+
+\color teal
+In the same spirit as for correlation matrices, we represent SIP matrices
+ by a combination of color levels and disks.
+ Here, the color scale goes from blue (0.0) to red (1.0) with a white midpoint
+ (0.5), and the area of the disks is proportional with the SIP value.
  The diagonal is left undefined to alleviate the graph.
+ The matrix should be read by line: a line with a majority of red patches
+ signal a method with good SIP performances.
+ A contrario, a majority of blue patches on a line indicate a method with
+ poor SIP performances.
  The methods are ordered by decreasing value of MSIP.
- Fig.
+ 
+\end_layout
+
+\begin_layout Standard
+Fig.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1301,10 +1549,14 @@ noprefix "false"
 \end_inset
 
 .
- It shows clearly that in this case BH&HLYP is problematic and is systematically
- and strongly outperformed by all other methods.
+ It shows clearly that BH&HLYP is problematic 
+\color teal
+(line of small blue disks)
+\color inherit
+, for this dataset and is systematically and strongly outperformed by all
+ other methods.
  At the opposite, the line for CAM-B3LYP is the only one to contain exclusively
- values above 0.5 (reddish patches), albeit CAM-B3LYP does not achieve the
+ values above 0.5 (reddish disks), albeit CAM-B3LYP does not achieve the
  best MUE or 
 \begin_inset Formula $Q_{95}$
 \end_inset
@@ -1377,6 +1629,7 @@ noprefix "false"
 \end_inset
 
 ).
+ The area of a disk is proportional to the corresponding value.
  The methods are ordered by decreasing value of MSIP (Eq.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1646,8 +1899,9 @@ values
 
 : MUE difference).
  
-\color red
-The orange bar represents the chemical accuracy (0.14 eV).
+\color teal
+The orange bar represents an estimated level of uncertainty in the dataset.
+ It is a visual aid to evaluate the pertinence of the observed differences.
 \end_layout
 
 \end_inset
@@ -1772,19 +2026,23 @@ noprefix "false"
 \end_inset
 
 .
- If one has evidence that the distribution of differences is not normal,
+ 
+\color teal
+If one has evidence that the distribution of differences is not normal,
  
 \begin_inset Formula $\kappa$
 \end_inset
 
- has to be chosen accordingly.
- 
-\color red
-If the test is positive, there is less than 5
+ has to be chosen as the uncertainty enlargement factor providing a 95
 \begin_inset space \thinspace{}
 \end_inset
 
-% probability the difference between 
+% confidence interval for this distribution.
+ If the test is positive, there is less than 5
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability that the difference between 
 \begin_inset Formula $s_{1}$
 \end_inset
 
@@ -1814,7 +2072,9 @@ to be compared to the threshold
 \end_inset
 
 .
- A probability value (
+ 
+\color teal
+A probability value (
 \begin_inset Formula $p$
 \end_inset
 
@@ -1822,9 +2082,15 @@ to be compared to the threshold
 \begin_inset Formula $\xi$
 \end_inset
 
- is derived from the cumulated density function of the absolute statistics
- difference.
- In the normal case
+ is derived from the cumulated density function of the expected distribution
+ for 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ For instance
+\color inherit
+
 \begin_inset Formula 
 \begin{align}
 p_{t} & =1-\Phi_{H}(\xi)\label{eq:pt-1}\\
@@ -1898,13 +2164,13 @@ literal "false"
 
 .
  
-\color red
+\color teal
 For 
 \begin_inset Formula $p_{t}$
 \end_inset
 
  above this value, one cannot reject the hypothesis that the observed difference
- between two values is due to statistical noise.
+ between two values is due to chance.
 
 \color inherit
  
@@ -2015,7 +2281,7 @@ To estimate the effect of correlation on the comparison of scores, we introduce
 \begin_inset Formula $p_{unc}$
 \end_inset
 
- of 
+ (uncorrelated) of 
 \begin_inset Formula $p_{t}$
 \end_inset
 
@@ -2209,8 +2475,12 @@ Input: Two paired error sets
 \begin_inset Formula $N$
 \end_inset
 
-, and a statistic estimator 
+, a statistic estimator 
 \begin_inset Formula $S$
+\end_inset
+
+, and a number of bootstrap samples 
+\begin_inset Formula $B$
 \end_inset
 
 
@@ -2269,7 +2539,7 @@ Calculate a generalized
 \begin_inset Formula $p_{g}=2\min(p^{*},1-p^{*})$
 \end_inset
 
-,where
+, where
 \begin_inset Newline newline
 \end_inset
 
@@ -2400,7 +2670,79 @@ noprefix "false"
 .
  It is based on a simple counting of null and negative bootstrapped differences
  of statistics with paired samples.
- Note that the use of paired samples is essential to capture inter-statistics
+ 
+\color teal
+If 
+\begin_inset Formula $S(E_{1})=S(E_{2})$
+\end_inset
+
+, one expects that the bootstrap sample will generate positive and negative
+ values of their difference in equal amounts.
+ In this cases, 
+\begin_inset Formula $p^{*}\simeq1-p^{*}\simeq0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ is close to 1.
+ Note that the null values in the sample are shared equally between the
+ positive and negative values.
+ On the opposite, if there is a small proportion 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ of negative values, the mean of the sample is positive, different from
+ zero.
+ The smaller 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ the farther the mean from zero, and the lower the probability of the null,
+ 
+\begin_inset Formula $S(E_{1})=S(E_{2})$
+\end_inset
+
+ hypothesis.
+ The symmetric case occurs for large values of 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ (small values of 
+\begin_inset Formula $1-p^{*}$
+\end_inset
+
+).
+ As one do not care for the sign of the difference, a factor two is applied
+ to estimate 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+.
+ The identity of this algorithm with the analytical 
+\begin_inset Formula $p$
+\end_inset
+
+-value for the comparison of normal samples means is established in Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Estimation-of--values"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Note that the use of paired samples is essential to capture inter-statistics
  correlations.
  Wilcox and Erceg-Hurn 
 \begin_inset CommandInset citation
@@ -2593,7 +2935,7 @@ If one takes as reference
 \end_inset
 
  the smallest value 
-\begin_inset Formula $\hat{\text{s}}$
+\begin_inset Formula $\hat{s}$
 \end_inset
 
  of a statistic within a set of methods, one gets
@@ -2714,8 +3056,12 @@ Input:
 \begin_inset Formula $N$
 \end_inset
 
-, and a statistic estimator 
+, a statistic estimator 
 \begin_inset Formula $S$
+\end_inset
+
+, and a number of bootstrap samples 
+\begin_inset Formula $B$
 \end_inset
 
 
@@ -2910,7 +3256,7 @@ name "fig:bsRank"
 
 \end_inset
 
-Graphical representations of sample-size effect on ranking: (left) levels
+Graphical representations of sample-size effect on MUE ranking: (left) levels
  image of the ranking probability matrix; (right) summary of the ranking
  probability matrix by the modes (diamonds) and 90
 \begin_inset space \thinspace{}
@@ -3008,9 +3354,32 @@ of-
 \end_inset
 
  is problem-dependent and is left to the appreciation of the analyst.
- For the sake of simplicity, we consider here that the standard method provides
- a reasonable qualitative appreciation of ranking uncertainties.
- 
+ For the sake of simplicity, and until further inquiries on the optimal
+ choice of 
+\begin_inset Formula $N'$
+\end_inset
+
+, we consider here that the standard method provides a reasonable qualitative
+ appreciation of ranking uncertainties.
+ An example with 
+\begin_inset Formula $N'=N/3$
+\end_inset
+
+ is shown in Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Das2019"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -3020,7 +3389,8 @@ As a general trend, one expects that ranking uncertainty will increase for
 \begin_inset Formula $K$
 \end_inset
 
- of compared methods (
+ of compared methods, notably if several methods have similar performances
+ (
 \emph on
 cf.
 
@@ -3181,8 +3551,8 @@ literal "false"
 
 .
  As the presence of a small amount of outliers is a frequent feature of
- the benchmarking data sets, we used systematically the more robust rank-correla
-tion (Spearman) method.
+ the benchmarking data sets, we used the more robust rank-correlation (Spearman)
+ method, unless otherwise specified.
  
 \end_layout
 
@@ -3195,8 +3565,8 @@ The application
 \family typewriter
 ErrView
 \family default
- implementing the methods described in this article and the corresponding
- datasets is archived at 
+ implementing the methods described in this article (and more) and the correspon
+ding datasets are archived at 
 \begin_inset Flex URL
 status open
 
@@ -3207,8 +3577,8 @@ https://github.com/ppernot/ErrView
 
 \end_inset
 
- (DOI: 10.5281/zenodo.3628489) ; a test web interface is also available at
- 
+ (DOI: 10.5281/zenodo.3628489) ; a test web interface is also freely accessible
+ at 
 \begin_inset Flex URL
 status open
 
@@ -4137,7 +4507,7 @@ Statistics.
 placement p
 wide false
 sideways true
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -5946,7 +6316,7 @@ noprefix "false"
 \end_inset
 
 PBE as a contender for the head group.
- When picking B97-1 instead of CAM-B3LYP based on the MUE, there is a 30
+ When picking B97-1 instead of CAM-B3LYP based on the MUE, there is a 29
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -5956,7 +6326,11 @@ i.e.
 \emph default
 , that the MUE of CAM-B3LYP is indeed smaller than B97-1 due to the restricted
  sample size.
- This risks falls to 10% when PBE0 is concerned.
+ This risks falls to 12
+\begin_inset space \thinspace{}
+\end_inset
+
+% for PBE0.
 \end_layout
 
 \begin_layout Standard
@@ -5988,7 +6362,23 @@ kcal/mol;
 
  can help us to rank the three best methods, for which the MUE is not discrimina
 nt.
- 
+ This is linked to the presence of different tails in the absolute errors
+ distributions (cf.
+ Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:pernot1-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -6069,12 +6459,16 @@ noprefix "false"
 
 (b)).
  The MUE difference for this pair is statistically not significant (
-\begin_inset Formula $p_{g=0.57}$
+\begin_inset Formula $p_{g}=0.57$
 \end_inset
 
-), the SIP value is about 0.65 – a small improvement of CAM-B3LYP over B97-1
- – the mean gain -0.6 kcal/mol and the mean loss -1.3 kcal/mol, due to the
- heavy tail in the CAM-B3LYP error distribution.
+), the SIP value is 
+\begin_inset Formula $1-0.33=0.67$
+\end_inset
+
+ – a small improvement of CAM-B3LYP over B97-1 – the mean gain -0.6 kcal/mol
+ and the mean loss -1.3 kcal/mol, due to the heavy tail in the CAM-B3LYP
+ error distribution.
  So by switching from B97-1 to CAM-B3LYP, one has to accept a 35
 \begin_inset space \thinspace{}
 \end_inset
@@ -6348,9 +6742,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-The reference authors reported and analyzed relative errors, but this causes
- an unsuitable distortion of the errors distributions, with large relative
- errors for small band gaps, and small errors for large band gaps.
+The reference authors reported and analyzed relative errors, but as there
+ is a large range of band gaps in this set this causes a dispersion of relative
+ errors over six orders of magnitude, and an unsuitable distortion of the
+ errors distributions, with large relative errors for small band gaps, and
+ small relative errors for large band gaps.
  It is true that for some methods (
 \emph on
 e.g.
@@ -6358,7 +6754,8 @@ e.g.
 , LDA) the errors increase with the value of the band gap, but this is due
  mostly to a systematic deviation (trend), not an increase in the dispersion
  of the errors.
- In consequence, we treat here the 'absolute' errors, as defined in Eq.
+ In consequence, we chose treat here the 'absolute' errors, as defined in
+ Eq.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6429,8 +6826,8 @@ literal "false"
 
  discuss the uncertainties on the reference band gaps in their dataset and
  estimate it to a few tenths of eV.
- Without more detailed information, we assume then that this represents
- a uniform uncertainty for the dataset.
+ Without more detailed information, we assume that this represents a uniform
+ uncertainty for the dataset.
 \end_layout
 
 \begin_layout Paragraph
@@ -6477,21 +6874,24 @@ the correlation matrix can be used to infer a clustering of methods, describing
  Error sets with large correlation coefficients are related by a linear
  or monotonous transformation and the corresponding methods are clustered
  together.
+ The presence of well delimited clusters indicates that the error sets are
+ not dominated by reference data errors.
  From the correlation matrix, the clusters would be (HLE16, HLE16+SOC),
  (BJ, SCAN, LDA, PBE, PBE_SOL, LDA+SOC, PBE+SOC), (HSE_mix, PBE0_mix) and
  (HSE06,PBE0).
  mBJ and HSE14 stay alone.
- The presence of well delimited clusters indicates that the error sets are
- not dominated by reference data errors.
+
+\color teal
+ The clustering observed seems to find blocks that correspond to physical
+ intuition: LDA, PBE, SCAN, ...
+ have all an electron-gas background.
+ This is relaxed for HLE16 that differs fro HLE16+SOC only by taking into
+ account spin-orbit coupling.
+ These methods are further decoupled from hybrid methods (PBE0, HSE06).
  
 \end_layout
 
 \begin_layout Standard
-
-\color red
-Andreas, tu peux un peu développer sur la pertinence de ces clusters ?
-\color inherit
- 
 \begin_inset Float figure
 placement !tb
 wide false
@@ -6525,9 +6925,18 @@ name "fig:borlido1"
 \end_inset
 
 Case BOR2019: rank correlation between errors sets.
- The methods are ordered by a clustering algorithm (
+ The methods are ordered by a clustering algorithm using the complete linkage
+ method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Defays1977"
+literal "false"
+
+\end_inset
+
+ 
 \family typewriter
-hclust
+implemented in hclust
 \family default
  
 \begin_inset CommandInset citation
@@ -6537,7 +6946,7 @@ literal "false"
 
 \end_inset
 
-).
+.
  
 \end_layout
 
@@ -8718,7 +9127,10 @@ noprefix "false"
 \end_inset
 
  for details.
- The orange band depicts the chemical accuracy (0.14
+ 
+\color teal
+The orange band depicts a reasonable level of uncertainty in the dataset
+ (0.2
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -9164,7 +9576,7 @@ status open
 	filename ../results/figs/Narayanan2019_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 200bp 100bp 1300bp 1200bp
+	BoundingBox 0bp 100bp 1300bp 1200bp
 	clip
 
 \end_inset
@@ -9182,7 +9594,7 @@ status open
 	filename ../results/figs/Narayanan2019_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 200bp 100bp 1300bp 1200bp
+	BoundingBox 0bp 100bp 1300bp 1200bp
 	clip
 
 \end_inset
@@ -9200,7 +9612,7 @@ status open
 	filename ../results/figs/Narayanan2019_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 200bp 100bp 1300bp 1200bp
+	BoundingBox 0bp 100bp 1300bp 1200bp
 	clip
 
 \end_inset
@@ -9339,7 +9751,6 @@ noprefix "false"
 \end_inset
 
 % to exceed 2.2 kcal/mol.
- The method does not therefore guarantee predictions with chemical accuracy.
  
 \begin_inset Float table
 placement !tb
@@ -10356,7 +10767,7 @@ noprefix "false"
 placement p
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -15574,7 +15985,7 @@ PBE0-Dn
 \begin_inset Formula $Q_{95}$
 \end_inset
 
-, and the best MSIP is for PBE0-D4-ATM, with a neutral value of 0.5.
+.
  Inspection of Fig.
 \begin_inset space \thinspace{}
 \end_inset
@@ -15593,7 +16004,7 @@ noprefix "false"
 \begin_inset space \thinspace{}
 \end_inset
 
-% confidence interval (CI) for the SIP value of 0.6 for PBE0-D4-ATM over
+% confidence interval (CI) for the SIP value of 0.61 for PBE0-D4-ATM over
  PBE0-D3 does not exclude the neutral value (0.5), with a tiny advantage
  of the mean gain over the mean loss.
  One can note also that, despite their large error bars, the small MUE differenc
@@ -15625,7 +16036,7 @@ PW6B95-Dn
 RPBE-Dn
 \series default
 .
- For this case, one has a rare instance where D4 improves systematically
+ For this case, one has a rare instance where D4 improves almost systematically
  over D3, with a SIP of 0.95(3), and a mean gain overwhelming the mean loss.
 \end_layout
 
@@ -15682,7 +16093,12 @@ name "fig:caldeweyher1"
 
 \end_inset
 
-Case CAL2019: SIP plots
+Case CAL2019: SIP plots.
+ The orange band depicts the chemical accuracy (1
+\begin_inset space \thinspace{}
+\end_inset
+
+kcal/mol).
 \end_layout
 
 \end_inset
@@ -15729,7 +16145,7 @@ noprefix "false"
 
  is even less well defined, with no clear leading method within a group
  of five.
- The MSIP rankink is akin to the MUE ranking.
+ The MSIP ranking is akin to the MUE ranking.
 \end_layout
 
 \begin_layout Standard
@@ -17129,6 +17545,11 @@ name "fig:jensen1"
 Case JEN2018: (a) ECDF of the absolute errors; (b) SIP matrix; (c,d) ECDF
  of the difference of absolute errors of pop2 and pcseg1-opt with respect
  to pop2-opt.
+ The orange bar represents a chemical accuracy of 1
+\begin_inset space \thinspace{}
+\end_inset
+
+kJ/mol.
 \end_layout
 
 \end_inset
@@ -17378,7 +17799,7 @@ status open
 	filename ../results/figs/Das2019_ParPlot.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 100bp 0bp 1100bp 1200bp
+	BoundingBox 50bp 0bp 1100bp 1200bp
 	clip
 
 \end_inset
@@ -17588,6 +18009,7 @@ Case DAS2019: rank correlation matrices.
 \end_inset
 
 ).
+ 
 \end_layout
 
 \end_inset
@@ -17641,11 +18063,11 @@ status open
 
 \size small
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="12">
+<lyxtabular version="3" rows="8" columns="12">
 <features tabularvalignment="middle">
 <column alignment="left" valignment="top" width="0pt">
 <column alignment="left" valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
+<column alignment="center" valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
@@ -17656,7 +18078,7 @@ status open
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
+<cell alignment="left" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17665,7 +18087,7 @@ Methods
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17674,7 +18096,7 @@ Methods
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17683,7 +18105,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17695,7 +18117,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17704,7 +18126,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17716,7 +18138,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17728,7 +18150,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17737,7 +18159,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17746,7 +18168,7 @@ MSIP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17755,7 +18177,7 @@ SIP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17764,11 +18186,129 @@ MG
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
 ML
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color teal
+a.u.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color teal
+a.u.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color teal
+a.u.
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="decimal" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\color teal
+a.u.
 \end_layout
 
 \end_inset
@@ -17793,7 +18333,7 @@ PBE0
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17874,7 +18414,7 @@ PBE0
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
+<cell alignment="decimal" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17903,7 +18443,7 @@ B3LYP
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17984,7 +18524,7 @@ B3LYP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18013,7 +18553,7 @@ DD-B3LYP
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18094,7 +18634,7 @@ DD-B3LYP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18123,7 +18663,7 @@ SC-BLYP
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18204,7 +18744,7 @@ SC-BLYP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18233,7 +18773,7 @@ DD-SC-BLYP
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18314,7 +18854,7 @@ DD-SC-BLYP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18436,7 +18976,7 @@ DD-CAM-B3LYP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18497,7 +19037,7 @@ SIP analysis.
 \end_layout
 
 \begin_layout Standard
-These two methods are clearly identifiable in the SIP matrix (Fig.
+The latter two methods are clearly identifiable in the SIP matrix (Fig.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -18738,7 +19278,11 @@ Case DAS2019 - ranking probability matrices: (top)
 \begin_inset Formula $N$
 \end_inset
 
--out of-
+-out
+\begin_inset space \thinspace{}
+\end_inset
+
+of-
 \begin_inset Formula $N$
 \end_inset
 
@@ -18746,7 +19290,11 @@ Case DAS2019 - ranking probability matrices: (top)
 \begin_inset Formula $N/3$
 \end_inset
 
--out of-
+-out
+\begin_inset space \thinspace{}
+\end_inset
+
+of-
 \begin_inset Formula $N$
 \end_inset
 
@@ -18782,6 +19330,8 @@ name "subsec:Thakkar2015"
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 Thakkar 
 \emph on
 et al.
@@ -18799,13 +19349,16 @@ literal "false"
  to 26-atoms systems.
  The experimental data are given with their uncertainty, and computational
  results are provided for 7 methods.
- Data for our study were extracted from Tables II-IV in the reference article.
+ Data THA2015 for our study were extracted from Tables II-IV in the reference
+ article.
  The raw errors present a dispersion increasing with the polarizability,
  hence relative errors are used in the reference article and this study.
  
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 The relative uncertainties for the reference experimental data cover a large
  range, from 0.09
 \begin_inset space \thinspace{}
@@ -18836,6 +19389,8 @@ et al.
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 In a complementary study, Wu 
 \emph on
 et al.
@@ -18852,7 +19407,8 @@ literal "false"
  calculated polarizabilities for a set of 145 molecules with HF, MP2, CCSD(T)
  and 34 DFAs.
  In this study, CCSD(T) was used as reference to evaluate the other methods.
- In the following, we select the subset of 7 methods common to both datasets.
+ In the following, we select the subset of 7 methods common to both datasets
+ (WU2015).
  This enables us to study the impact of the reference data (experimental
  
 \emph on
@@ -18860,6 +19416,8 @@ vs.
 
 \emph default
  calculated) on the correlation and ranking matrices.
+
+\color inherit
  
 \begin_inset Note Note
 status collapsed
@@ -20675,7 +21233,7 @@ SIP matrix: (a) case THA2015 (
 \end_inset
 
 ); (b) case WU2015.
- 
+ The methods are sorted by decreasing MSIP value.
 \end_layout
 
 \end_inset
@@ -21042,7 +21600,11 @@ literal "false"
  for several basis sets (STO-3g, 6-31g, and cc-pvdz), three quantum chemistry
  methods (HF, MP2 and CCSD(T)) and four machine learning algorithms (CM-L1,
  CM-L2, SLATM-L1 and SLATM-L2).
- The data have been provided by the authors of Ref.
+ The data have been provided by Zaspel 
+\emph on
+et al
+\emph default
+.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -21055,9 +21617,9 @@ literal "false"
 \end_inset
 
 .
- The ML methods have been trained over a random sample of 1000 CCSD(T) energies
- (learning set), and the test set contains the prediction errors for the
- 6211 remaining systems 
+ The machine learning methods have been trained over a random sample of
+ 1000 CCSD(T) energies (learning set), and the test set contains the prediction
+ errors for the 6211 remaining systems 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Zaspel2019"
@@ -22071,6 +22633,11 @@ name "fig:zas"
 Case ZAS2019: : (a) ECDF of the absolute errors; (b) SIP matrix; (c,d) ECDF
  of the difference of absolute errors of HF (c) and MP2 (d) with respect
  to SLATM-L2.
+ The orange band represents the chemical accuracy (1
+\begin_inset space \thinspace{}
+\end_inset
+
+kcal/mol).
 \end_layout
 
 \end_inset
@@ -22153,6 +22720,91 @@ Think Open, think FAIR !
 \begin_inset Quotes erd
 \end_inset
 
+ 
+\end_layout
+
+\begin_layout Subsection
+Impact of dataset size
+\end_layout
+
+\begin_layout Standard
+The examples above have shown that data set size impact considerably the
+ ability to rank methods or to assert the impact of an improved method.
+ Data set size effect on the uncertainty of statistics is well known for
+ the mean value, and similar formulae can be derived for other statistics
+ under normality hypotheses.
+ However, the non-normality of error sets requires the use of numerical
+ methods, typically bootstrap sampling.
+ This enables to show how the usual benchmark statistics are affected by
+ sample size.
+ We have seen, for instance, 
+\color teal
+that there is a notable probability to conclude erroneously that two 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ values are different when they are not (type I errors or false positive)
+\color inherit
+ if 
+\begin_inset Formula $N<60$
+\end_inset
+
+ (Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Type-I-error"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Moreover, for small datasets (a few tens of points), the first digit of
+ the statistics is often affected by the uncertainty.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+In such cases, ranking with the second or third digit of a statistics has
+ no sense, unless correlations are taken into account.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is practically impossible to predict the dataset size required for a
+ stable and robust ranking.
+ Many factors other than set size are involved, notably the number and nature
+ of methods to be ranked.
+ When a lot of DFAs are compared, a hierarchical ranking is often performed,
+ for instance by first choosing the best method at each rung of the Jacob's
+ ladder, and then comparing these methods together 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wu2015b"
+literal "false"
+
+\end_inset
+
+.
+ This is one way to avoid the ranking uncertainty resulting from the direct
+ comparison of many methods.
+\end_layout
+
+\begin_layout Standard
+We can only encourage benchmark authors to provide adequate uncertainty
+ estimations and ranking probability matrices, which can be obtained with
+ a negligible overcharge in computer time.
  
 \end_layout
 
@@ -22248,10 +22900,17 @@ Impact of error sets correlation on ranking
 The correlation between error sets is partially or totally transferred to
  statistics.
  Except for linear transformations of the errors, where the transfer is
- total, including the sign, one has to use Monte Carlo methods to estimate
- this transfer.
- In many cases, such as for normal, student's or g-and-h error distributions,
- one observes that the correlation intensity mainly decreases when passing
+ total, including the sign, one uses Monte Carlo methods to estimate this
+ transfer.
+ In many cases, such as for normal, student's or g-and-h error distributions
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hoaglin1985"
+literal "false"
+
+\end_inset
+
+, one observes that the correlation intensity mainly decreases when passing
  from errors to MUE to 
 \begin_inset Formula $Q_{95}$
 \end_inset
@@ -22283,77 +22942,6 @@ In a vast majority of the cases studied above, the correlation matrices
  These contribute to a reduction of the uncertainty on statistics differences,
  with better discernibility between uncertain statistics.
  Globally, positive correlations increase the robustness of rankings.
- 
-\end_layout
-
-\begin_layout Subsection
-Impact of dataset size
-\end_layout
-
-\begin_layout Standard
-The examples above have shown that data set size impact considerably the
- ability to rank methods or to assert the impact of an improved method.
- Data set size effect on the uncertainty of statistics is well known for
- the mean value, and similar formulae can be derived for other statistics
- under normality hypotheses.
- However, the non-normality of error sets requires the use of numerical
- methods, typically bootstrap sampling.
- This enables to show how the usual benchmark statistics are affected by
- sample size.
- We have seen, for instance, that the comparison of 
-\begin_inset Formula $Q_{95}$
-\end_inset
-
- values might have a notable level of type I errors if 
-\begin_inset Formula $N<60$
-\end_inset
-
- (Appendix
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "sec:Type-I-error"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-).
- Moreover, for small datasets (a few tens of points), the first digit of
- the statistics is often affected by the uncertainty.
- In such cases, ranking with the second or third digit of a statistics has
- no sense, unless correlations are taken into account.
- 
-\end_layout
-
-\begin_layout Standard
-It is practically impossible to predict the dataset size required for a
- stable and robust ranking.
- Many factors other than set size are involved, notably the number and nature
- of methods to be ranked.
- When a lot of DFAs are compared, a hierarchical ranking is often performed,
- for instance by first choosing the best method at each rung of the Jacob's
- ladder, and then comparing these methods together 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Wu2015b"
-literal "false"
-
-\end_inset
-
-.
- This is one way to avoid the ranking uncertainty resulting from the direct
- comparison of many methods.
-\end_layout
-
-\begin_layout Standard
-We can only encourage benchmark authors to provide adequate uncertainty
- estimations and ranking probability matrices, which can be obtained with
- a negligible overcharge in computer time.
  
 \end_layout
 
@@ -22395,6 +22983,8 @@ MSIP ranking vs MUE
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 The mean systematic improvement probability (MSIP) was tested here as a
  ranking statistic.
  Its main advantage is its independence from the usual summary statistics;
@@ -22538,10 +23128,14 @@ literal "false"
 \end_layout
 
 \begin_layout Section*
+
+\color teal
 Acknowledgment
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 The authors are grateful to Pr.
 \begin_inset space \thinspace{}
 \end_inset
@@ -22571,13 +23165,15 @@ Grimme for providing a corrected copy of Supplementary Information for case
 \end_layout
 
 \begin_layout Section*
+
+\color teal
 Supplementary Information
 \end_layout
 
 \begin_layout Standard
 
-\color red
-All datasets + code to reproduce results of paper
+\color teal
+Datasets and R code to reproduce the results of the article.
 \end_layout
 
 \begin_layout Standard
@@ -23199,8 +23795,21 @@ s have been estimated for the MSE, MUE and
 \end_layout
 
 \begin_layout Standard
-The results for four cases of the g-and-h distribution of error sets are
- reported in Fig.
+The results for the four cases of the g-and-h distribution (Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-g-and-h-distribution"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) of error sets are reported in Fig.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23215,33 +23824,6 @@ noprefix "false"
 \end_inset
 
 (a-d).
- The g-and-h distribution's shape is defined by two parameters and contains
- the normal distribution as a special case (
-\begin_inset Formula $g=h=0$
-\end_inset
-
-).
- Besides the normal, three typical cases are 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Wilcox2012"
-literal "false"
-
-\end_inset
-
-: heavy-tailed symmetric (
-\begin_inset Formula $g=0;\thinspace h=0.2$
-\end_inset
-
-), light-tailed asymmetric (
-\begin_inset Formula $g=0.2;\thinspace h=0$
-\end_inset
-
-), and heavy-tailed asymmetric (
-\begin_inset Formula $g=h=0.2$
-\end_inset
-
-).
  In this example, both error sets 
 \begin_inset Formula $E_{1}$
 \end_inset
@@ -23251,72 +23833,6 @@ literal "false"
 \end_inset
 
  have the same distribution with unit variance, only their correlation varies.
-\end_layout
-
-\begin_layout Standard
-These simulations confirms the identity for the MSE, independently of the
- underlying distribution.
- The correlation coefficients for the other statistics are positive (within
- numerical uncertainty) and systematically smaller than 
-\begin_inset Formula $|\rho|$
-\end_inset
-
-.
- They are symmetrical with respect to 
-\begin_inset Formula $\rho=0$
-\end_inset
-
- for symmetrical error distributions.
- The values for the MUE are consistently larger than, or equal to, the values
- for 
-\begin_inset Formula $Q_{95}$
-\end_inset
-
-.
- In all cases, the correlation coefficient for the MUE is very close to
- 
-\begin_inset Formula $\rho^{2}$
-\end_inset
-
-.
- For negative values of 
-\begin_inset Formula $\rho$
-\end_inset
-
-, the correlation coefficient of 
-\begin_inset Formula $Q_{95}$
-\end_inset
-
- is sensitive to the asymmetry or the errors distribution.
-\end_layout
-
-\begin_layout Standard
-The same procedure has been applied to shifted means (
-\begin_inset Formula $\overline{e}_{1}=-0.2$
-\end_inset
-
-, 
-\begin_inset Formula $\overline{e}_{2}=-0.5$
-\end_inset
-
-) for normal and Student's distribution with 5 degrees of freedom (Fig.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:corrScore"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-(e,f)).
- For the normal distribution the symmetry observed above is broken, as well
- as the pure quadratic trend for the MUE.
- For the Student's distribution, the correlations lie above a positive threshold.
  
 \begin_inset Float figure
 placement !tb
@@ -23450,6 +23966,73 @@ name "fig:corrScore"
 \end_layout
 
 \begin_layout Standard
+These simulations confirms the identity for the MSE, independently of the
+ underlying distribution.
+ The correlation coefficients for the other statistics are positive (within
+ numerical uncertainty) and systematically smaller than 
+\begin_inset Formula $|\rho|$
+\end_inset
+
+.
+ They are symmetrical with respect to 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+ for symmetrical error distributions.
+ The values for the MUE are consistently larger than, or equal to, the values
+ for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+.
+ In all cases, the correlation coefficient for the MUE is very close to
+ 
+\begin_inset Formula $\rho^{2}$
+\end_inset
+
+.
+ For negative values of 
+\begin_inset Formula $\rho$
+\end_inset
+
+, the correlation coefficient of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is sensitive to the asymmetry or the errors distribution.
+\end_layout
+
+\begin_layout Standard
+The same procedure has been applied to shifted means (
+\begin_inset Formula $\overline{e}_{1}=-0.2$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{e}_{2}=-0.5$
+\end_inset
+
+) for normal and Student's distribution with 5 degrees of freedom (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:corrScore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(e,f)).
+ For the normal distribution the symmetry observed above is broken, as well
+ as the pure quadratic trend for the MUE.
+ For the Student's distribution, the correlations lie above a positive threshold.
+ 
+\end_layout
+
+\begin_layout Standard
 Simulation of correlated error samples enabled us to illustrate properties
  of correlation transfer to statistics: identical correlation for the MSE,
  and smaller positive correlations for the MUE and 
@@ -23568,30 +24151,24 @@ A false positive (type I error) is obtained when a true null hypothesis
 \end_layout
 
 \begin_layout Standard
-For their tests, Wilcox and Erceg-Hurn use the g-and-h distribution 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hoaglin1985"
-literal "false"
 
-\end_inset
-
- to generate the data samples (see Appendix
+\color teal
+For their tests, Wilcox and Erceg-Hurn use the g-and-h distribution (Appendix
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Covariance-of-scores"
+reference "sec:The-g-and-h-distribution"
 plural "false"
 caps "false"
 noprefix "false"
 
 \end_inset
 
-).
- Several levels of correlation between 
+) to generate the data samples.
+ Two levels of correlation between 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -23599,7 +24176,7 @@ noprefix "false"
 \begin_inset Formula $E_{2}$
 \end_inset
 
- were also considered (
+ were also considered in the original study (
 \begin_inset Formula $\rho=0$
 \end_inset
 
@@ -23607,34 +24184,25 @@ noprefix "false"
 \begin_inset Formula $0.7$
 \end_inset
 
-) in the original study.
- Through these tests, one wishes to determine the sample size 
+).
+ These tests aim at determining the sample size 
 \begin_inset Formula $N$
 \end_inset
 
  required to reach a probability of type I errors 
-\family roman
-\series medium
-\shape up
-\size normal
-\emph off
-\bar no
-\strikeout off
-\xout off
-\uuline off
-\uwave off
-\noun off
-\color none
-
 \begin_inset Formula $\hat{\alpha}$
 \end_inset
 
  close to the statistical testing threshold.
- The recommendation in the original study is to stay below 
-\begin_inset Formula $\hat{\alpha}=0.075$
+ A recommendation in the original study is that 
+\begin_inset Formula $\hat{\alpha}$
 \end_inset
 
- for testing at the 0.05 level 
+ should not exceed 
+\begin_inset Formula $0.075$
+\end_inset
+
+ for a test at the 0.05 level 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Bradley1978"
@@ -23646,8 +24214,12 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-These test cases did not include our conditions of interest, and we performed
- new simulations, using functions provided in 
+
+\color teal
+As these test cases did not include our conditions of interest in terms
+ of correlation and quantile level, we performed new simulations,
+\color inherit
+ using functions provided in 
 \family typewriter
 R
 \family default
@@ -23797,14 +24369,48 @@ For the MUE, the safety region (
 \begin_inset Formula $\hat{\alpha}\le0.075$
 \end_inset
 
-; black dashed line) is reached in all cases for 
+; black dashed line)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bradley1978"
+literal "false"
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ is reached in all cases for 
 \begin_inset Formula $N>30$
 \end_inset
 
 , and then all values are close to the nominal value (0.05).
  There is no remarkable trend with respect to the type of g-and-h distribution,
  nor the correlation coefficient.
- We have shown previously 
+ We have estimated previously 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Pernot2018"
@@ -23821,7 +24427,7 @@ literal "false"
 
 \end_inset
 
- have conclude that the minimal request is 
+ have concluded that the minimal request is 
 \begin_inset Formula $N\ge30$
 \end_inset
 
@@ -24326,7 +24932,35 @@ literal "false"
 \end_inset
 
 .
- The procedure is repeated 10000 times, and the distributions of 
+ 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ is one of a family of quantile estimators based on the linear combination
+ of one or two order statistics 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hyndman1996"
+literal "false"
+
+\end_inset
+
+, whereas the HD algorithm is based on the linear combination of all order
+ statistics for a sample 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+.
+ It is therefore more computationally demanding and is not proposed in the
+ base R quantile function options.
+\end_layout
+
+\begin_layout Standard
+The above procedure is repeated 10000 times, and the distributions of 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
@@ -24779,6 +25413,88 @@ Validation of methodological choices for
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+The g-and-h distribution
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-g-and-h-distribution"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+The g-and-h distribution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hoaglin1985"
+literal "false"
+
+\end_inset
+
+ is used in the following sections to study the impact of the distributions
+ shapes on several statistics.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+If 
+\begin_inset Formula $z$
+\end_inset
+
+ has a standard normal distribution, its transform
+\begin_inset Formula 
+\begin{equation}
+X=\frac{1}{g}(e^{gz}-1)e^{hz^{2}}
+\end{equation}
+
+\end_inset
+
+has a g-and-h distribution.
+ Its shape is defined by parameters 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+, and contains the normal distribution as a special case (
+\begin_inset Formula $g=h=0$
+\end_inset
+
+).
+ Besides the normal, three typical cases are proposed by Wilcox and Erceg-Hurn
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+: heavy-tailed symmetric (
+\begin_inset Formula $g=0;\thinspace h=0.2$
+\end_inset
+
+), light-tailed asymmetric (
+\begin_inset Formula $g=0.2;\thinspace h=0$
+\end_inset
+
+), and heavy-tailed asymmetric (
+\begin_inset Formula $g=h=0.2$
+\end_inset
+
+).
+ These four cases will be considered below.
+ 
 \end_layout
 
 \begin_layout Standard

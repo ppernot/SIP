@@ -2,7 +2,7 @@ source('0-Setup.R')
 
 caseName = 'AppB'
 
-# Fig. 29 ####
+# Fig. 30 ####
 
 ## g-and-h Samples CC
 nMC = 1000
@@ -31,13 +31,13 @@ for (g in c(0,0.2)) {
           # Store pairs of estimators
           m[i, 1:2] = apply(X, 2, get(score))
         }
-        bs = boot::boot(m, fcor, nMC)
+        bs = boot::boot(m, ErrViewLib::fcor, nMC)
         cxyMC = bs$t0
 
         x[j]= rho
         y[j,score] = cxyMC
-        yl[j,score] = hd(bs$t,0.025)
-        yu[j,score] = hd(bs$t,0.975)
+        yl[j,score] = ErrViewLib::hd(bs$t,0.025)
+        yu[j,score] = ErrViewLib::hd(bs$t,0.975)
       }
     }
 
@@ -106,13 +106,13 @@ for(j in 1:length(seqrxy)) {
       m[i, 1:2] = apply(X, 2, get(score))
     }
     # cxyMC = cor(m)[1,2]
-    bs = boot::boot(m, fcor, nMC)
+    bs = boot::boot(m, ErrViewLib::fcor, nMC)
     cxyMC = bs$t0
 
     x[j]= rho
     y[j,score] = cxyMC
-    yl[j,score] = hd(bs$t,0.025)
-    yu[j,score] = hd(bs$t,0.975)
+    yl[j,score] = ErrViewLib::hd(bs$t,0.025)
+    yu[j,score] = ErrViewLib::hd(bs$t,0.975)
   }
 }
 
@@ -178,13 +178,13 @@ for(j in 1:length(seqrxy)) {
       # Store pairs of estimators
       m[i, 1:2] = apply(X, 2, get(score))
     }
-    bs = boot::boot(m, fcor, nMC)
+    bs = boot::boot(m, ErrViewLib::fcor, nMC)
     cxyMC = bs$t0
 
     x[j]= rho
     y[j,score] = cxyMC
-    yl[j,score] = hd(bs$t,0.025)
-    yu[j,score] = hd(bs$t,0.975)
+    yl[j,score] = ErrViewLib::hd(bs$t,0.025)
+    yu[j,score] = ErrViewLib::hd(bs$t,0.975)
   }
 }
 

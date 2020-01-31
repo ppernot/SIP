@@ -20,9 +20,9 @@ names(Eref) = systems
 
 Errors  = Eref - Data[,3:ncol(Data)]
 
-write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
-write.csv(cbind(Ref = Eref,Data[,3:ncol(Data)]),
-          file=paste0(dataRepo,caseName,'/NAR2019_Data.csv'))
+df = cbind(Ref = Eref,Data[,3:ncol(Data)])
+rownames(df) = make.unique(systems)
+write.csv(df,file=paste0(dataRepo,caseName,'/NAR2019_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)
@@ -39,8 +39,8 @@ gParsExt$cols_tr2 = colsExt_tr2
 
 # Generate stats ####
 
-statBS = estBS1(Errors, eps = 0)
-df1    = genTabStat(statBS,comp=TRUE)
+statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
+df1    = ErrViewLib::genTabStat(statBS,units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
@@ -58,7 +58,7 @@ sink()
 
 # Figures ####
 
-# Fig. 11 ####
+# Fig. 12 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -66,7 +66,7 @@ png(
   height = gPars$reso
 )
 cErr = cor(as.data.frame(Errors),method = "spearman")
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main = 'Errors',
@@ -81,7 +81,7 @@ png(
   height = gPars$reso
 )
 cErr = statBS$mue$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = 'MUE',
@@ -96,7 +96,7 @@ png(
   height = gPars$reso
 )
 cErr = statBS$q95hd$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = 'Q95',
@@ -105,11 +105,11 @@ plotCorMat(
 dev.off()
 ###
 
-# Fig. 12 ####
+# Fig. 13 ####
 ifig=1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(Errors),
   xmax = max(statBS$q95hd$val),
   title = '',
@@ -124,13 +124,13 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso
 )
-plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
+ErrViewLib::plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
 dev.off()
 
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'G4MP2',
   'B3LYP',
@@ -144,7 +144,7 @@ dev.off()
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF2.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'G4MP2',
   'wB97X-D',

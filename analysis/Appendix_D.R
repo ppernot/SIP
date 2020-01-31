@@ -8,10 +8,11 @@ s1  = 1.1
 s2  = 1.0
 rho = 0.9
 
-MUE_1 = muF(c(mu1,s1))
-MUE_2 = muF(c(mu2,s2))
-Q95_1 = q95F(c(mu1,s1))
-Q95_2 = q95F(c(mu2,s2))
+# Stats of folded normal distribution
+MUE_1 = ErrViewLib::muF(c(mu1,s1))
+MUE_2 = ErrViewLib::muF(c(mu2,s2))
+Q95_1 = ErrViewLib::q95F(c(mu1,s1))
+Q95_2 = ErrViewLib::q95F(c(mu2,s2))
 
 # c = abs(mu1-mu2)/sqrt(s1^2+s2^2-2*s1*s2*rho)
 
@@ -25,11 +26,11 @@ for(N in sizes) {
   q = qhd = c()
   for(iMC in 1:nMC) {
     X = rnorm(N,mu2,s2)
-    q[iMC] = q95(X)
-    qhd[iMC] =q95hd(X)
+    q[iMC]   = ErrViewLib::q95(X)
+    qhd[iMC] = ErrViewLib::q95hd(X)
   }
-  qt[[paste0(N)]] = my5num(q)
-  qthd[[paste0(N)]] = my5num(qhd)
+  qt[[paste0(N)]]   = ErrViewLib::my5num(q)
+  qthd[[paste0(N)]] = ErrViewLib::my5num(qhd)
 }
 
 dqt   = t(data.frame(qt))
@@ -41,10 +42,10 @@ X0 = rnorm(max(sizes),mu2,s2)
 qtbs = qthdbs = list()
 for(N in sizes) {
   X = X0[1:N]
-  b1 = boot(X, statistic = q95,R = nMC)
-  b2 = boot(X, statistic = q95hd,R = nMC)
-  qtbs[[paste0(N)]] = my5num(b1$t)
-  qthdbs[[paste0(N)]] = my5num(b2$t)
+  b1 = boot(X, statistic = ErrViewLib::q95,R = nMC)
+  b2 = boot(X, statistic = ErrViewLib::q95hd,R = nMC)
+  qtbs[[paste0(N)]]   = ErrViewLib::my5num(b1$t)
+  qthdbs[[paste0(N)]] = ErrViewLib::my5num(b2$t)
 }
 dqtbs   = t(data.frame(qtbs))
 dqthdbs = t(data.frame(qthdbs))
@@ -52,16 +53,16 @@ dqthdbs = t(data.frame(qthdbs))
 # 3/ Bootstrap samples
 N = 100
 X = X0[1:N]
-b1 = boot(X, statistic = q95,R = nMC)
-b2 = boot(X, statistic = q95hd,R = nMC)
+b1 = boot(X, statistic = ErrViewLib::q95,R = nMC)
+b2 = boot(X, statistic = ErrViewLib::q95hd,R = nMC)
 
 N = 400
 X = X0[1:N]
-b1l = boot(X, statistic = q95,R = nMC)
-b2l = boot(X, statistic = q95hd,R = nMC)
+b1l = boot(X, statistic = ErrViewLib::q95,R = nMC)
+b2l = boot(X, statistic = ErrViewLib::q95hd,R = nMC)
 
 
-# Fig. 31 ####
+# Fig. 32 ####
 png(
   file = paste0(figRepo,caseName,'_Compare_Q95.png'),
   width = 1.75*gPars$reso,
@@ -232,7 +233,7 @@ testWRS2 = function(N, score, nMC=1000, nrepBS = 1, seed = 1,
   udMC = sd(dm)
   xiMC = abs(dMC)/udMC
   # testMC = pval(xiMC) # p-value
-  testMC = genpval(dm)
+  testMC = ErrViewLib::genpval(dm)
 
   ## Uncertainty on ksi score
   uudMC = udMC/sqrt(2*(nMC-1))
@@ -259,7 +260,7 @@ testWRS2 = function(N, score, nMC=1000, nrepBS = 1, seed = 1,
         X, statistic = fdif,
         R = nMC, fscore = statistic
       )
-      testBS = genpval(bs$t)
+      testBS = ErrViewLib::genpval(bs$t)
 
     } else {
 
@@ -287,7 +288,6 @@ testWRS2 = function(N, score, nMC=1000, nrepBS = 1, seed = 1,
 
 scores = c('mse','q95','q95hd')
 
-nMC = 10000
 nrepBS = 1
 sizes = c(seq(20,100,by=20),seq(150,500,by=50))
 
@@ -322,9 +322,9 @@ for(score in scores) {
   resp[[score]] = res
 }
 
-save(resp,file = 'scoresBS.Rda')
+# save(resp,file = 'scoresBS.Rda')
 
-# Fig. 32 ####
+# Fig. 33 ####
 ifig=0
 png(
   file = paste0(figRepo,caseName,'_scoresBS.png'),

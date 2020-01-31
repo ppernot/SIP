@@ -23,7 +23,6 @@ nMeth = length(methList)
 colnames(Errors) = methList
 Errors = data.frame(Errors,check.names = FALSE)
 
-write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
 
 nColors = length(methList)
 colsExt     = rev(inlmisc::GetColors(nColors+1))[1:nColors]
@@ -37,8 +36,9 @@ gParsExt$cols_tr2 = colsExt_tr2
 
 # Generate stats ####
 
-statBS = estBS1(Errors, eps = 0)
-df1    = genTabStat(statBS)
+statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
+df1    = ErrViewLib::genTabStat(statBS,units = units)
+
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
@@ -56,7 +56,7 @@ sink()
 
 # Figures ####
 
-# Fig. 15 ####
+# Fig. 16 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -64,7 +64,7 @@ png(
   height = gPars$reso
 )
 cErr = cor(as.data.frame(Errors),method = "spearman")
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main = 'Errors',
@@ -79,7 +79,7 @@ png(
   height = gPars$reso
 )
 cErr = statBS$mue$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = 'MUE',
@@ -94,7 +94,7 @@ png(
   height = gPars$reso
 )
 cErr = statBS$q95hd$corr
-plotCorMat(
+ErrViewLib::plotCorMat(
   cErr,
   order = 'original',
   main  = expression(bold(Q[95])),
@@ -103,11 +103,11 @@ plotCorMat(
 dev.off()
 ###
 
-# Fig. 16 ####
+# Fig. 17 ####
 ifig=1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotUncEcdf(
+ErrViewLib::plotUncEcdf(
   abs(Errors),
   xmax = max(statBS$q95hd$val),
   title = '',
@@ -123,13 +123,13 @@ png(
   width =  13/12*gPars$reso,
   height = gPars$reso
 )
-plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
+ErrViewLib::plotSIPMat(statBS$sip, label = ifig, gPars = gPars)
 dev.off()
 
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'pop2-opt',
   'pop2',
@@ -143,7 +143,7 @@ dev.off()
 ifig=ifig+1
 png(file=paste0(figRepo,caseName,'_deltaECDF2.png'),
     width=gPars$reso,height=gPars$reso)
-plotDeltaCDF(
+ErrViewLib::plotDeltaCDF(
   abs(Errors),
   'pop2-opt',
   'pcseg1-opt',
@@ -155,7 +155,7 @@ plotDeltaCDF(
 dev.off()
 ###
 
-# Fig. 17 ####
+# Fig. 18 ####
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
@@ -163,7 +163,12 @@ for (score in c('mue','q95hd','msip'))
       width =  13/12*gPars$reso,
       height = gPars$reso
     )
-    plotRankMat(E = Errors, score = score, type = type, gPars = gPars)
+    ErrViewLib::plotRankMat(
+      E = Errors,
+      score = score,
+      type = type,
+      gPars = gPars
+    )
     dev.off()
   }
 ###

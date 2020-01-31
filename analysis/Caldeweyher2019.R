@@ -25,9 +25,9 @@ for (it in 15:18) {
 
 Errors  = Eref - Data
 
-write.csv(Errors, file=paste0(dataRepo,caseName,'/Errors.csv'))
-write.csv(cbind(Ref = Eref,Data),
-          file=paste0(dataRepo,caseName,'/CAL2019_Data.csv'))
+df = cbind(Ref = Eref,Data)
+rownames(df) = 1:nrow(Data)
+write.csv(df, file=paste0(dataRepo,caseName,'/CAL2019_Data.csv'))
 
 methList = colnames(Errors)
 nMeth = length(methList)
@@ -46,9 +46,10 @@ gParsExt$cols_tr2 = colsExt_tr2
 
 df = data.frame()
 for(i in 1:(ncol(Errors)/3)) {
-  statBS = estBS1(Errors[,(3*(i-1)+1):(3*i)],eps=0)
-  df1     = genTabStat(statBS,comp=TRUE,ref=3)
-  df      = rbind(df,df1)
+  statBS = ErrViewLib::estBS1(Errors[,(3*(i-1)+1):(3*i)],
+                              props = c("mue", "q95hd"))
+  df1    = ErrViewLib::genTabStat(statBS,ref=3)
+  df     = rbind(df,df1)
 }
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
@@ -65,17 +66,10 @@ print(
 )
 sink()
 
-## Test power
-
-# i = 19
-# j = 21
-# powPg(Errors[,i],Errors[,j], score = 'mue',graph=TRUE)
-# powPg(Errors[,i],Errors[,j], score = 'q95hd',graph=TRUE)
-
 
 # Figures ####
 
-# Fig. 13 ####
+# Fig. 14 ####
 # Selection of Delta CDF figs
 dfas = unique(sapply(methList,function(x) strsplit(x,'-D')[[1]][1]))
 
@@ -84,7 +78,7 @@ for(dfa in dfas[c(4,5,10)]) {
   ifig = ifig + 1
   png(file=paste0(figRepo,caseName,'_',dfa,'_deltaECDF.png'),
       width=1200,height=1200)
-  plotDeltaCDF(
+  ErrViewLib::plotDeltaCDF(
     abs(Errors),
     paste0(dfa,'-D4-ATM'),
     paste0(dfa,'-D3'),
@@ -100,7 +94,7 @@ for(dfa in dfas[c(4,5,10)]) {
 }
 ###
 
-# Fig. 14 ####
+# Fig. 15 ####
 # D4-ATM and D3
 sel1 = sort(c(seq(1,ncol(Errors),by=3),seq(3,ncol(Errors),by=3)))
 for (score in c('mue','q95hd','msip'))
@@ -110,11 +104,10 @@ for (score in c('mue','q95hd','msip'))
       width =  13/12*gPars$reso,
       height = gPars$reso
     )
-    plotRankMat(E = Errors[,sel1], score = score,
+    ErrViewLib::plotRankMat(E = Errors[,sel1], score = score,
             type = type, cex.lab=0.65, gPars = gPars)
     dev.off()
   }
-
 
 # D4-ATM only
 sel2 = seq(1,ncol(Errors),by=3)
@@ -125,26 +118,11 @@ for (score in c('mue','q95hd','msip'))
       width =  13/12*gPars$reso,
       height = gPars$reso
     )
-    plotRankMat(E = Errors[,sel2], score = score,
+    ErrViewLib::plotRankMat(E = Errors[,sel2], score = score,
             type = type, cex.lab=0.75, gPars = gPars)
     dev.off()
   }
 ###
-
-
-# for(i in 1:(ncol(Errors)/3)) {
-#   for (score in c('mue','q95hd','msip'))
-#     for (type in c('levels','ci')[1]) {
-#       png(
-#         file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'_',i,'.png'),
-#         width =  13/12*gPars$reso,
-#         height = gPars$reso
-#       )
-#       plotRankMat(E = Errors[,(3*(i-1)+1):(3*i)], score = score,
-#               type = type, cex.lab = 0.75, gPars = gPars)
-#       dev.off()
-#     }
-# }
 
 
 
