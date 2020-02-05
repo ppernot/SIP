@@ -195,8 +195,8 @@ for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
       file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'.png'),
-      width = 13/12*gPars$reso,
-      height = gPars$reso
+      width = 1.5*gPars$reso,
+      height = 1.5*gPars$reso
     )
     ErrViewLib::plotRankMat(E = Errors, score = score, type = type, gPars = gPars)
     dev.off()
@@ -206,8 +206,8 @@ for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
       file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'_sel.png'),
-      width = 13/12*gPars$reso,
-      height = gPars$reso
+      width = 1.5*gPars$reso,
+      height = 1.5*gPars$reso
     )
     ErrViewLib::plotRankMat(E = Errors[sel,], score = score, type = type, gPars = gPars)
     dev.off()
@@ -217,8 +217,8 @@ for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
       file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'_sel100.png'),
-      width = 13/12*gPars$reso,
-      height = gPars$reso
+      width = 1.5*gPars$reso,
+      height = 1.5*gPars$reso
     )
     ErrViewLib::plotRankMat(E = Errors[sel100,], score = score, type = type, gPars = gPars)
     dev.off()
