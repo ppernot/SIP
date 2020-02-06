@@ -658,23 +658,15 @@ literal "false"
 \emph on
 e.g.
 \emph default
-, for calibrated parametric methods 
+, for calibrated methods 
 \begin_inset CommandInset citation
-LatexCommand cite
-key "Mortensen2005,Cailliez2011,Pernot2017b"
+LatexCommand citep
+key "Mortensen2005,Cailliez2011,Pernot2017b,Bakowies2019,Bakowies2020"
 literal "false"
 
 \end_inset
 
-), or calibration of computational protocols 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Bakowies2019,Bakowies2020"
-literal "false"
-
-\end_inset
-
-.
+).
 \end_layout
 
 \begin_layout Standard
@@ -707,7 +699,19 @@ Let us consider a set of
 \end_inset
 
 .
- The covariance of the error sets for two method can be decomposed as
+ The covariance 
+\color orange
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Snedecor1989"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ of the error sets for two method can be decomposed as
 \begin_inset Formula 
 \begin{align}
 \mathrm{cov}(E_{i},E_{j}) & =\mathrm{cov}(R-C_{i},R-C_{j})\\
@@ -801,7 +805,7 @@ noprefix "false"
  (normalized covariances)
 \begin_inset Formula 
 \begin{align}
-\mathrm{corr}(E_{i},E_{j}) & =\frac{\mathrm{cov}(E_{i},E_{j})}{\sigma_{E_{i}}\sigma_{E_{j}}}
+\mathrm{cor}(E_{i},E_{j}) & =\frac{\mathrm{cov}(E_{i},E_{j})}{\sigma_{E_{i}}\sigma_{E_{j}}}
 \end{align}
 
 \end_inset
@@ -1236,14 +1240,14 @@ noprefix "false"
 \begin_inset Formula $\mathrm{cor}(E_{1},E_{2})$
 \end_inset
 
- one has 
+ one observes that 
 \begin_inset Formula $\mathrm{cor}(MUE_{1},MUE_{2})\ge\mathrm{cor}(Q_{95,1},Q_{95,2})$
 \end_inset
 
 .
  As we explored only a fraction of the possible scenarii for the errors
- distributions, these trends cannot be considered as general.
- The main point is that the correlation of error sets is at least partially
+ distributions, these trends should not be considered as general.
+ Our main point is that the correlation of error sets is at least partially
  transferred to the derived statistics, a fact to be considered when comparing
  the values of these statistics.
 \end_layout
@@ -1275,7 +1279,7 @@ The systematic improvement probability (SIP) between two methods
 \begin_inset Formula 
 \begin{align}
 \mathrm{SIP}_{i,j} & =\frac{D_{i,j}}{N}\\
-D_{i,j} & =\sum_{k=1}^{N}\mathbf{1}_{\delta_{k}(M_{i},M_{j})<0}
+D_{i,j} & =\sum_{k=1}^{N}\mathbf{1}_{\Delta_{k}(M_{i},M_{j})<0}
 \end{align}
 
 \end_inset
@@ -1291,7 +1295,7 @@ where
  is true and 0 otherwise, and
 \begin_inset Formula 
 \begin{equation}
-\delta_{k}(M_{i},M_{j})=|e_{k}(M_{i})|-|e_{k}(M_{j})|
+\Delta_{k}(M_{i},M_{j})=|e_{k}(M_{i})|-|e_{k}(M_{j})|
 \end{equation}
 
 \end_inset
@@ -1510,9 +1514,10 @@ noprefix "false"
 \end_inset
 
 ).
- A line with a majority of red patches signal a method with good SIP performance
-s.
- The area of a disk is proportional to the corresponding value.
+ A line with a majority of red patches signals a method with good SIP performanc
+es.
+ The SIP value is color-coded and the area of a disk is proportional to
+ the corresponding value.
  The methods are ordered by decreasing value of MSIP (Eq.
 \begin_inset space \thinspace{}
 \end_inset
@@ -1549,13 +1554,13 @@ Mean gain and loss.
 In order to appreciate the amplitude of the possible losses or gains when
  switching between two methods, we define the mean gain (MG) as the mean
  of the positive values of 
-\begin_inset Formula $\delta_{k}(M_{i},M_{j})$
+\begin_inset Formula $\Delta_{k}(M_{i},M_{j})$
 \end_inset
 
 
 \begin_inset Formula 
 \begin{align}
-\mathrm{MG}_{i,j} & =\frac{1}{D_{i,j}}\sum_{k=1}^{N}\mathbf{1}_{\delta_{k}(M_{i},M_{j})<0}\,\delta_{k}(M_{i},M_{j})\\
+\mathrm{MG}_{i,j} & =\frac{1}{D_{i,j}}\sum_{k=1}^{N}\mathbf{1}_{\Delta_{k}(M_{i},M_{j})<0}\,\Delta_{k}(M_{i},M_{j})\\
 \mathrm{ML}_{i,j} & =-\mathrm{MG}_{j,i}
 \end{align}
 
@@ -1594,7 +1599,7 @@ This shows that, except for methods pairs with an extreme SIP value, any
 
 \begin_layout Paragraph
 ECDF of 
-\begin_inset Formula $\delta_{k}(M_{i},M_{j})$
+\begin_inset Formula $\Delta_{k}(M_{i},M_{j})$
 \end_inset
 
 .
@@ -1776,9 +1781,7 @@ values
 \end_inset
 
 : MUE difference).
- 
-\color teal
-The orange bar represents an estimated level of uncertainty in the dataset.
+ The orange bar represents an estimated level of uncertainty in the dataset.
  It is a visual aid to evaluate the pertinence of the observed differences.
 \end_layout
 
@@ -2039,8 +2042,8 @@ literal "false"
 \begin_inset Formula $p_{t}$
 \end_inset
 
- above this value, one cannot reject the hypothesis that the observed difference
- between two values is due to chance.
+ above this value, one chooses not to reject the hypothesis that the observed
+ difference between two values is due to chance.
  
 \begin_inset Note Note
 status collapsed
@@ -2320,7 +2323,7 @@ noprefix "false"
 placement !t
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Input: Two paired error sets 
@@ -2437,15 +2440,7 @@ name "alg:methodM"
 
 \end_inset
 
-Method M 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Wilcox2012"
-literal "false"
-
-\end_inset
-
-: testing the equality of a statistic 
+Method M: testing the equality of a statistic 
 \begin_inset Formula $S$
 \end_inset
 
@@ -2457,7 +2452,15 @@ literal "false"
 \begin_inset Formula $p_{g}$
 \end_inset
 
-).
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -2568,8 +2571,8 @@ noprefix "false"
 \end_inset
 
 ).
- As one do not care for the sign of the difference, a factor two is applied
- to estimate 
+ As the sign of the difference is irrelevant, a factor two is applied to
+ estimate 
 \begin_inset Formula $p_{g}$
 \end_inset
 
@@ -2606,7 +2609,7 @@ literal "false"
 
 \end_inset
 
- have shown that their 'method M' provides a well controlled level of type
+ have shown that their method M provides a well controlled level of type
  I errors for the comparison of quantiles at the 0.05 level.
  They estimated that dataset sizes of 
 \begin_inset Formula $N\ge30$
@@ -2782,11 +2785,7 @@ where
 \end_layout
 
 \begin_layout Standard
-If one takes as reference 
-\begin_inset Formula $s_{2}$
-\end_inset
-
- the smallest value 
+If one takes as reference the smallest value 
 \begin_inset Formula $\hat{s}$
 \end_inset
 
@@ -3213,8 +3212,8 @@ of-
 \end_inset
 
  is problem-dependent and is left to the appreciation of the analyst.
- For the sake of simplicity, and until further inquiries on the optimal
- choice of 
+ For the sake of simplicity, and until further research on the optimal choice
+ of 
 \begin_inset Formula $N'$
 \end_inset
 
@@ -4282,9 +4281,7 @@ literal "false"
 
 \end_inset
 
- 
-\color teal
-implemented in the 
+ implemented in the 
 \family typewriter
 R
 \family default
@@ -4292,7 +4289,6 @@ R
 \family typewriter
  hclust
 \family default
-\color inherit
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -6344,7 +6340,7 @@ noprefix "false"
  – a small improvement of CAM-B3LYP over B97-1 – the mean gain -0.6 kcal/mol
  and the mean loss -1.3 kcal/mol, due to the heavy tail in the CAM-B3LYP
  error distribution.
- So by switching from B97-1 to CAM-B3LYP, one has to accept a 35
+ So by switching from B97-1 to CAM-B3LYP, one has to accept a 33
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6494,7 +6490,7 @@ noprefix "false"
 placement !tb
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -6638,43 +6634,6 @@ noprefix "false"
 \end_inset
 
 .
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-The reference authors report in their Table 1 Kendall and Pearson correlation
- coefficients between the calculated and reference values.
- First, one should remind that correlation coefficients are not reliable
- performance indicators 
-\begin_inset CommandInset citation
-LatexCommand citep
-key "Bland1986"
-literal "false"
-
-\end_inset
-
-.
- At most, they reveal a linear (Pearson) or monotonic (Kendall) association
- between two variables 
-\begin_inset Formula $X$
-\end_inset
-
- and 
-\begin_inset Formula $Y$
-\end_inset
-
-, but not their proximity to the identity (
-\begin_inset Formula $X=Y$
-\end_inset
-
-) line.
- Nevertheless, the notable difference ( 0.1- 0.2) between both correlation
- estimators, for each method, point to the presence of outliers and/or a
- non-linear relationships.
-\end_layout
-
-\end_inset
-
  
 \end_layout
 
@@ -6915,7 +6874,7 @@ eV).
 placement !t
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -8870,7 +8829,7 @@ The SIP values for mBJ lie between 0.49 and 0.86.
 
 % of the systems, LDA+SOC achieves smaller absolute errors than mBJ, despite
  its poor scores.
- Interestingly, small values of 0.52-0.53 are also observed against HLS16,
+ Interestingly, small values, close to 0.5, are also observed against HLS16,
  HLSE16+SOC and HSE06, indicating a notable risk of performance loss when
  switching from one of these methods to mBJ.
 \end_layout
@@ -9316,20 +9275,19 @@ name "fig:borlidoRPmat"
 
 \end_inset
 
-Case BOR2019: ranking probability matrices for the full dataset (top row,
- 
+Case BOR2019: ranking probability matrices for the full dataset, 
 \begin_inset Formula $N=471$
 \end_inset
 
-), and for random reduced sets (
+ (a-c), and for random reduced sets 
 \begin_inset Formula $N=235$
 \end_inset
 
- and 
-\begin_inset Formula $100$
+ (d-f) and 
+\begin_inset Formula $N=100$
 \end_inset
 
-).
+ (g-i).
  
 \end_layout
 
@@ -9338,13 +9296,6 @@ Case BOR2019: ranking probability matrices for the full dataset (top row,
 
 \end_layout
 
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage clearpage
 \end_inset
 
 
@@ -19326,11 +19277,7 @@ noprefix "false"
 
 \end_inset
 
-, 
-\color orange
-followed
-\color inherit
-.
+, continued.
 \end_layout
 
 \end_inset
@@ -19348,7 +19295,7 @@ SIP analysis.
 \end_layout
 
 \begin_layout Standard
-Let us consider several examples with the SIP approach.
+Let us consider several examples with the SIP approach:
 \end_layout
 
 \begin_layout Itemize
@@ -19356,11 +19303,6 @@ Let us consider several examples with the SIP approach.
 \series bold
 PBE0-Dn
 \series default
-.
- There is a small MUE decrease using D4 (from 2.6 to 2.3), no effect on 
-\begin_inset Formula $Q_{95}$
-\end_inset
-
 .
  Inspection of Fig.
 \begin_inset space \thinspace{}
@@ -19384,7 +19326,11 @@ noprefix "false"
  PBE0-D3 does not exclude the neutral value (0.5), with a tiny advantage
  of the mean gain over the mean loss.
  One can note also that, despite their large error bars, the small MUE differenc
-e between these two methods is significantly different from 0 (its 95
+e 
+\begin_inset Formula $\Delta_{MUE}$
+\end_inset
+
+ between these two methods is significantly different from 0 (its 95
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19400,8 +19346,12 @@ PW6B95-Dn
 \series default
 .
  This case is an inversion of the previous one, where the confidence interval
- on the SIP value of 0.4 (disadvantaging D4) does not exclude the neutral
- value, and the CI on the MUE difference does not exclude 0.
+ on the SIP value of nearly 0.4 (disadvantaging D4) does not exclude the
+ neutral value, and the CI on the MUE difference 
+\begin_inset Formula $\Delta_{MUE}$
+\end_inset
+
+ does not exclude 0.
  One cannot firmly conclude that the D3 version performs better than the
  D4 ones for this DFA.
 \end_layout
@@ -19469,7 +19419,7 @@ name "fig:caldeweyher1"
 
 \end_inset
 
-Case CAL2019 - SIP plots.
+Case CAL2019 - selected SIP plots.
  The orange band depicts the chemical accuracy (1
 \begin_inset space \thinspace{}
 \end_inset
@@ -22434,13 +22384,12 @@ vs
  B3LYP.
  Despite being very large, the error bars on the statistics enable to validate
  these conclusions.
- Any ranking of the remaining four DFAs would be unreliable.
  
 \begin_inset Float figure
 placement !tb
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -25824,6 +25773,13 @@ kcal/mol).
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Discussion
 \end_layout
@@ -25973,13 +25929,6 @@ literal "false"
  comparison of many methods.
 \end_layout
 
-\begin_layout Standard
-We can only encourage benchmark authors to provide adequate uncertainty
- estimations and ranking probability matrices, which can be obtained with
- a negligible overcharge in computer time.
- 
-\end_layout
-
 \begin_layout Subsection
 The correlation matrix as a sanity check
 \end_layout
@@ -25987,21 +25936,17 @@ The correlation matrix as a sanity check
 \begin_layout Standard
 When we started this study, the correlation matrices were mainly intended
  to illustrate the importance to consider them when comparing statistics.
- When cumulating the case studies, it appeared that they contain a lot of
- information relevant to the quality of the benchmark dataset.
- To our knowledge, this subject has not previously been discussed, and benchmark
-ing studies do not report such correlation matrices.
-\end_layout
-
-\begin_layout Standard
-Considering that model errors in computational chemistry are mostly systematic,
+ 
+\color teal
+When cumulating the case studies, it appeared that they contain information
+ relevant to the quality of the benchmark dataset.
+ Considering that model errors in computational chemistry are mostly systematic,
  one expects that error patterns over a dataset are characteristic of each
  method or family of methods.
  This seems to be a basic requirement for sound benchmarking studies.
- Considering the errors correlation matrix, the guiding line is thus that
- closely related methods should produce similar error patterns and have
- strongly correlated error sets, the correlation level decreasing with a
- 
+ For the errors correlation matrix, one should thus expect that closely
+ related methods produce similar error patterns and have strongly correlated
+ error sets, the correlation level decreasing with a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -26028,8 +25973,15 @@ A contrario
  We have seen in cases DAS2019 and THA2019 that outliers and/or large reference
  data errors could dominate the correlation matrix and influence the benchmark
  statistics.
- If the ranking study is to reflect the methods performances, the curation
- and possible pruning of the dataset is a necessary preliminary step.
+ 
+\color teal
+Outliers common to all error sets (global outliers) can be efficiently identifie
+d on a parallel plot, as shown in case DAS2019.
+ 
+\color inherit
+If the ranking study is to reflect the methods performances, the curation
+ and possible pruning of the dataset from such global outliers is a necessary
+ preliminary step.
  Otherwise, more complex statistical models have to be used to alleviate
  the impact of those points (see Appendix
 \begin_inset space \thinspace{}
@@ -26060,8 +26012,34 @@ literal "false"
 Note that strongly correlated error sets do not imply similar performances.
  For instance a set of linearly scaled harmonic vibrational frequencies
  typically has better statistics than the unscaled set, whereas their correlatio
-n coefficient is 1 because of the linear transformation.
+n coefficient is 1 because of the linear transformation between both sets.
+ One should also remind that the correlation coefficient between calculated
+ and reference values that is still presented in some benchmarks is not
+ a reliable performance statistic 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Bland1986"
+literal "false"
+
+\end_inset
+
+.
+ At most, it reveals a linear (Pearson) or monotonic (Spearman, Kendall)
+ association between both datasets, but not their proximity to the identity
+ line.
  
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Nevertheless, the notable difference ( 0.1- 0.2) between both correlation
+ estimators, for each method, point to the presence of outliers and/or a
+ non-linear relationships.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -26075,6 +26053,7 @@ The correlation between error sets is partially or totally transferred to
  total, including the sign, one uses Monte Carlo methods to estimate this
  transfer.
  In many cases, such as for normal, student's or g-and-h error distributions
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hoaglin1985"
@@ -26093,14 +26072,14 @@ literal "false"
  We cannot presently rationalize the observed exceptions, but the main conclusio
 n is that in most cases, one should not ignore correlations when comparing
  statistics.
- 
 \end_layout
 
 \begin_layout Standard
 However, unlike as shown above for the error correlations, the visualization
  of correlations between statistics might be of secondary interest.
  In fact, the paired samples bootstrap algorithms used in this study enable
- to account directly for these correlations without having to estimate them.
+ to account directly for these correlations, without having to estimate
+ correlation coefficients.
  
 \end_layout
 
@@ -26114,7 +26093,6 @@ In a vast majority of the cases studied above, the correlation matrices
  These contribute to a reduction of the uncertainty on statistics differences,
  with better discernibility between uncertain statistics.
  Globally, positive correlations increase the robustness of rankings.
- 
 \end_layout
 
 \begin_layout Subsection
@@ -26122,16 +26100,21 @@ Systematic improvement analysis
 \end_layout
 
 \begin_layout Standard
-We introduced a new criterion, the systematic improvement probability, which
- has the major advantage to be independent of the usual descriptive statistics.
- It simply counts the signs of the differences of absolute error pairs.
+We introduced a new criterion, the systematic improvement probability (SIP),
+ which has the major advantage to be independent of the usual descriptive
+ statistics.
+ It is based on a sign statistic of the differences of absolute error pairs.
  It is a useful complement to the MUE, as it enables to analyze a MUE difference.
  All the case studies show that a decrease of MUE results from the balance
  between gains and losses.
  At the exception of one methods pair in CAL2019, we did not find a 'best
  method' which improves the results of lower rank methods for the full benchmark
  dataset.
- A point we wish to make here is that 
+ 
+\end_layout
+
+\begin_layout Standard
+A point we wish to make here is that 
 \emph on
 even physics-based improvements in DFAs do not lead to systematic improvements
  for all systems
@@ -26145,32 +26128,145 @@ even physics-based improvements in DFAs do not lead to systematic improvements
 % of the systems (BOR2019).
  In fact, there is often a non-negligible percentage of systems for which
  the 'bad' method is better than the 'good' one, all across Jacob's ladder.
- As long as the performances of computational chemistry methods rely on
- error cancellations, physics-based improvements of DFAs can be seen as
- a kind of statistical correction.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+As long as the performances of computational chemistry methods rely on error
+ cancellations, physics-based improvements of DFAs can be seen as a kind
+ of statistical correction.
 \end_layout
 
-\begin_layout Subsection
-MSIP ranking vs MUE
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-The mean systematic improvement probability (MSIP) was tested here as a
- ranking statistic.
- Its main advantage is its independence from the usual summary statistics;
- its main drawback is that it depends on the set of methods being compared
- and it is not transferable to comparisons out of its definition set.
- In the various cases treated above, the rankings provided by the MSIP are
- most often conform to the MUE rankings and are as sensitive as the other
- rankings to sampling uncertainty.
- A ranking conflict withe the MUE was observed when some error sets presented
- heavy tails, such as in case PER2018.
- However, such cases can readily be identified by other means (
+
+\color teal
+We have also introduced the mean SIP as a possible ranking statistic.
+ The main advantage of the MSIP is its independence from the usual summary
+ statistics; its main drawback is that it depends on the set of methods
+ being compared and it is not transferable to comparisons out of its definition
+ set.
+ 
+\end_layout
+
+\begin_layout Subsection
+
+\color teal
+Ranking Probability Matrix
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+The ranking probability matrix 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+ provides a diagnostic on the robustness of the ranking by any statistic.
+ Our tests of MUE, 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ and MSIP rankings show that the dataset size and the number of methods
+ influence notably the ranking uncertainty.
+ Without any surprise, the closer the performances of a group of methods,
+ the more uncertain their ranking.
+ Depending on the datasets, the MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ rankings might conflict and present different levels of robustness (
 \emph on
 e.g.
 \emph default
-, ECDFs of absolute errors), reducing the interest of the MSIP as a ranking
- score.
+, case THA2015).
+ We would advise to publish systematically both of them, as they provide
+ complementary information.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+In the various cases treated above, the rankings provided by the MSIP are
+ most often conform to the MUE rankings and are as sensitive as the other
+ rankings to sampling uncertainty.
+ When ranking conflicts for the first places occur with the MUE, as was
+ observed in case PER2018, one gets alerted that the method with the lowest
+ MUE is not the one providing the largest proportion of small absolute errors.
+ Due to the non-normality of error distributions, such scenarii are to be
+ expected, as for inversions in MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ rankings.
+\end_layout
+
+\begin_layout Subsection
+
+\color teal
+Extension to composite datasets
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+We considered here only datasets based on a single property.
+ Many modern benchmarks are based on composite datasets, involving weighting
+ schemes to incorporate data with different units 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goerigk2017"
+literal "false"
+
+\end_inset
+
+.
+ The applicability of the SIP to such datasets is straightforward, but the
+ mean gain and mean loss statistics, having dimensions, should become multivaria
+te.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color teal
+The estimation of 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+ and ranking probability matrices for composite statistics (
+\emph on
+e.g.
+\emph default
+, WTMAD 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Goerigk2017"
+literal "false"
+
+\end_inset
+
+) can use directly the pair-based bootstrap sampling algorithms described
+ in the present article, although care should be taken to avoid imbalance
+ between the various components of a dataset by using the so-called 
+\emph on
+stratified
+\emph default
+ bootstrap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hesterberg2015"
+literal "false"
+
+\end_inset
+
+, preserving the cardinal number of each component in the generated sample.
 \end_layout
 
 \begin_layout Section
@@ -26201,7 +26297,13 @@ literal "false"
 \begin_layout Standard
 Before any ranking, we have seen that the error sets correlation matrix
  can be useful to appreciate the quality of a benchmark dataset.
- Then, the ranking probability matrix 
+ To our knowledge, this subject has not previously been discussed, and benchmark
+ing studies do not presently report such correlation matrices.
+ 
+\end_layout
+
+\begin_layout Standard
+Then, the ranking probability matrix 
 \begin_inset Formula $\mathbf{P}_{r}$
 \end_inset
 
@@ -26209,6 +26311,10 @@ Before any ranking, we have seen that the error sets correlation matrix
  the corresponding ranking.
  The impact of dataset size and number of compared methods can be thoroughly
  tested.
+ We encourage benchmark authors to provide adequate uncertainty estimations
+ and ranking probability matrices, which can be obtained with a negligible
+ overcharge in computer time.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -26237,51 +26343,8 @@ When considering pairs of methods, we generalized our previous definition
 \end_layout
 
 \begin_layout Standard
-We considered here only homogeneous datasets.
- Many modern benchmarks are based on composite datasets, involving weighting
- schemes to incorporate data with different units 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Goerigk2017"
-literal "false"
-
-\end_inset
-
-.
- The applicability of the SIP to such datasets is direct, but the mean gain
- and mean loss statistics should become multivariate.
- For the estimation of 
-\begin_inset Formula $P_{inv}$
-\end_inset
-
- and ranking probability matrices for composite statistics (
-\emph on
-e.g.
-\emph default
-, WTMAD 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Goerigk2017"
-literal "false"
-
-\end_inset
-
-), adaptation of the paired-sample bootstrap is straightforward, although
- care should be taken to avoid imbalance between the various components
- of the dataset by using stratified bootstrap 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Hesterberg2015"
-literal "false"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Finally, we considered here for simplicity raw error sets, from which no
- care has been taken to remove systematic trends.
+We considered here for simplicity raw error sets, from which no care has
+ been taken to remove systematic trends.
  When this is possible, such trend corrections, often simply linear, will
  provide much better generalizability of the summary statistics derived
  from these error sets.
@@ -26289,7 +26352,7 @@ Finally, we considered here for simplicity raw error sets, from which no
  uncertainty of any method 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Pernot2015,Proppe2017"
+key "Lejaeghere2014,Pernot2015,Proppe2017"
 literal "false"
 
 \end_inset
@@ -26325,7 +26388,9 @@ Supplementary Information
 \end_layout
 
 \begin_layout Standard
-Datasets and R code to reproduce the results of the article.
+
+\color orange
+TBD: Datasets and R code to reproduce the results of the article GIT address.
 \end_layout
 
 \begin_layout Standard
@@ -26673,13 +26738,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Considering 
-\begin_inset Formula $\sigma$
-\end_inset
 
- as the dispersion of model errors, one can stipulate that the dispersion
- of the errors is the combined effect of model error and reference data
- uncertainty and redefine the weights as 
+\color teal
+If one stipulates that the dispersion of the errors is the combined effect
+ of model error and reference data uncertainty, one can redefine the weights
+ as 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Rukhin2009"
@@ -26695,7 +26758,12 @@ w_{i}=\frac{\left(\sigma^{2}+u(e_{i})^{2}\right)^{-1}}{\sum_{j=1}^{N}\left(\sigm
 
 \end_inset
 
-with which 
+where 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the variance of model errors.
+ With these new weights, 
 \begin_inset Formula 
 \begin{equation}
 u(\overline{e})^{2}=\frac{1}{\sum_{j=1}^{N}\left(\sigma^{2}+u(e_{j})^{2}\right)^{-1}}\label{eq:uwmean}
@@ -26703,6 +26771,8 @@ u(\overline{e})^{2}=\frac{1}{\sum_{j=1}^{N}\left(\sigma^{2}+u(e_{j})^{2}\right)^
 
 \end_inset
 
+
+\color inherit
 converges properly to the standard limit when the reference data errors
  become negligible before the model errors.
  The model error variance 
@@ -26903,7 +26973,7 @@ s, one generates random samples
 \end_inset
 
 .
- For each ransom sample, the statistics values 
+ For each random sample, the statistics values 
 \begin_inset Formula $S_{1}$
 \end_inset
 
@@ -28055,8 +28125,33 @@ literal "false"
 \end_inset
 
 .
- It is therefore more computationally demanding and is not proposed in the
- base R quantile function options.
+ 
+\color teal
+It is more efficient for small samples, but more computationally demanding
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+.
+\color orange
+
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ It is not proposed in the base R quantile function options.
+ 
+\color orange
+Advantage of HD?
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -28541,6 +28636,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+
+\color teal
 If 
 \begin_inset Formula $z$
 \end_inset
@@ -28548,13 +28645,18 @@ If
  has a standard normal distribution, its transform
 \begin_inset Formula 
 \begin{equation}
-X=\frac{1}{g}(e^{gz}-1)e^{hz^{2}}
+X=\begin{cases}
+\frac{1}{g}(e^{gz}-1)e^{\frac{h}{2}z^{2}}, & \mathrm{if}\thinspace g>0\\
+ze^{\frac{h}{2}z^{2}} & \mathrm{if}\thinspace g=0
+\end{cases}
 \end{equation}
 
 \end_inset
 
 has a g-and-h distribution.
- Its shape is defined by parameters 
+ 
+\color inherit
+Its shape is defined by parameters 
 \begin_inset Formula $g$
 \end_inset
 
@@ -29533,13 +29635,17 @@ https://www.itl.nist.gov/div898/handbook/eda/section4/eda43.htm##Snedecor
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
 \begin_inset Newpage clearpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset FloatList figure
 
 \end_inset
@@ -29547,15 +29653,20 @@ https://www.itl.nist.gov/div898/handbook/eda/section4/eda43.htm##Snedecor
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Newpage clearpage
 \end_inset
 
 
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset FloatList table
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 

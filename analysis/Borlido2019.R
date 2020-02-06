@@ -19,7 +19,7 @@ colnames(Data)[2] = 'Code'
 # Remove Nas
 sel = which(!is.finite(rowSums(Data[,3:17])))
 Data = Data[-sel,]
-systems = Data$System
+systems = make.unique(Data$System)
 rownames(Data)= systems
 
 Eref  = Data$Experimental
@@ -29,7 +29,7 @@ Errors  = Eref - Data[,3:17]
 
 # Save data for Errview
 df = cbind(Ref = Eref,Data[,3:17])
-rownames(df)= make.unique(systems)
+rownames(df)= systems
 write.csv(df,
           file=paste0(dataRepo,caseName,'/BOR2019_Data.csv'))
 
@@ -191,6 +191,7 @@ dev.off()
 ###
 
 # Fig. 11 ####
+ifig = 0
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {
     png(
@@ -198,7 +199,14 @@ for (score in c('mue','q95hd','msip'))
       width = 1.5*gPars$reso,
       height = 1.5*gPars$reso
     )
-    ErrViewLib::plotRankMat(E = Errors, score = score, type = type, gPars = gPars)
+    ifig = ifig + 1
+    ErrViewLib::plotRankMat(
+      E = Errors,
+      score = score,
+      type = type,
+      label = ifig,
+      gPars = gPars
+    )
     dev.off()
   }
 
@@ -209,7 +217,14 @@ for (score in c('mue','q95hd','msip'))
       width = 1.5*gPars$reso,
       height = 1.5*gPars$reso
     )
-    ErrViewLib::plotRankMat(E = Errors[sel,], score = score, type = type, gPars = gPars)
+    ifig = ifig + 1
+    ErrViewLib::plotRankMat(
+      E = Errors[sel, ],
+      score = score,
+      type = type,
+      label = ifig,
+      gPars = gPars
+    )
     dev.off()
   }
 
@@ -220,7 +235,14 @@ for (score in c('mue','q95hd','msip'))
       width = 1.5*gPars$reso,
       height = 1.5*gPars$reso
     )
-    ErrViewLib::plotRankMat(E = Errors[sel100,], score = score, type = type, gPars = gPars)
+    ifig = ifig + 1
+    ErrViewLib::plotRankMat(
+      E = Errors[sel100, ],
+      score = score,
+      type = type,
+      label = ifig,
+      gPars = gPars
+    )
     dev.off()
   }
 ###
