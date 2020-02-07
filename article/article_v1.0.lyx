@@ -867,20 +867,20 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_CorrMat_Data_Spearman.png
+	filename ../results/figs/WU2015_CorrMat_Data_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_CorrMat_Errors_Spearman0.png
+	filename ../results/figs/WU2015_CorrMat_Errors_Spearman0.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -1477,7 +1477,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_SIPHeatmap.png
+	filename ../results/figs/PER2018_SIPHeatmap.png
 	lyxscale 25
 	width 45text%
 
@@ -1498,7 +1498,7 @@ name "fig:SIPMAT-example"
 
 \end_inset
 
- SIP matrix for a set of 9 methods compared on the G99 set of enthalpies
+SIP matrix for a set of 9 methods compared on the G99 set of enthalpies
  (case PER2018, Section
 \begin_inset space \thinspace{}
 \end_inset
@@ -1700,7 +1700,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_compareECDF.png
+	filename ../results/figs/BOR2019_compareECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -1708,7 +1708,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_deltaECDF.png
+	filename ../results/figs/BOR2019_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -1724,7 +1724,7 @@ name "fig:Delta-example"
 
 \end_inset
 
- Statistics of absolute errors on band gaps for methods mBJ and LDA (case
+Statistics of absolute errors on band gaps for methods mBJ and LDA (case
  BOR2019, Section
 \begin_inset space \thinspace{}
 \end_inset
@@ -3081,20 +3081,20 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_figRanks_mue_levels.png
+	filename ../results/figs/PER2018_figRanks_mue_levels.png
 	lyxscale 25
-	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	height 5cm
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_figRanks_mue_ci.png
+	filename ../results/figs/PER2018_figRanks_mue_ci.png
 	lyxscale 25
-	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	height 5cm
+	BoundingBox 0bp 170bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -4162,7 +4162,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_CorrMat_Errors_Spearman.png
+	filename ../results/figs/PER2018_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32col%
 	clip
@@ -4179,7 +4179,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_CorrMat_MUE_Spearman.png
+	filename ../results/figs/PER2018_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32col%
 	clip
@@ -4196,7 +4196,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_CorrMat_Q95_Spearman.png
+	filename ../results/figs/PER2018_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32col%
 	clip
@@ -4215,7 +4215,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_HistCorrs.png
+	filename ../results/figs/PER2018_HistCorrs.png
 	lyxscale 20
 	width 99col%
 	clip
@@ -4265,7 +4265,7 @@ name "fig:pernot1"
 
 \end_inset
 
- Case PER2018 - correlations: (top) rank correlation matrices between Errors
+Case PER2018 - correlations: (top) rank correlation matrices between Errors
  sets, MUE and 
 \begin_inset Formula $Q_{95}$
 \end_inset
@@ -6062,6 +6062,11 @@ Case PER2018 - absolute error statistics:
 
 -values, inversion probabilities and SIP statistics for comparison with
  the DFA of smallest MUE (B97-1).
+ The best scores and the values for which 
+\begin_inset Formula $p_{g}>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -6379,7 +6384,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_compareECDF.png
+	filename ../results/figs/PER2018_compareECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -6387,7 +6392,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_deltaECDF.png
+	filename ../results/figs/PER2018_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -6395,7 +6400,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_deltaECDF2.png
+	filename ../results/figs/PER2018_deltaECDF2.png
 	lyxscale 25
 	width 32text%
 
@@ -6496,20 +6501,20 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_figRanks_q95hd_levels.png
+	filename ../results/figs/PER2018_figRanks_q95hd_levels.png
 	lyxscale 25
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Pernot2018_figRanks_msip_levels.png
+	filename ../results/figs/PER2018_figRanks_msip_levels.png
 	lyxscale 25
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -6529,12 +6534,11 @@ name "fig:pernot2"
 
 \end_inset
 
-Case PER2018: levels representation of the ranking probability matrix for
- 
+Case PER2018: ranking probability matrix for (a) 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
- and MSIP.
+ and (b) MSIP.
  
 \end_layout
 
@@ -6711,13 +6715,13 @@ ps of the methods for the current property/dataset.
 placement !t
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_Cormat_Errors_Spearman.png
+	filename ../results/figs/BOR2019_Cormat_Errors_Spearman.png
 	lyxscale 40
 	width 50text%
 	clip
@@ -6749,9 +6753,7 @@ literal "false"
 
 \end_inset
 
- 
-\color teal
-implemented in the 
+ implemented in the 
 \family typewriter
 R
 \family default
@@ -6759,7 +6761,6 @@ R
 \family typewriter
  hclust
 \family default
-\color inherit
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -8266,7 +8267,7 @@ HSE06
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.08 
+0.09 
 \end_layout
 
 \end_inset
@@ -8805,6 +8806,11 @@ name "tab:borlido"
 
 Case BOR2019 - absolute error statistics: inversion probabilities and SIP
  statistics for comparison with the DFA of smallest MUE (mBJ).
+ The best scores and the values for which 
+\begin_inset Formula $(p_{g}=2P_{inv})>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -8904,7 +8910,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_compareECDF2.png
+	filename ../results/figs/BOR2019_compareECDF2.png
 	lyxscale 25
 	width 32text%
 
@@ -8912,7 +8918,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_deltaECDF2.png
+	filename ../results/figs/BOR2019_deltaECDF2.png
 	lyxscale 25
 	width 32text%
 
@@ -8928,7 +8934,7 @@ name "fig:borlido2"
 
 \end_inset
 
- Case BOR2019 - absolute errors statistics: (a) ECDF of the absolute errors;
+Case BOR2019 - absolute errors statistics: (a) ECDF of the absolute errors;
  (b) ECDF of the difference of absolute errors for mBJ and HSE06.
  See Fig.
 \begin_inset space \thinspace{}
@@ -8973,7 +8979,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_SIPHeatmap.png
+	filename ../results/figs/BOR2019_SIPHeatmap.png
 	lyxscale 35
 	width 45text%
 
@@ -9094,7 +9100,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_mue_levels.png
+	filename ../results/figs/BOR2019_figRanks_mue_levels.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9112,7 +9118,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_q95hd_levels.png
+	filename ../results/figs/BOR2019_figRanks_q95hd_levels.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9130,63 +9136,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_msip_levels.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 200bp 400bp 1800bp 1700bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_mue_levels_sel.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 200bp 400bp 1800bp 1700bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_q95hd_levels_sel.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 200bp 400bp 1800bp 1700bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_msip_levels_sel.png
+	filename ../results/figs/BOR2019_figRanks_msip_levels.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9206,7 +9156,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_mue_levels_sel100.png
+	filename ../results/figs/BOR2019_figRanks_mue_levels_sel.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9224,7 +9174,7 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_q95hd_levels_sel100.png
+	filename ../results/figs/BOR2019_figRanks_q95hd_levels_sel.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9242,7 +9192,63 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Borlido2019_figRanks_msip_levels_sel100.png
+	filename ../results/figs/BOR2019_figRanks_msip_levels_sel.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 200bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/BOR2019_figRanks_mue_levels_sel100.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 200bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/BOR2019_figRanks_q95hd_levels_sel100.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 200bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/BOR2019_figRanks_msip_levels_sel100.png
 	lyxscale 20
 	width 32col%
 	BoundingBox 200bp 400bp 1800bp 1700bp
@@ -9383,10 +9389,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_CorrMat_Errors_Spearman.png
+	filename ../results/figs/NAR2019_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -9401,10 +9407,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_CorrMat_MUE_Spearman.png
+	filename ../results/figs/NAR2019_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -9419,10 +9425,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_CorrMat_Q95_Spearman.png
+	filename ../results/figs/NAR2019_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -10286,6 +10292,7 @@ name "tab:narayanan"
 
 Case NAR2019 - absolute error statistics: inversion probabilities and SIP
  statistics for comparison with the DFA of smallest MUE (G4MP2).
+ The best scores are in boldface.
 \end_layout
 
 \end_inset
@@ -10371,7 +10378,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_compareECDF.png
+	filename ../results/figs/NAR2019_compareECDF.png
 	lyxscale 20
 	width 32text%
 
@@ -10379,7 +10386,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_SIPHeatmap.png
+	filename ../results/figs/NAR2019_SIPHeatmap.png
 	lyxscale 20
 	width 32text%
 	BoundingBox 100bp 0bp 1300bp 1200bp
@@ -10394,7 +10401,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_deltaECDF.png
+	filename ../results/figs/NAR2019_deltaECDF.png
 	lyxscale 20
 	width 32text%
 
@@ -10402,7 +10409,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Narayanan2019_deltaECDF2.png
+	filename ../results/figs/NAR2019_deltaECDF2.png
 	lyxscale 20
 	width 32text%
 
@@ -10423,7 +10430,7 @@ name "fig:narayanan2"
 
 \end_inset
 
- Case NAR2019: (a) ECDF of the absolute errors; (b) SIP matrix; (c,d) ECDF
+Case NAR2019: (a) ECDF of the absolute errors; (b) SIP matrix; (c,d) ECDF
  of the difference of absolute errors of B3LYP and 
 \begin_inset Formula $\omega$
 \end_inset
@@ -10448,26 +10455,6 @@ noprefix "false"
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Ranking.
-\end_layout
-
-\begin_layout Plain Layout
-All the ranking probability matrices are diagonal (not shown).
- There is no risk of inversion, a conjunction of the use of a large dataset
- and a small set of representative methods.
- 
 \end_layout
 
 \end_inset
@@ -10600,4180 +10587,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="32" columns="12">
-<features islongtable="true" longtabularalignment="center">
-<column alignment="left" valignment="top" width="0pt">
-<column alignment="left" valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<column alignment="decimal" decimal_point="." valignment="top">
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-Methods
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-MUE 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $P_{inv}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $Q_{95}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-\begin_inset Formula $P_{inv}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-MSIP
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-SIP 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-MG
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-ML
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-kcal/mol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-kcal/mol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-kcal/mol
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-kcal/mol
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DOD-PBE-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.1(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-7(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.63(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DOD-PBE-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.1(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-8(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.65(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.44(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.28(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.24(5) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DOD-PBE-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-3.5(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-10(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.13(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.83(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.8(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.8(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DSD-PBE-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.9(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-11(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.35(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DSD-PBE-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.9(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-11(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.35(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-DSD-PBE-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-3.7(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.29(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.71(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.5(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.7(1) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-B3LYP-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-4.2(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-11(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.08 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.56(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.41(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.22(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.21(3) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-B3LYP-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-4.2(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.01 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-11(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.11 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.56(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-B3LYP-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-4.8(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-13(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.26(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.71(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.1(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.8(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE0-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.3(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-8(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.08 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.30(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE0-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.3(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-8(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.08 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.30(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE0-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-2.6(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-8(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.29(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.61(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.7(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.4(1) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PW6B95-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.2(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.03 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-7.9(9) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.33 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.35(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.56(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.6(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-1.0(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PW6B95-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.0(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.11 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-7.8(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.34 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.48(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.54(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.3(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-1.0(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PW6B95-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-2.7(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-7.4(9) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.55(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-CAM-B3LYP-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.7(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-9(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.05 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.38(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-CAM-B3LYP-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.7(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-9(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.05 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.38(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-CAM-B3LYP-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-4.3(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-10(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.20(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.76(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.8(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.5(1) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-revPBE-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.3(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.10 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.33 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.43(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.54(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.27(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.28(6) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-revPBE-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.3(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.07 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.38 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.54(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-revPBE-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.8(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.46(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.54(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--2.0(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-1.3(3) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-M06L-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-5.1(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-13(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.10 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.35(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-M06L-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-5.1(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-13(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.10 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.35(4) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-M06L-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-5.5(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-14(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.22(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.71(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.7(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.5(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.5(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.32 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.45(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.51(8) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--0.20(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.16(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.4(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.46 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.60(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-PBE-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-3.9(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.30(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.68(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--1.0(1) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.5(2) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row topspace="default">
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-RPBE-D4-ATM 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.4(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.48(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-RPBE-D4-MBD 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-3.4(6) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\series bold
-\size footnotesize
-12(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.00 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.48(2) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="left" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-RPBE-D3 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-8.3(9) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-20(5) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="decimal" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-- 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.05(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-0.95(3) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
--5.3(7) 
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" bottomline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size footnotesize
-2(1) 
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
 \begin_inset Tabular
 <lyxtabular version="3" rows="23" columns="12">
 <features tabularvalignment="middle">
@@ -15891,7 +11704,7 @@ B3LYP-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.08 
+0.07 
 \end_layout
 
 \end_inset
@@ -15989,7 +11802,7 @@ B3LYP-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.01 
+0.00 
 \end_layout
 
 \end_inset
@@ -16248,7 +12061,7 @@ PBE0-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.00 
+0.01 
 \end_layout
 
 \end_inset
@@ -16378,7 +12191,7 @@ PBE0-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.00 
+0.01 
 \end_layout
 
 \end_inset
@@ -16637,7 +12450,7 @@ PW6B95-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.03 
+0.02 
 \end_layout
 
 \end_inset
@@ -16669,7 +12482,7 @@ PW6B95-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.33 
+0.30 
 \end_layout
 
 \end_inset
@@ -16767,7 +12580,7 @@ PW6B95-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.11 
+0.08 
 \end_layout
 
 \end_inset
@@ -16799,7 +12612,7 @@ PW6B95-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.34 
+0.31 
 \end_layout
 
 \end_inset
@@ -17059,7 +12872,7 @@ CAM-B3LYP-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.05 
+0.04 
 \end_layout
 
 \end_inset
@@ -17189,7 +13002,7 @@ CAM-B3LYP-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.05 
+0.04 
 \end_layout
 
 \end_inset
@@ -17416,7 +13229,7 @@ revPBE-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.10 
+0.11 
 \end_layout
 
 \end_inset
@@ -17546,7 +13359,7 @@ revPBE-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.07 
+0.08 
 \end_layout
 
 \end_inset
@@ -17578,7 +13391,7 @@ revPBE-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.38 
+0.39 
 \end_layout
 
 \end_inset
@@ -17790,6 +13603,11 @@ Case CAL2019 - absolute error statistics: inversion probabilities are calculated
  for comparison with DFT-D3, for each DFT.
  The SIP statistics are calculated for comparison with the smallest MUE
  within each DFT.
+ The best scores and the values for which 
+\begin_inset Formula $p_{g}>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -18149,7 +13967,7 @@ M06L-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.10 
+0.08 
 \end_layout
 
 \end_inset
@@ -18279,7 +14097,7 @@ M06L-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.10 
+0.08 
 \end_layout
 
 \end_inset
@@ -18538,7 +14356,7 @@ PBE-D4-ATM
 \begin_layout Plain Layout
 
 \size footnotesize
-0.32 
+0.34 
 \end_layout
 
 \end_inset
@@ -18668,7 +14486,7 @@ PBE-D4-MBD
 \begin_layout Plain Layout
 
 \size footnotesize
-0.46 
+0.48 
 \end_layout
 
 \end_inset
@@ -19387,7 +15205,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_PBE0_deltaECDF.png
+	filename ../results/figs/CAL2019_PBE0_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -19395,7 +15213,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_PW6B95_deltaECDF.png
+	filename ../results/figs/CAL2019_PW6B95_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -19403,7 +15221,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_RPBE_deltaECDF.png
+	filename ../results/figs/CAL2019_RPBE_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -19505,30 +15323,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_mue_levels.png
+	filename ../results/figs/CAL2019_figRanks_mue_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_q95hd_levels.png
+	filename ../results/figs/CAL2019_figRanks_q95hd_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_msip_levels.png
+	filename ../results/figs/CAL2019_figRanks_msip_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -19540,30 +15358,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_mue_levels_D4.png
+	filename ../results/figs/CAL2019_figRanks_mue_levels_D4.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_q95hd_levels_D4.png
+	filename ../results/figs/CAL2019_figRanks_q95hd_levels_D4.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Caldeweyher2019_figRanks_msip_levels_D4.png
+	filename ../results/figs/CAL2019_figRanks_msip_levels_D4.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 150bp 1300bp 1200bp
+	BoundingBox 200bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -19583,8 +15401,8 @@ name "fig:caldewheyerRPmat"
 
 \end_inset
 
-Case CAL2019: ranking probability matrices for (top) DFT-D3 and DFT-D4-ATM
- methods, and (bottom) DFT-D4-ATM methods only.
+Case CAL2019: ranking probability matrices for (a-c) DFT-D3 and DFT-D4-ATM
+ methods, and (d-f) DFT-D4-ATM methods only.
  
 \end_layout
 
@@ -19692,25 +15510,31 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_CorrMat_Errors_Spearman.png
+	filename ../results/figs/JEN2018_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
+	BoundingBox 180bp 250bp 1800bp 1800bp
+	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_CorrMat_MUE_Spearman.png
+	filename ../results/figs/JEN2018_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
+	BoundingBox 180bp 250bp 1800bp 1800bp
+	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_CorrMat_Q95_Spearman.png
+	filename ../results/figs/JEN2018_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
+	BoundingBox 180bp 250bp 1800bp 1800bp
+	clip
 
 \end_inset
 
@@ -20490,7 +16314,11 @@ pop2-opt
 \begin_inset Text
 
 \begin_layout Plain Layout
-1.06(10) 
+
+\series bold
+1.06(10)
+\series default
+ 
 \end_layout
 
 \end_inset
@@ -20517,7 +16345,11 @@ pop2-opt
 \begin_inset Text
 
 \begin_layout Plain Layout
-2.6(2) 
+
+\series bold
+2.6(2)
+\series default
+ 
 \end_layout
 
 \end_inset
@@ -20714,6 +16546,11 @@ name "tab:jensen"
 
 Case JEN2018 - absolute error statistics: inversion probabilities and SIP
  statistics for comparison with the method of smallest MUE (pcseg1-opt).
+ The best scores and the values for which 
+\begin_inset Formula $(p_{g}=2P_{inv})>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -20800,7 +16637,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_compareECDF.png
+	filename ../results/figs/JEN2018_compareECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -20808,7 +16645,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_SIPHeatmap.png
+	filename ../results/figs/JEN2018_SIPHeatmap.png
 	lyxscale 25
 	width 32text%
 	BoundingBox 100bp 0bp 1300bp 1200bp
@@ -20823,7 +16660,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_deltaECDF.png
+	filename ../results/figs/JEN2018_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -20831,7 +16668,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_deltaECDF2.png
+	filename ../results/figs/JEN2018_deltaECDF2.png
 	lyxscale 25
 	width 32text%
 
@@ -20918,30 +16755,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_figRanks_mue_levels.png
+	filename ../results/figs/JEN2018_figRanks_mue_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_figRanks_q95hd_levels.png
+	filename ../results/figs/JEN2018_figRanks_q95hd_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Jensen2018_figRanks_msip_levels.png
+	filename ../results/figs/JEN2018_figRanks_msip_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -21120,7 +16957,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Das2019_ParPlot.png
+	filename ../results/figs/DAS2019_ParPlot.png
 	lyxscale 20
 	width 40text%
 	BoundingBox 50bp 0bp 1100bp 1200bp
@@ -21204,10 +17041,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_Errors_Spearman.png
+	filename ../results/figs/DAS2019_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -21222,10 +17059,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_MUE_Spearman.png
+	filename ../results/figs/DAS2019_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -21240,10 +17077,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_Q95_Spearman.png
+	filename ../results/figs/DAS2019_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -21260,10 +17097,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_Errors_Spearman_Pruned.png
+	filename ../results/figs/DAS2019_CorrMat_Errors_Spearman_Pruned.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -21278,10 +17115,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_MUE_Spearman_Pruned.png
+	filename ../results/figs/DAS2019_CorrMat_MUE_Spearman_Pruned.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -21296,10 +17133,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Das2019_CorrMat_Q95_Spearman_Pruned.png
+	filename ../results/figs/DAS2019_CorrMat_Q95_Spearman_Pruned.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 200bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22321,8 +18158,13 @@ name "tab:das"
 
 \end_inset
 
-Case DAS2019 - absolute error statistics: inversion probabilities and SIP
- statistics for comparison with the DFA of smallest MUE (DD-CAM-B3LYP).
+Case DAS2019 - absolute error statistics for pruned dataset (
+\begin_inset Formula $N=21$
+\end_inset
+
+): inversion probabilities and SIP statistics for comparison with the DFA
+ of smallest MUE (DD-CAM-B3LYP).
+ The best scores are in boldface.
 \end_layout
 
 \end_inset
@@ -22389,13 +18231,13 @@ vs
 placement !tb
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Das2019_SIPHeatmap_Pruned.png
+	filename ../results/figs/DAS2019_SIPHeatmap_Pruned.png
 	lyxscale 25
 	width 32text%
 	BoundingBox 100bp 0bp 1300bp 1200bp
@@ -22405,7 +18247,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_deltaECDF_Pruned.png
+	filename ../results/figs/DAS2019_deltaECDF_Pruned.png
 	lyxscale 25
 	width 32text%
 
@@ -22413,7 +18255,7 @@ status collapsed
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_deltaECDF2_Pruned.png
+	filename ../results/figs/DAS2019_deltaECDF2_Pruned.png
 	lyxscale 25
 	width 32text%
 
@@ -22513,30 +18355,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_mue_levels_Pruned.png
+	filename ../results/figs/DAS2019_figRanks_mue_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_q95hd_levels_Pruned.png
+	filename ../results/figs/DAS2019_figRanks_q95hd_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_msip_levels_Pruned.png
+	filename ../results/figs/DAS2019_figRanks_msip_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -22548,30 +18390,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_mue_levels_Pruned_M.png
+	filename ../results/figs/DAS2019_figRanks_mue_levels_Pruned_M.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_q95hd_levels_Pruned_M.png
+	filename ../results/figs/DAS2019_figRanks_q95hd_levels_Pruned_M.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Das2019_figRanks_msip_levels_Pruned_M.png
+	filename ../results/figs/DAS2019_figRanks_msip_levels_Pruned_M.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 450bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -22591,7 +18433,7 @@ name "fig:dasRanking-1"
 
 \end_inset
 
-Case DAS2019 - ranking probability matrices: (top) 
+Case DAS2019 - ranking probability matrices: (a-c) 
 \begin_inset Formula $N$
 \end_inset
 
@@ -22603,7 +18445,7 @@ of-
 \begin_inset Formula $N$
 \end_inset
 
- bootstrap; (bottom) 
+ bootstrap; (d-f) 
 \begin_inset Formula $N/3$
 \end_inset
 
@@ -22839,10 +18681,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_Errors.png
+	filename ../results/figs/THA2015_CorrMat_Errors.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22857,10 +18699,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_Errors_Pruned.png
+	filename ../results/figs/THA2015_CorrMat_Errors_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22875,10 +18717,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_Errors_Spearman.png
+	filename ../results/figs/THA2015_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22895,10 +18737,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_Errors_Spearman_Pruned.png
+	filename ../results/figs/THA2015_CorrMat_Errors_Spearman_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22913,10 +18755,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_MUE_Spearman_Pruned.png
+	filename ../results/figs/THA2015_CorrMat_MUE_Spearman_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -22931,10 +18773,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_CorrMat_Q95_Spearman_Pruned.png
+	filename ../results/figs/THA2015_CorrMat_Q95_Spearman_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -23023,30 +18865,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_CorrMat_Errors_Spearman.png
+	filename ../results/figs/WU2015_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_CorrMat_MUE_Spearman.png
+	filename ../results/figs/WU2015_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_CorrMat_Q95_Spearman.png
+	filename ../results/figs/WU2015_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 0bp 1300bp 1200bp
+	BoundingBox 180bp 250bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -23443,7 +19285,7 @@ M11
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.36 
+0.34 
 \end_layout
 
 \end_inset
@@ -23559,7 +19401,7 @@ M06-2X
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.08 
+0.09 
 \end_layout
 
 \end_inset
@@ -23588,7 +19430,7 @@ M06-2X
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.48 
+0.50 
 \end_layout
 
 \end_inset
@@ -23703,7 +19545,7 @@ B97
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.23 
+0.21 
 \end_layout
 
 \end_inset
@@ -23823,7 +19665,7 @@ HCTH
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.32 
+0.30 
 \end_layout
 
 \end_inset
@@ -23937,7 +19779,7 @@ HISS
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.35 
+0.38 
 \end_layout
 
 \end_inset
@@ -24053,7 +19895,7 @@ PBE
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.26 
+0.25 
 \end_layout
 
 \end_inset
@@ -24138,7 +19980,7 @@ MP2
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.21 
+0.22 
 \end_layout
 
 \end_inset
@@ -24167,7 +20009,7 @@ MP2
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.35 
+0.34 
 \end_layout
 
 \end_inset
@@ -24249,7 +20091,11 @@ HCTH), except for
 \end_inset
 
 .
- 
+ The best scores and the values for which 
+\begin_inset Formula $(p_{g}=2P_{inv})>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -24270,7 +20116,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_compareECDF_Pruned.png
+	filename ../results/figs/THA2015_compareECDF_Pruned.png
 	lyxscale 25
 	width 32col%
 	clip
@@ -24279,7 +20125,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_compareECDF2_Pruned.png
+	filename ../results/figs/THA2015_compareECDF2_Pruned.png
 	lyxscale 25
 	width 32col%
 	clip
@@ -24362,7 +20208,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_SIPHeatmap_Pruned.png
+	filename ../results/figs/THA2015_SIPHeatmap_Pruned.png
 	lyxscale 25
 	width 32text%
 	BoundingBox 100bp 0bp 1300bp 1200bp
@@ -24372,7 +20218,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_SIPHeatmap.png
+	filename ../results/figs/WU2015_SIPHeatmap.png
 	lyxscale 25
 	width 32text%
 	BoundingBox 100bp 0bp 1300bp 1200bp
@@ -24484,10 +20330,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_mue_levels.png
+	filename ../results/figs/THA2015_figRanks_mue_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24502,10 +20348,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_q95hd_levels.png
+	filename ../results/figs/THA2015_figRanks_q95hd_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24520,66 +20366,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_msip_levels.png
+	filename ../results/figs/THA2015_figRanks_msip_levels.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_mue_levels_Pruned.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_q95hd_levels_Pruned.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename ../results/figs/Thakkar2015_figRanks_msip_levels_Pruned.png
-	lyxscale 20
-	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24596,10 +20386,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_figRanks_mue_levels.png
+	filename ../results/figs/THA2015_figRanks_mue_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24614,10 +20404,10 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_figRanks_q95hd_levels.png
+	filename ../results/figs/THA2015_figRanks_q95hd_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24632,10 +20422,66 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename ../results/figs/Wu2015_figRanks_msip_levels.png
+	filename ../results/figs/THA2015_figRanks_msip_levels_Pruned.png
 	lyxscale 20
 	width 32col%
-	BoundingBox 100bp 150bp 1300bp 1200bp
+	BoundingBox 300bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/WU2015_figRanks_mue_levels.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 300bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/WU2015_figRanks_q95hd_levels.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 300bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../results/figs/WU2015_figRanks_msip_levels.png
+	lyxscale 20
+	width 32col%
+	BoundingBox 300bp 400bp 1800bp 1700bp
 	clip
 
 \end_inset
@@ -24665,22 +20511,19 @@ name "fig:thakkarRPmat"
 
 \end_inset
 
-Ranking probability matrices: 
-\color orange
-(top) case THA2015 full dataset (
+Ranking probability matrices: (a-c) case THA2015 full dataset (
 \begin_inset Formula $N=135$
 \end_inset
 
-); (middle) case THA2015 dataset pruned from 8 outliers (
+); (d-f) case THA2015 dataset pruned from 8 outliers (
 \begin_inset Formula $N=127$
 \end_inset
 
-); (bottom) case WU2015 (
+); (g-i) case WU2015 (
 \begin_inset Formula $N=145$
 \end_inset
 
 ).
- ADD SUBFIG REFS (a)...(i)
 \end_layout
 
 \end_inset
@@ -24838,30 +20681,30 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_CorrMat_Errors_Spearman.png
+	filename ../results/figs/ZAS2019_CorrMat_Errors_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_CorrMat_MUE_Spearman.png
+	filename ../results/figs/ZAS2019_CorrMat_MUE_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
 
 
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_CorrMat_Q95_Spearman.png
+	filename ../results/figs/ZAS2019_CorrMat_Q95_Spearman.png
 	lyxscale 20
 	width 32text%
-	BoundingBox 0bp 100bp 1300bp 1200bp
+	BoundingBox 200bp 300bp 1800bp 1800bp
 	clip
 
 \end_inset
@@ -25336,6 +21179,8 @@ MP2
 \begin_inset Text
 
 \begin_layout Plain Layout
+
+\series bold
 1.31(1) 
 \end_layout
 
@@ -25573,6 +21418,11 @@ name "tab:zas"
 \end_inset
 
  (MP2).
+ The best scores and the values for which 
+\begin_inset Formula $(p_{g}=2P_{inv})>0.05$
+\end_inset
+
+ are in boldface.
 \end_layout
 
 \end_inset
@@ -25692,7 +21542,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_compareECDF.png
+	filename ../results/figs/ZAS2019_compareECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -25700,7 +21550,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_SIPHeatmap.png
+	filename ../results/figs/ZAS2019_SIPHeatmap.png
 	lyxscale 25
 	width 32text%
 	BoundingBox 200bp 100bp 1300bp 1200bp
@@ -25715,7 +21565,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_deltaECDF.png
+	filename ../results/figs/ZAS2019_deltaECDF.png
 	lyxscale 25
 	width 32text%
 
@@ -25723,7 +21573,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/Zaspel2019_deltaECDF2.png
+	filename ../results/figs/ZAS2019_deltaECDF2.png
 	lyxscale 25
 	width 32text%
 
@@ -27129,7 +22979,7 @@ name "fig:corrScore"
 
 \end_inset
 
- Correlation coefficients (CC) of several statistics as a function of the
+Correlation coefficients (CC) of several statistics as a function of the
  CC of the samples used to estimate them.
  The error bars represent 95
 \begin_inset space \thinspace{}
@@ -27539,7 +23389,7 @@ name "fig:power1"
 
 \end_inset
 
- Probability of type I errors 
+Probability of type I errors 
 \begin_inset Formula $\hat{\alpha}$
 \end_inset
 

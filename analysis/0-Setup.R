@@ -27,8 +27,8 @@ library(lib,character.only = TRUE)
 options(boot.parallel = "multicore")
 options(boot.ncpus = 4)
 
-# Load misc.
-# source('./functions.R')
+# Set random seed for reprod
+set.seed(123)
 
 # Set graphical params
 gPars = list(
