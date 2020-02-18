@@ -235,11 +235,8 @@ literal "false"
 , the most common benchmarking statistics are the mean unsigned error (MUE/MAD/M
 AE...), mean signed error (MSE), root mean squared error (RMSE) and root mean
  squared deviation (RMSD).
- The explicit definition of these scores is given in Ref.
-\begin_inset space \thinspace{}
-\end_inset
-
-
+ The explicit definition of these scores is given in a previous article
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Pernot2018"
@@ -503,7 +500,7 @@ literal "false"
 
 \end_inset
 
-, which enables us to propose efficient visual assessments of the robustness
+, which enables us to propose an efficient visual assessment of the robustness
  of rankings.
 \end_layout
 
@@ -526,7 +523,8 @@ In the next section, we consider the uncertainty sources impacting the values
  of benchmarking statistics (scores) and we present the tools best adapted
  to estimate the uncertainty on statistics and to compare them.
  These methods are then validated on several datasets taken from the recent
- benchmarking literature and covering a wide range of dataset sizes.
+ benchmarking literature and covering a wide range of dataset sizes and
+ properties.
  The discussion considers the impact of these observations on the benchmarking
  practice and proposes several suggestions on their reporting, as well as
  on the best practice to share benchmark data.
@@ -654,7 +652,7 @@ literal "false"
 
 \end_inset
 
-), parametric uncertainty (
+), or parametric uncertainty (
 \emph on
 e.g.
 \emph default
@@ -861,7 +859,7 @@ noprefix "false"
 placement !tb
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -943,7 +941,7 @@ noprefix "false"
 
 \end_inset
 
-, one sees that the datasets 
+(a), one sees that the datasets 
 \begin_inset Formula $C_{i}$
 \end_inset
 
@@ -952,15 +950,27 @@ noprefix "false"
 \begin_inset Formula $E_{i}$
 \end_inset
 
- present a more relaxed pattern, with weaker positive correlations, and
- even a very small negative correlation for MP2 with all the other error
- sets.
+ present a more relaxed pattern (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b)), with weaker positive correlations, and even a very small negative
+ correlation for MP2 with all the other error sets.
  Having noticed this, one remarks that MP2 data present also smaller correlation
  coefficients with other datasets, although this is barely visible on the
  figure (the difference bears on the third digit of the correlation coefficients
 ).
- In the following, one will present only correlation matrices for error
- sets.
+ In the following, we present correlation matrices for error sets only.
 \end_layout
 
 \begin_layout Subsection
@@ -1197,11 +1207,12 @@ literal "false"
 \end_inset
 
 .
- For non-linear statistics, as the MUE or 
+ For non-linear statistics, such as the MUE or 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
-, the combination of covariances is unsuitable, and uses Monte Carlo strategies.
+, the combination of covariances is unsuitable, and Monte Carlo strategies
+ are used.
  
 \end_layout
 
@@ -1356,7 +1367,7 @@ better method
 \begin_inset Formula $M_{2}$
 \end_inset
 
-, with a probability approximately 
+, with a probability close to 
 \begin_inset Formula $(1-\mathrm{SIP}_{1,2})$
 \end_inset
 
@@ -1398,10 +1409,10 @@ In the same spirit as for correlation matrices, we represent SIP matrices
  by a combination of color levels and disks.
  Here, the color scale goes from blue (0.0) to red (1.0) with a white midpoint
  (0.5), and the area of the disks is proportional with the SIP value.
- The diagonal is left undefined to alleviate the graph.
- The matrix should be read by line: a line with a majority of red patches
+ The diagonal is null.
+ The matrix should be read by row: a row with a majority of red patches
  signal a method with good SIP performances.
- A contrario, a majority of blue patches on a line indicate a method with
+ A contrario, a majority of blue patches on a row indicate a method with
  poor SIP performances.
  The methods are ordered by decreasing value of MSIP.
  
@@ -1437,9 +1448,9 @@ noprefix "false"
 \end_inset
 
 .
- It shows clearly that BH&HLYP is problematic (line of small blue disks),
- for this dataset and is systematically and strongly outperformed by all
- other methods.
+ It shows clearly that BH&HLYP is problematic, with a row of small blue
+ disks, for this dataset and is systematically and strongly outperformed
+ by all other methods.
  At the opposite, the line for CAM-B3LYP is the only one to contain exclusively
  values above 0.5 (reddish disks), albeit CAM-B3LYP does not achieve the
  best MUE or 
@@ -1557,6 +1568,14 @@ In order to appreciate the amplitude of the possible losses or gains when
 \begin_inset Formula $\Delta_{k}(M_{i},M_{j})$
 \end_inset
 
+, 
+\color orange
+which is only defined if 
+\begin_inset Formula $\mathrm{SIP}_{i,j}>0$
+\end_inset
+
+:
+\color inherit
 
 \begin_inset Formula 
 \begin{align}
@@ -1589,7 +1608,7 @@ where the mean loss (ML) is the opposite of the mean gain for the reciprocal
 
 \end_inset
 
-This shows that, except for methods pairs with an extreme SIP value, any
+This shows that, except for method pairs with an extreme SIP value, any
  MUE difference is the balance between losses and gains distributed over
  the systems.
  One should not expect that a method with a smaller MUE will systematically
@@ -1680,7 +1699,7 @@ eV for 15
 \begin_inset space \thinspace{}
 \end_inset
 
-% risk to see his results be degraded in average by 0.37
+% risk to see his results degraded in average by 0.37
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1770,7 +1789,8 @@ values
 \uwave default
 \noun default
 \color inherit
- by vertical dashed lines; (b) ECDF of the difference of absolute errors.
+ by vertical dashed lines; (b) ECDF of the difference of absolute errors
+ (blue curve).
  The green- and red-shaded bands represent 95
 \begin_inset space \thinspace{}
 \end_inset
@@ -2159,8 +2179,8 @@ To estimate the effect of correlation on the comparison of scores, we introduce
 , based on a version of the discrepancy ignoring correlation
 \begin_inset Formula 
 \begin{align}
-\xi_{unc}(s_{1},s_{2}) & =\frac{|s_{1}-s_{2}|}{\sqrt{u(s_{1})^{2}+u(s_{2})^{2}}}\label{eq:discFac-1-1}\\
-p_{unc} & =2*\left(1-\Phi(\xi_{unc})\right)
+\xi_{unc}(s_{1},s_{2}) & =\frac{|s_{1}-s_{2}|}{\sqrt{u(s_{1})^{2}+u(s_{2})^{2}}}\label{eq:xiUnc}\\
+p_{unc} & =2*\left(1-\Phi(\xi_{unc})\right)\label{eq:Punc}
 \end{align}
 
 \end_inset
@@ -2170,14 +2190,14 @@ In the hypothesis of  mostly positive covariances for the statistics of
 \begin_inset Formula $Q_{95}$
 \end_inset
 
-; Section
+; Appendix
 \begin_inset space \thinspace{}
 \end_inset
 
 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:MSIP"
+reference "sec:Covariance-of-scores"
 plural "false"
 caps "false"
 noprefix "false"
@@ -2544,8 +2564,8 @@ noprefix "false"
 \end_inset
 
  is close to 1.
- Note that the null values in the sample are shared equally between the
- positive and negative values.
+ Note that the null values in the differences sample are shared equally
+ between the positive and negative values.
  On the opposite, if there is a small proportion 
 \begin_inset Formula $p^{*}$
 \end_inset
@@ -2599,8 +2619,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
-Note that the use of paired samples is essential to capture inter-statistics
- correlations.
+The use of paired samples is essential to capture inter-statistics correlations.
  Wilcox and Erceg-Hurn 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2687,6 +2706,8 @@ name "subsec:Rank-inversion-probability"
 \end_layout
 
 \begin_layout Standard
+
+\color brown
 In a previous article 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -2696,30 +2717,47 @@ literal "false"
 \end_inset
 
 , we defined a probability for ranking inversion 
-\begin_inset Formula $P_{inv}=P(S_{1}<S_{2}|s_{1}>s_{2})$
-\end_inset
-
-, based on the normal distribution.
-\begin_inset Note Note
-status collapsed
-
-\begin_layout Plain Layout
-Our goal was to estimate the probability that a given ranking results from
- a limited benchmark dataset.
- 
-\end_layout
+\begin_inset Formula 
+\begin{equation}
+P_{inv}=P(S_{1}<S_{2}|s_{1}>s_{2})\label{eq:defPinv}
+\end{equation}
 
 \end_inset
 
- Using the present notations, 
+based on the normal distribution.
+ Using Equations
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xiUnc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Punc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
 \begin_inset Formula $P_{inv}$
 \end_inset
 
  can be reformulated as 
 \begin_inset Formula 
 \begin{align}
-P_{inv} & =\Phi(0,\mu=s_{1}-s_{2},\sigma=\sqrt{u^{2}(s_{1})+u^{2}(s_{2})})\\
- & =\Phi(0,\mu=\xi_{unc})\\
+P_{inv} & =\Phi(0;\mu=s_{1}-s_{2},\sigma=\sqrt{u^{2}(s_{1})+u^{2}(s_{2})})\\
+ & =\Phi(0;\mu=\xi_{unc})\\
  & =\Phi(-\xi_{unc})\\
  & =1-\Phi(\xi_{unc})\\
  & =p_{unc}\thinspace/\thinspace2
@@ -2727,7 +2765,29 @@ P_{inv} & =\Phi(0,\mu=s_{1}-s_{2},\sigma=\sqrt{u^{2}(s_{1})+u^{2}(s_{2})})\\
 
 \end_inset
 
-This shows the limitations of our previous definition of 
+where the unspecified parameters of the normal cumulative distribution function
+ 
+\begin_inset Formula $\Phi(x;\mu,\sigma)$
+\end_inset
+
+ are their standard values (
+\begin_inset Formula $\mu=0$
+\end_inset
+
+,
+\color orange
+ 
+\color brown
+
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+).
+ The link to 
+\begin_inset Formula $p_{unc}$
+\end_inset
+
+ shows the limitations of our previous definition of 
 \begin_inset Formula $P_{inv}$
 \end_inset
 
@@ -2736,11 +2796,17 @@ This shows the limitations of our previous definition of
 i.e.
 \emph default
 , the normality hypothesis and the neglect of error sets correlations.
- Using the same difference statistics used for 
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color brown
+Using the same difference statistics used for 
 \begin_inset Formula $p_{g}$
 \end_inset
 
- (Algo.
+ (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -2754,7 +2820,21 @@ noprefix "false"
 
 \end_inset
 
-), one can generalize 
+), one can generalize Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defPinv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by defining 
 \begin_inset Formula $P_{inv}$
 \end_inset
 
@@ -2763,11 +2843,7 @@ noprefix "false"
 \begin_inset Formula $\mathrm{sign}(s_{1}-s_{2})$
 \end_inset
 
-), 
-\emph on
-i.e.
-\emph default
-,
+)
 \begin_inset Formula 
 \begin{align}
 P_{inv} & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{\mathrm{sign}(d_{i})\ne\mathrm{sign}(s_{1}-s_{2})}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\label{eq:pinv-new}
@@ -2780,20 +2856,35 @@ where
 \end_inset
 
  is the number of bootstrap samples and the null differences (with sign
- 0) are excluded from the count.
- 
-\end_layout
-
-\begin_layout Standard
-If one takes as reference the smallest value 
-\begin_inset Formula $\hat{s}$
+ 0) are compensated for.
+ Enforcing the condition 
+\begin_inset Formula $s_{1}>s_{2}$
 \end_inset
 
- of a statistic within a set of methods, one gets
+ in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defPinv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, one gets 
+\begin_inset Formula $\mathrm{sign}(s_{1}-s_{2})=1$
+\end_inset
+
+, and finally
 \begin_inset Formula 
 \begin{align}
-P_{inv} & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{\mathrm{sign}(d_{i})\ne\mathrm{sign}(s_{1}-\hat{s})}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
- & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{d_{i}<0}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
+P_{inv} & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{\mathrm{sign}(d_{i})\ne1}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
+ & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{d_{i}\le0}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
+ & =\frac{1}{B}\sum_{i=1}^{B}1_{d_{i}<0}\\
  & \simeq p_{g}\thinspace/\thinspace2\label{eq:pinv-vs-pg}
 \end{align}
 
@@ -2804,12 +2895,12 @@ where the relation to
 \end_inset
 
  assumes a negligible probability to have null statistics differences and
- exploits the fact that that 
+ exploits the fact that 
 \begin_inset Formula $\sum_{i=1}^{B}1_{d_{i}<0}<\sum_{i=1}^{B}1_{d_{i}>0}$
 \end_inset
 
- for our choice of reference 
-\begin_inset Formula $\hat{s}$
+ if 
+\begin_inset Formula $s_{1}>s_{2}$
 \end_inset
 
 .
@@ -2820,6 +2911,8 @@ sideways false
 status collapsed
 
 \begin_layout Plain Layout
+
+\color brown
 Input: 
 \begin_inset Formula $K$
 \end_inset
@@ -2844,11 +2937,15 @@ Input:
 \end_layout
 
 \begin_layout Enumerate
+
+\color brown
 Bootstrap the ranks
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
+
+\color brown
 For 
 \begin_inset Formula $j=1:B$
 \end_inset
@@ -2858,6 +2955,8 @@ For
 
 \begin_deeper
 \begin_layout Enumerate
+
+\color brown
 Generate a 
 \begin_inset Formula $N$
 \end_inset
@@ -2870,6 +2969,8 @@ Generate a
 \end_layout
 
 \begin_layout Enumerate
+
+\color brown
 Estimate the statistics vector 
 \begin_inset Formula $S^{*}=\left(S(E_{1}^{*}),\ldots,S(E_{K}^{*})\right)$
 \end_inset
@@ -2878,6 +2979,8 @@ Estimate the statistics vector
 \end_layout
 
 \begin_layout Enumerate
+
+\color brown
 Estimate the ranks by increasing order of 
 \begin_inset Formula $S^{*}$
 \end_inset
@@ -2905,11 +3008,15 @@ where
 \end_deeper
 \end_deeper
 \begin_layout Enumerate
+
+\color brown
 Estimate for each method its probability to have any rank
 \end_layout
 
 \begin_deeper
 \begin_layout Plain Layout
+
+\color brown
 \begin_inset Formula 
 \[
 P_{r,jk}=\frac{1}{B}\sum_{i=1}^{B}1_{O_{ij}^{*}=k}
@@ -2922,6 +3029,8 @@ P_{r,jk}=\frac{1}{B}\sum_{i=1}^{B}1_{O_{ij}^{*}=k}
 
 \end_deeper
 \begin_layout Plain Layout
+
+\color brown
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
@@ -3000,7 +3109,7 @@ P_{r,jk}=P(\mathrm{rank}(S_{j})=k);\thinspace j,k=1,\ldots,K
 
 \end_inset
 
-The algorithm to generate this matrix is described in Algo.
+The algorithm to generate this matrix is described in Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3070,6 +3179,18 @@ noprefix "false"
 (b)).
  In the following, we will use mostly the levels image representation which
  we find easier to read and interpret.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A summary in results tables can also be considered, by reporting for each
+ method its mode in ranking probability and the corresponding probability,
+ which indicates the strength of this rank.
+ 
+\end_layout
+
+\end_inset
+
  
 \begin_inset Float figure
 placement t
@@ -3114,9 +3235,12 @@ name "fig:bsRank"
 
 \end_inset
 
-Graphical representations of a MUE ranking probability matrix: (left) color
- levels image of the ranking probability matrix; (right) summary of the
- ranking probability matrix by the modes (diamonds) and 90
+Graphical representations of a MUE ranking probability matrix 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+ : (left) color levels image of the ranking probability matrix; (right)
+ summary of the ranking probability matrix by the modes (diamonds) and 90
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -3143,7 +3267,7 @@ i.e.
 \emph default
 , the reference ranking based on the MUE is not certain for this trio.
  Similar problems occur within two other groups, notably BLYP and PW86PBE.
- The ranks of PBE (8) and BH&HLYP (9) seem well established.
+ The ranks of PBE (8) and BH&HLYP (9) are well established.
  
 \end_layout
 
@@ -3155,14 +3279,6 @@ i.e.
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
-A summary in results tables can also be considered, by reporting for each
- method its mode in ranking probability and the corresponding probability,
- which indicates the strength of this rank.
- These tools enable to appreciate easily the robustness of the reference
- ranking.
 \end_layout
 
 \begin_layout Paragraph
@@ -3212,7 +3328,7 @@ of-
 \end_inset
 
  is problem-dependent and is left to the appreciation of the analyst.
- For the sake of simplicity, and until further research on the optimal choice
+ For the sake of simplicity, and until further guidance on the optimal choice
  of 
 \begin_inset Formula $N'$
 \end_inset
@@ -4114,7 +4230,7 @@ literal "false"
 
 \end_inset
 
-, and extracted from the article by Pernot and Savin 
+, and extracted from a recent article by Pernot and Savin 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Pernot2018,Pernot2019"
@@ -4330,11 +4446,10 @@ noprefix "false"
 
 \end_inset
 
-, along with histograms of correlation coefficients of their non-diagonal
- elements.
- The errors sets are all positively correlated, with a wide distribution,
- except for pairs involving BH&HLYP which presents negative correlations
- with four other methods.
+, along with histograms of their non-diagonal elements.
+ The errors sets are all positively correlated, with a wide distribution
+ of correlation coefficients, except for pairs involving BH&HLYP which presents
+ negative correlations with four other methods.
  When considering the scores, all correlations are positive or null.
  Globally, the correlations are weaker for 
 \begin_inset Formula $Q_{95}$
@@ -6128,7 +6243,7 @@ There is a group of three methods (B97-1, CAM-B3LYP and PBE0) with small
 \end_inset
 
  values, one cannot reject the hypothesis that the observed differences
- are due to chance.
+ are due to the limited size of the datasets.
  Note that the same conclusion would have been reached when ignoring correlation
  (
 \begin_inset Formula $p_{unc}$
@@ -6192,7 +6307,11 @@ noprefix "false"
 \end_inset
 
 PBE as a contender for the head group.
- When picking B97-1 instead of CAM-B3LYP based on the MUE, there is a 29
+ 
+\end_layout
+
+\begin_layout Standard
+When picking B97-1 instead of CAM-B3LYP based on the MUE, there is a 29
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6200,8 +6319,8 @@ PBE as a contender for the head group.
 \emph on
 i.e.
 \emph default
-, that the MUE of CAM-B3LYP is indeed smaller than B97-1 due to the restricted
- sample size.
+, that the MUE of CAM-B3LYP is indeed smaller than B97-1 due to the dataset
+ size.
  This risks falls to 12
 \begin_inset space \thinspace{}
 \end_inset
@@ -6254,7 +6373,7 @@ noprefix "false"
 
 \end_inset
 
-).
+(a)).
 \end_layout
 
 \begin_layout Standard
@@ -6479,7 +6598,7 @@ noprefix "false"
 
 \end_inset
 
-) confirm the analysis.
+) confirm the above analysis.
  The group of three methods (B97-1, CAM-B3LYP and PBE0) at the top of the
  MUE ranking presents a blurred image (no clear diagonal), whereas the first
  
@@ -6620,10 +6739,9 @@ The reference authors reported and analyzed relative errors, but as there
 e.g.
 \emph default
 , LDA) the errors increase with the value of the band gap, but this is due
- mostly to a systematic deviation (trend), not an increase in the dispersion
+ mostly to a systematic deviation (trend), not to an increase in the dispersion
  of the errors.
- In consequence, we chose treat here the 'absolute' errors, as defined in
- Eq.
+ In consequence, we chose to treat here the errors as defined in Eq.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -6680,8 +6798,8 @@ noprefix "false"
 
 \end_inset
 
- that across the spectrum of methods, all correlation coefficients are positive,
- and can reach very large values, up to 0.998.
+ that across the spectrum of methods, all error sets correlation coefficients
+ are positive, and can reach very large values, up to 0.998.
  Only about 30
 \begin_inset space \thinspace{}
 \end_inset
@@ -6821,7 +6939,7 @@ eV), and one cannot exclude that the difference is due to a mere sampling
 \begin_inset Formula $P_{inv}$
 \end_inset
 
- value for the MUE.
+ value with mBJ for the MUE.
  mBJ is also the method with the smallest 
 \begin_inset Formula $Q_{95}$
 \end_inset
@@ -16569,7 +16687,7 @@ SIP analysis.
 
 \begin_layout Standard
 They both also stand out by their MSIP, with a slight advantage for pcseg1-opt.
- One more, the importance of error cancellations stands out through the
+ Once again, the importance of error cancellations stands out through the
  medium values of the SIP of pcseg1-opt over the other cases.
  The strongest improvement is 0.9 over pcseg4, the smallest 0.6 over pop2-opt.
  The plots in Fig.
@@ -16824,8 +16942,8 @@ name "subsec:Das2019"
 \end_layout
 
 \begin_layout Standard
-A small set of 24 dielectric constants for 3D metal oxides has been reported
- by Das 
+A set of 24 dielectric constants for 3D metal oxides has been reported by
+ Das 
 \emph on
 et al.
 
@@ -16899,132 +17017,12 @@ noprefix "false"
 \end_inset
 
 -top).
- This is an unusual situation when compared to the previous cases.
- Knowing that correlation coefficients are sensitive to outliers (even if
- rank correlations are a little more robust), we explored the dataset for
- outliers.
- A parallel plot (Fig.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:dasCorrmat-1"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-) of the scaled and centered error sets enables to identify systems which
- deviate significantly from the core distribution.
- Two such systems exist for all methods: 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{BiVO4}
-\end_layout
-
-\end_inset
-
- and 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-ce{Cu2O}
-\end_layout
-
-\end_inset
-
-.
  
 \begin_inset Float figure
 placement !tb
 wide false
 sideways false
-status open
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename ../results/figs/DAS2019_ParPlot.png
-	lyxscale 20
-	width 40text%
-	BoundingBox 50bp 0bp 1100bp 1200bp
-	clip
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:dasCorrmat-1"
-
-\end_inset
-
-Case DAS2019: parallel plot of scaled and centered error sets, used to identify
- global outliers.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
- After removal of these two points, the correlation matrix for the errors
- is slightly relaxed (the smallest correlation coefficient decreases from
- 0.81 to 0.74), but those for MUE and 
-\begin_inset Formula $Q_{95}$
-\end_inset
-
- are visibly more affected ((Fig.
-\begin_inset space \thinspace{}
-\end_inset
-
-
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:dasCorrmat"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
--bottom)).
- In fact, the parallel plot reflects the strong correlations between all
- errors sets (many quasi-parallel lines), except for DD-CAM-B3LYP.
- The pruned dataset (
-\begin_inset Formula $N=21$
-\end_inset
-
-) is used in the following.
- 
-\begin_inset Float figure
-placement !tb
-wide false
-sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -17180,7 +17178,128 @@ Case DAS2019 - rank correlation matrices: (a-c) original data set (
 
 \end_inset
 
+ This is an unusual situation when compared to the previous cases.
+ Knowing that correlation coefficients are sensitive to outliers (even if
+ rank correlations are a little more robust), we explored the dataset for
+ outliers.
+ A parallel plot (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dasCorrmat-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) of the scaled and centered error sets enables to identify systems which
+ deviate significantly from the core distribution for all methods (global
+ outliers).
+ Two such systems exist for all methods: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ce{BiVO4}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+ce{Cu2O}
+\end_layout
+
+\end_inset
+
+.
+ After removal of these two points, the correlation matrix for the errors
+ is slightly relaxed (the smallest correlation coefficient decreases from
+ 0.81 to 0.74), but those for MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ are visibly more affected ((Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dasCorrmat"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-bottom)).
+ In fact, the parallel plot reflects the strong correlations between all
+ errors sets (many quasi-parallel horizontal lines), except for DD-CAM-B3LYP.
+ The pruned dataset (
+\begin_inset Formula $N=21$
+\end_inset
+
+) is used in the following.
  
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/DAS2019_ParPlot.png
+	lyxscale 20
+	width 40text%
+	BoundingBox 50bp 0bp 1100bp 1200bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:dasCorrmat-1"
+
+\end_inset
+
+Case DAS2019: parallel plot of scaled and centered error sets, used to identify
+ global outliers.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Paragraph
@@ -17239,7 +17358,7 @@ status open
 <column alignment="decimal" decimal_point="." valignment="top">
 <column alignment="decimal" decimal_point="." valignment="top">
 <row>
-<cell alignment="left" valignment="top" usebox="none">
+<cell alignment="left" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17248,7 +17367,7 @@ Methods
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17257,7 +17376,7 @@ Methods
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17266,7 +17385,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17278,7 +17397,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17287,7 +17406,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17299,7 +17418,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17311,7 +17430,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17320,7 +17439,7 @@ MUE
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17329,7 +17448,7 @@ MSIP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17338,7 +17457,7 @@ SIP
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" usebox="none">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -17347,7 +17466,7 @@ MG
 
 \end_inset
 </cell>
-<cell alignment="decimal" valignment="top" usebox="none">
+<cell alignment="decimal" valignment="top" topline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -18343,7 +18462,7 @@ noprefix "false"
 \begin_inset Formula $Q_{95}$
 \end_inset
 
- ranks above the first.
+ ranks above the first, but the main features are mostly preserved.
  
 \begin_inset Float figure
 placement !tb
@@ -18499,7 +18618,7 @@ literal "false"
  to 26-atoms systems.
  The experimental data are given with their uncertainty, and computational
  results are provided for 7 methods.
- Data THA2015 for our study were extracted from Tables II-IV in the reference
+ Data THA2015 for our study were extracted from Tables II-IV of the reference
  article.
  The raw errors present a dispersion increasing with the polarizability,
  hence relative errors are used in the reference article and this study.
@@ -18521,8 +18640,8 @@ The relative uncertainties for the reference experimental data cover a large
 \end_inset
 
 %.
- The authors identified 8 outliers, and a total 32 systems in need or further
- study.
+ The authors identified 8 outliers, and a total of 32 systems in need of
+ further study.
  The outliers do not contain the points with the extreme uncertainties,
  so that, even after removal of the 32 problematic systems, the range of
  relative uncertainties stays the same.
@@ -18532,8 +18651,8 @@ The relative uncertainties for the reference experimental data cover a large
 \emph on
 et al.
 \emph default
-, and we proceed then with unweighted statistics, keeping in mind that the
- results might be dominated by reference data errors instead of model errors.
+, and we proceed with unweighted statistics, keeping in mind that the results
+ might be dominated by reference data errors instead of model errors.
 \end_layout
 
 \begin_layout Standard
@@ -18855,11 +18974,12 @@ noprefix "false"
  In the absence of reference data uncertainties, MP2 errors are now weakly
  anticorrelated to the other error sets, while all DFAs remain positively
  correlated.
+ 
 \begin_inset Float figure
 placement !tb
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -18921,6 +19041,12 @@ Case WU2015 - rank correlation matrix: (a) Errors; (b) MUE; (c)
 \end_inset
 
  
+\end_layout
+
+\begin_layout Standard
+The differences between both sets of correlation matrices, notably when
+ MP2 is concerned, might be due in a large part to the presence of large
+ experimental errors in the THA2015 dataset.
 \end_layout
 
 \begin_layout Paragraph
@@ -20077,8 +20203,12 @@ name "tab:thakkar"
 
 \end_inset
 
-Case THA2015 - absolute error statistics: inversion probabilities and SIP
- statistics for comparison with the DFA of smallest MUE (LC-
+Case THA2015 - absolute error statistics for the full dataset (
+\begin_inset Formula $N=145)$
+\end_inset
+
+: inversion probabilities and SIP statistics for comparison with the DFA
+ of smallest MUE (LC-
 \begin_inset Formula $\tau$
 \end_inset
 
@@ -20276,7 +20406,7 @@ noprefix "false"
 .
  The top row concerns dataset THA2015.
  The ranking probability matrices for the MUE confirm the problem seen above
- for the three best methods.
+ for the four best methods.
  It shows also that the rank of MP2 is quite ill-defined.
  For 
 \begin_inset Formula $Q_{95,}$
@@ -20575,8 +20705,8 @@ Depending on the reference dataset (experimental or CCSD(T)) one obtains
 \begin_inset Formula $\tau$
 \end_inset
 
-HCTH seems a better option to predict experimental values, when MP2 is a
- better proxy for CCSD(T) calculations.
+HCTH seems a better option to predict experimental values, whereas MP2 is
+ a better proxy for CCSD(T) calculations.
  
 \end_layout
 
@@ -21644,12 +21774,7 @@ The raw data of benchmark studies are important assets for the community,
  studies or the development of alternative statistical analyses, as performed
  in this study.
  We found many benchmarking studies with practically inaccessible data,
- 
-\emph on
-i.e.
-\emph default
-, failing the 'A' (Accessible) and/or the 'R' (Reusable) of the FAIR principle
- of Open Data 
+ failing the FAIR principle of Open Data 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Wilkinson2016"
@@ -21682,9 +21807,9 @@ ical (
 \end_inset
 
 4), bibliographical references attached to the data (generally processed
- as spurious decimals)...
+ by extraction tools as spurious decimals)...
  Most of these features preclude automated data extraction and require error-pro
-ne human intervention.
+ne human processing.
 \end_layout
 
 \begin_layout Standard
@@ -21708,11 +21833,11 @@ Impact of dataset size
 \end_layout
 
 \begin_layout Standard
-The examples above have shown that data set size impact considerably the
+The examples above have shown that dataset size impacts considerably the
  ability to rank methods or to assert the impact of an improved method.
- Data set size effect on the uncertainty of statistics is well known for
- the mean value, and similar formulae can be derived for other statistics
- under normality hypotheses.
+ Size effect on the uncertainty of statistics is well known for the mean
+ value, and similar formulae can be derived for other statistics under normality
+ hypotheses.
  However, the non-normality of error sets requires the use of numerical
  methods, typically bootstrap sampling.
  This enables to show how the usual benchmark statistics are affected by
@@ -21742,8 +21867,8 @@ noprefix "false"
 \end_inset
 
 ).
- Moreover, for small datasets (a few tens of points), the first digit of
- the statistics is often affected by the uncertainty.
+ Moreover, for small datasets (a few tens of points), even the first digit
+ of the statistics is often affected by the uncertainty.
  
 \begin_inset Note Note
 status collapsed
@@ -21776,7 +21901,21 @@ literal "false"
 
 .
  This is one way to avoid the ranking uncertainty resulting from the direct
- comparison of many methods.
+ comparison of many methods, as observed in case CAL2019 (Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Caldeweyher2019"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Subsection
@@ -21785,11 +21924,11 @@ The correlation matrix as a sanity check
 
 \begin_layout Standard
 When we started this study, the correlation matrices were mainly intended
- to illustrate the importance to consider them when comparing statistics.
+ to illustrate the importance to consider correlation when comparing statistics.
  
 \color teal
-When cumulating the case studies, it appeared that they contain information
- relevant to the quality of the benchmark dataset.
+When cumulating the case studies, it appeared that they contain pertinent
+ information on the quality of the benchmark dataset.
  Considering that model errors in computational chemistry are mostly systematic,
  one expects that error patterns over a dataset are characteristic of each
  method or family of methods.
@@ -21826,7 +21965,25 @@ A contrario
  
 \color teal
 Outliers common to all error sets (global outliers) can be efficiently identifie
-d on a parallel plot, as shown in case DAS2019.
+d on a parallel plot, as shown in case DAS2019 
+\color inherit
+(Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:dasCorrmat-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\color teal
+).
  
 \color inherit
 If the ranking study is to reflect the methods performances, the curation
@@ -21902,8 +22059,11 @@ The correlation between error sets is partially or totally transferred to
  Except for linear transformations of the errors, where the transfer is
  total, including the sign, one uses Monte Carlo methods to estimate this
  transfer.
- In many cases, such as for normal, student's or g-and-h error distributions
- 
+ In many cases, such as for normal, Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ or g-and-h error distributions 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Hoaglin1985"
@@ -21925,11 +22085,11 @@ n is that in most cases, one should not ignore correlations when comparing
 \end_layout
 
 \begin_layout Standard
-However, unlike as shown above for the error correlations, the visualization
+However, unlike shown above for the error correlations, the visualization
  of correlations between statistics might be of secondary interest.
  In fact, the paired samples bootstrap algorithms used in this study enable
  to account directly for these correlations, without having to estimate
- correlation coefficients.
+ intermediate correlation matrices.
  
 \end_layout
 
@@ -21957,9 +22117,22 @@ We introduced a new criterion, the systematic improvement probability (SIP),
  It is a useful complement to the MUE, as it enables to analyze a MUE difference.
  All the case studies show that a decrease of MUE results from the balance
  between gains and losses.
- At the exception of one methods pair in CAL2019, we did not find a 'best
- method' which improves the results of lower rank methods for the full benchmark
- dataset.
+ At the exception of one methods pair in case CAL2019 (Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Caldeweyher2019"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), we did not find a 'best method' which improves the results of lower rank
+ methods for the full benchmark dataset.
  
 \end_layout
 
@@ -21977,7 +22150,7 @@ even physics-based improvements in DFAs do not lead to systematic improvements
 
 % of the systems (BOR2019).
  In fact, there is often a non-negligible percentage of systems for which
- the 'bad' method is better than the 'good' one, all across Jacob's ladder.
+ a 'bad' method is better than a 'good' one, all across Jacob's ladder.
  
 \begin_inset Note Note
 status collapsed
@@ -22002,6 +22175,13 @@ We have also introduced the mean SIP as a possible ranking statistic.
  being compared and it is not transferable to comparisons out of its definition
  set.
  
+\end_layout
+
+\begin_layout Standard
+
+\color red
+SIP vs.
+ Pinv ???
 \end_layout
 
 \begin_layout Subsection
@@ -22173,7 +22353,8 @@ When considering pairs of methods, we generalized our previous definition
 \begin_inset Formula $P_{inv}$
 \end_inset
 
- to account for correlations between statistics.
+ to account for correlations between statistics and relieve a normal distributio
+n hypothesis.
  We also introduced the systematic improvement probability (SIP) which is
  independent of other descriptive statistics.
  We have seen that the use of MUE for ranking hides a complex interplay
@@ -22184,9 +22365,14 @@ When considering pairs of methods, we generalized our previous definition
  Estimation of the systematic improvement probability (SIP) and the mean
  gain (MG) and loss (ML) statistics can help understand this balance, and
  to assess the risks of switching between two methods.
- None of the showcased examples revealed a method which provides a full
- systematic improvement over its concurrents, even when comparing an elaborate
- composite method such as G4MP2 to DFAs.
+ 
+\color orange
+Only one of the showcased examples revealed a method which provides a full
+ systematic improvement over one of its concurrents.
+ Even when comparing an elaborate composite method such as G4MP2 to DFAs
+ one observes partial SIP values.
+
+\color inherit
  The pedagogical virtue of the SIP is to clearly show that computational
  chemistry is a science of compromises.
  
@@ -22340,7 +22526,7 @@ e.g.
 , Cauchy.
  
 \begin_inset Foot
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Note that 
@@ -22368,6 +22554,10 @@ noprefix "false"
 .
  Taking this factor into account leads to a larger uncertainty, which can
  be estimated as 
+\begin_inset Formula $u(\overline{e})=\sqrt{(N-1)/(N-3)}\thinspace s_{e}/\sqrt{N}$
+\end_inset
+
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Kacker2003"
@@ -22375,15 +22565,8 @@ literal "false"
 
 \end_inset
 
-
-\begin_inset Formula 
-\begin{equation}
-u(\overline{e})=\sqrt{\frac{N-1}{N-3}\frac{s_{e}^{2}}{N}}
-\end{equation}
-
-\end_inset
-
-This formula is based on the properties of the Student-
+.
+ This formula is based on the properties of the Student's-
 \emph on
 t
 \emph default
@@ -23075,7 +23258,11 @@ The same procedure has been applied to shifted means (
 \begin_inset Formula $\overline{e}_{2}=-0.5$
 \end_inset
 
-) for normal and Student's distribution with 5 degrees of freedom (Fig.
+) for normal and Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ distribution with 5 degrees of freedom (Fig.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23092,7 +23279,11 @@ noprefix "false"
 (e,f)).
  For the normal distribution the symmetry observed above is broken, as well
  as the pure quadratic trend for the MUE.
- For the Student's distribution, the correlations lie above a positive threshold.
+ For the Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ distribution, the correlations lie above a positive threshold.
  
 \end_layout
 
@@ -23148,7 +23339,7 @@ literal "false"
 \end_inset
 
  to estimate the probability of type I errors for the comparison of quantiles
- with their method M (Algo.
+ with their method M (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24327,7 +24518,7 @@ The estimation of
 \begin_inset Formula $p_{g}$
 \end_inset
 
- (Algo.
+ (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -24562,7 +24753,7 @@ We now test the quality of
 \begin_inset Formula $p_{g}$
 \end_inset
 
- estimated by the MC-BS method (Algo.
+ estimated by the MC-BS method (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25052,7 +25243,7 @@ Check normality of stats-difference sets
 \begin_layout Plain Layout
 
 \color orange
-Method M (Algo.
+Method M (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25180,7 +25371,7 @@ for each dataset pair, a
 \begin_inset Formula $p_{g}^{(i)}$
 \end_inset
 
- value is estimated using Method M (Algo.
+ value is estimated using Method M (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -25353,7 +25544,7 @@ Perform a MC-BS analysis to get a set of
 \begin_inset Formula $p_{g}$
 \end_inset
 
- values from this distribution (Algo.
+ values from this distribution (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 

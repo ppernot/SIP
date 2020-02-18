@@ -2,8 +2,8 @@
 ## CRAN packages
 libs <- c(
   "xtable","mixtools","inlmisc","rlist","boot","corrplot",
-  "repmis","sessioninfo","ggplot2","dplyr","grid","WRS2","WRS",
-  "distillery"
+  "repmis","sessioninfo","ggplot2","dplyr","grid","WRS2",
+  "WRS","distillery"
 )
 for (lib in libs) {
   if (!require(lib, character.only = TRUE, quietly = TRUE)) {
@@ -54,5 +54,5 @@ figRepo  = '../results/figs/'
 tabRepo  = '../results/tables/'
 
 sink(file ='./sessionInfo.txt')
-print(sessioninfo::session_info())
+print(sessionInfo(), locale=FALSE)
 sink()

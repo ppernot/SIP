@@ -37,7 +37,7 @@ gParsExt$cols_tr2 = colsExt_tr2
 # Generate stats ####
 
 statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
-df1    = ErrViewLib::genTabStat(statBS,units = units)
+df1    = ErrViewLib::genTabStat(statBS, units = units)
 
 sink(paste0(tabRepo,caseName,'_tabStats.tex'))
 print(
