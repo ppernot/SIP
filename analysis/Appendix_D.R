@@ -18,7 +18,7 @@ Q95_2 = ErrViewLib::q95F(c(mu2,s2))
 
 
 nMC = 10000
-sizes = c(seq(20,100,by=20),seq(150,500,by=50))
+sizes = c(seq(20,100,by=40),seq(150,500,by=50))
 
 # 1/ Monte Carlo
 qt = qthd = list()
@@ -79,15 +79,19 @@ par(mfrow = c(2, 2),
     xaxs = 'i',
     yaxs = 'i')
 
-fac = 2.5
+fac = 5
 ifig=0
 #MC
-matplot(sizes-fac, dqt[,3], type = 'p',
+matplot(sizes-fac, dqt[,3],
+        type = 'p',
         lty = 1, lwd=4,
         pch = 16,
         col = cols[5],
-        xlab = 'N', xlim=c(0,520),
-        ylab = 'p-value', ylim=c(1,3),
+        xlab = 'N',
+        xlim=c(0,520),
+        ylab = expression(Q[95]),
+        ylim=c(1,3),
+        log = '',
         main = ''
 )
 grid()
@@ -124,8 +128,11 @@ matplot(sizes-fac, dqtbs[,3], type = 'p',
         lty = 1, lwd=4,
         pch = 16,
         col = cols[5],
-        xlab = 'N', xlim=c(0,520),
-        ylab = 'p-value', ylim=c(1,3),
+        xlab = 'N',
+        xlim=c(0,520),
+        ylab = expression(Q[95]),
+        ylim=c(1,3),
+        log = '',
         main = ''
 )
 grid()
@@ -148,6 +155,7 @@ legend('topright',bty='n',
        pch = c(NA,16:17),
        lwd = 4)
 box()
+
 ifig=ifig+1
 mtext(
   text = paste0('(', letters[ifig], ')'),
@@ -163,7 +171,7 @@ hist(b1$t, breaks = breaks, freq = FALSE,
      xlim =c(1.4,2.8), ylim=c(0,5),
      col=cols_tr2[5],
      main = '',
-     xlab = '95th percentile')
+     xlab = expression(Q[95]))
 hist(b2$t, breaks = breaks, freq = FALSE,
      col=cols_tr2[2], add=TRUE)
 abline(v=Q95_2,col=cols[1],lty=2)
@@ -188,7 +196,7 @@ hist(b1l$t, breaks = breaks, freq = FALSE,
      xlim =c(1.4,2.8), ylim=c(0,5),
      col=cols_tr2[5],
      main = '',
-     xlab = '95th percentile')
+     xlab = expression(Q[95]))
 hist(b2l$t, breaks = breaks, freq = FALSE,
      col=cols_tr2[2], add=TRUE)
 abline(v=Q95_2,col=cols[1],lty=2)
@@ -421,7 +429,7 @@ segments(sizes,pMC-2*upMC, sizes, pMC+2*upMC,col=cols[2],lwd=8)
 abline(h=0.05, lty=2, col = cols[3])
 
 legend('topright', bty='n',
-       legend = c(expression(Q[95]),expression(Q[95]~HD)),
+       legend = c(expression(Q[95]~hat(Q)[7]),expression(Q[95]~HD)),
        col = cols[c(5,2)], lty = 1, lwd = 4,
        pch = c(16,17))
 

@@ -22373,9 +22373,8 @@ Only one of the showcased examples revealed a method which provides a full
  one observes partial SIP values.
 
 \color inherit
- The pedagogical virtue of the SIP is to clearly show that computational
- chemistry is a science of compromises.
- 
+ A pedagogical virtue of the SIP is to clearly show that computational chemistry
+ is a science of compromises.
 \end_layout
 
 \begin_layout Standard
@@ -22981,7 +22980,7 @@ literal "false"
 \end_layout
 
 \begin_layout Section
-Numerical study of the covariance of nonlinear statistics
+Numerical study of the correlation of nonlinear statistics
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Covariance-of-scores"
@@ -22992,8 +22991,9 @@ name "sec:Covariance-of-scores"
 \end_layout
 
 \begin_layout Standard
-To illustrate the transfer of covariance from the errors sets to their statistic
-s, one generates random samples 
+
+\color brown
+To illustrate the transfer of correlation from errors sets 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -23001,30 +23001,54 @@ s, one generates random samples
 \begin_inset Formula $E_{2}$
 \end_inset
 
- from a bivariate distribution with prescribed correlation coefficient 
+ to their statistics, one assumes that they are described by a bivariate
+ distribution with prescribed correlation coefficient 
 \begin_inset Formula $\rho$
 \end_inset
 
 .
- For each random sample, the statistics values 
-\begin_inset Formula $S_{1}$
+ From this distribution, one generates random samples 
+\begin_inset Formula $E_{1}^{*}$
 \end_inset
 
  and 
-\begin_inset Formula $S_{2}$
+\begin_inset Formula $E_{2}^{*}$
 \end_inset
 
- are calculated, and 
-\begin_inset Formula $\mathrm{cov}(s_{1},s_{2})$
+ and one estimates the statistics values 
+\begin_inset Formula $s_{1}^{*}=S(E_{1}^{*})$
 \end_inset
 
- is estimated from the statistics samples.
- The error sets correlation coefficient 
+ and 
+\begin_inset Formula $s_{2}^{*}=S(E_{2}^{*})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathrm{cor}(s_{1},s_{2})$
+\end_inset
+
+ is finally estimated from 
+\begin_inset Formula $s_{1}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}^{*}$
+\end_inset
+
+ samples.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color brown
+The error sets correlation coefficient 
 \begin_inset Formula $\rho$
 \end_inset
 
- has been varied between -1 and 1, and the corresponding correlation coefficient
-s have been estimated for the MSE, MUE and 
+ is varied between -1 and 1, and the resulting correlation coefficients
+ are estimated for the MSE, MUE and 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
@@ -23033,16 +23057,27 @@ s have been estimated for the MSE, MUE and
 \begin_inset Formula $N=100$
 \end_inset
 
- and the correlation coefficient statistics are based on 
-\begin_inset Formula $10^{3}$
+ and Monte Carlo samples size is 
+\begin_inset Formula $M=10^{3}$
 \end_inset
 
- Monte Carlo samples.
+ .
  
 \end_layout
 
 \begin_layout Standard
-The results for the four cases of the g-and-h distribution (Appendix
+
+\color brown
+The results for four representative cases of the g-and-h distribution used
+ by Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ (Appendix
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23080,6 +23115,8 @@ noprefix "false"
 \end_inset
 
  have the same distribution with unit variance, only their correlation varies.
+
+\color inherit
  
 \begin_inset Float figure
 placement !tb
@@ -23200,6 +23237,7 @@ Correlation coefficients (CC) of several statistics as a function of the
 \end_inset
 
 = 5).
+ All distributions have unit variance.
 \end_layout
 
 \end_inset
@@ -23213,10 +23251,11 @@ Correlation coefficients (CC) of several statistics as a function of the
 \end_layout
 
 \begin_layout Standard
-These simulations confirms the identity for the MSE, independently of the
- underlying distribution.
- The correlation coefficients for the other statistics are positive (within
- numerical uncertainty) and systematically smaller than 
+These simulations confirm the full correlation transfer to the MSE, independentl
+y of the underlying distribution.
+ The correlation coefficients for the other, non-linear, statistics are
+ mostly positive (within numerical uncertainty) and systematically smaller
+ than 
 \begin_inset Formula $|\rho|$
 \end_inset
 
@@ -23255,7 +23294,7 @@ The same procedure has been applied to shifted means (
 \end_inset
 
 , 
-\begin_inset Formula $\overline{e}_{2}=-0.5$
+\begin_inset Formula $\overline{e}_{2}=0.5$
 \end_inset
 
 ) for normal and Student's-
@@ -23290,7 +23329,7 @@ noprefix "false"
 \begin_layout Standard
 Simulation of correlated error samples enabled us to illustrate properties
  of correlation transfer to statistics: identical correlation for the MSE,
- and smaller positive correlations for the MUE and 
+ and smaller, mostly positive, correlations for the MUE and 
 \begin_inset Formula $Q_{95.}$
 \end_inset
 
@@ -23315,7 +23354,7 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
-Probabilities of Type I errors for the comparison of MUE and 
+Type I error Probabilities of for the comparison of MUE and 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
@@ -23330,7 +23369,21 @@ name "sec:Type-I-error"
 \end_layout
 
 \begin_layout Standard
-We applied the procedure followed by Wilcox and Erceg-Hurn 
+
+\color brown
+A false positive (type I error) is obtained when a true null hypothesis
+ is rejected by a test 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gregory05a,Klauenberg2019"
+literal "false"
+
+\end_inset
+
+.
+ Type I errors can be kept at a minimum by choosing appropriate data set
+ sizes.
+ Wilcox and Erceg-Hurn 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Wilcox2012"
@@ -23338,8 +23391,8 @@ literal "false"
 
 \end_inset
 
- to estimate the probability of type I errors for the comparison of quantiles
- with their method M (Algorithm
+ estimated the probability of type I errors for the comparison of quantiles
+ of correlated data sets with their method M (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23353,60 +23406,16 @@ noprefix "false"
 
 \end_inset
 
-).
-\end_layout
-
-\begin_layout Standard
-A false positive (type I error) is obtained when a true null hypothesis
- is rejected by the test.
- In the present context, one draws two samples 
-\begin_inset Formula $E_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $E_{2}$
-\end_inset
-
- of size 
+) and determined the sample size 
 \begin_inset Formula $N$
 \end_inset
 
- from the same distribution and compute 
-\begin_inset Formula $p_{g}$
-\end_inset
-
- for the comparison of the values of a statistic S, 
-\begin_inset Formula $s_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $s_{2}$
-\end_inset
-
-, respectively.
- A value of 
-\begin_inset Formula $p_{g}<0.05$
-\end_inset
-
- leads to a false rejection of the (null) hypothesis 
-\begin_inset Formula $s_{1}=s_{2}$
-\end_inset
-
-.
- The process is repeated 
-\begin_inset Formula $M$
-\end_inset
-
- times, and the proportion of false rejections provides an estimation of
- the probability 
+ required to reach a probability of type I errors 
 \begin_inset Formula $\hat{\alpha}$
 \end_inset
 
- of type I errors.
-\end_layout
-
-\begin_layout Standard
-For their tests, Wilcox and Erceg-Hurn use the g-and-h distribution (Appendix
+ close to the statistical testing threshold.
+ For their study, the authors used the g-and-h distribution (Appendix
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23420,34 +23429,22 @@ noprefix "false"
 
 \end_inset
 
-) to generate the data samples.
- Two levels of correlation between 
-\begin_inset Formula $E_{1}$
-\end_inset
-
- and 
-\begin_inset Formula $E_{2}$
-\end_inset
-
- were also considered in the original study (
+) to generate the data samples, and compared quantiles up two 0.9 for two
+ levels of correlation, 
 \begin_inset Formula $\rho=0$
 \end_inset
 
- or 
+ and 
 \begin_inset Formula $0.7$
 \end_inset
 
-).
- These tests aim at determining the sample size 
-\begin_inset Formula $N$
+.
+ In these conditions, they concluded that 
+\begin_inset Formula $N\ge30$
 \end_inset
 
- required to reach a probability of type I errors 
-\begin_inset Formula $\hat{\alpha}$
-\end_inset
-
- close to the statistical testing threshold.
- A recommendation in the original study is that 
+ was necessary to achieve a correct level of type I error, considering that
+ 
 \begin_inset Formula $\hat{\alpha}$
 \end_inset
 
@@ -23467,9 +23464,19 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+
+\color brown
 As these test cases did not include our conditions of interest in terms
- of correlation and quantile level, we performed new simulations, using
- functions provided in 
+ of correlation (often above 
+\begin_inset Formula $\rho=0.9$
+\end_inset
+
+) and quantile level (0.95 for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+), we performed new simulations, using the same procedure and functions
+ provided in 
 \family typewriter
 R
 \family default
@@ -23514,8 +23521,58 @@ literal "false"
 \begin_inset Formula $\rho=0,\thinspace0.5,\thinspace0.9$
 \end_inset
 
-, more representative of the conditions of interest in the present study.
- For compatibility with the original study, the number of replications was
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\color brown
+The procedure is the following: one draws two samples 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ of size 
+\begin_inset Formula $N$
+\end_inset
+
+ from the same distribution and compute 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ for the comparison of the values of a statistic S, 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+, respectively.
+ A value of 
+\begin_inset Formula $p_{g}<0.05$
+\end_inset
+
+ leads to the rejection of the true null hypothesis 
+\begin_inset Formula $s_{1}=s_{2}$
+\end_inset
+
+.
+ The process is repeated 
+\begin_inset Formula $M$
+\end_inset
+
+ times, and the proportion of rejections provides an estimation of the probabili
+ty 
+\begin_inset Formula $\hat{\alpha}$
+\end_inset
+
+ of type I errors.
+ For compatibility with the original study, the number of replications is
  kept to 
 \begin_inset Formula $M=2000$
 \end_inset
@@ -23525,7 +23582,11 @@ literal "false"
 \end_inset
 
 .
- The results are summarized in Fig.
+ The results for the comparison of MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ pairs are reported in Fig.
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23540,6 +23601,8 @@ noprefix "false"
 \end_inset
 
 .
+
+\color inherit
  
 \begin_inset Float figure
 placement !tb
@@ -23628,10 +23691,19 @@ literal "false"
 \end_inset
 
  is reached in all cases for 
-\begin_inset Formula $N>30$
+\begin_inset Formula $N\ge30$
 \end_inset
 
-, and then all values are close to the nominal value (0.05).
+.
+ Above 
+\begin_inset Formula $N=40$
+\end_inset
+
+, all values of 
+\begin_inset Formula $\hat{\alpha}$
+\end_inset
+
+ are close to the nominal value (0.05).
  There is no remarkable trend with respect to the type of g-and-h distribution,
  nor the correlation coefficient.
  We have estimated previously 
@@ -23651,11 +23723,11 @@ literal "false"
 
 \end_inset
 
- have concluded that the minimal request is 
+ have concluded that the minimal dataset size is 
 \begin_inset Formula $N\ge30$
 \end_inset
 
-, which we confirm.
+, which is confirmed here.
 \end_layout
 
 \begin_layout Standard
@@ -23668,7 +23740,7 @@ For
 \end_inset
 
 , the situation is more favorable for the normal distribution, but in all
- cases, the recommended limit is reached globally for 
+ cases, the recommended limit is reached in all cases for 
 \begin_inset Formula $N\ge60$
 \end_inset
 
@@ -23677,8 +23749,8 @@ For
 \begin_inset Formula $\rho=0.9$
 \end_inset
 
-) seem also to be almost systematically more favorable, and there is a slight
- deleterious effect below 
+) seem also to be almost systematically more favorable, and one observes
+ a slight deleterious effect below 
 \begin_inset Formula $N=50$
 \end_inset
 
@@ -23699,7 +23771,7 @@ For
 \begin_inset space \thinspace{}
 \end_inset
 
-% type I error probability (red dashed line).
+% probability of type I error (red dashed line).
 \end_layout
 
 \begin_layout Paragraph
@@ -23707,6 +23779,8 @@ Remark.
 \end_layout
 
 \begin_layout Standard
+
+\color brown
 Establishing the power of the test (
 \begin_inset Formula $1-\beta$
 \end_inset
@@ -23716,13 +23790,28 @@ Establishing the power of the test (
 \end_inset
 
  is the probability of type II errors (false negative, or the non-rejection
- of a false null hypothesis) is practically impossible unless one defines
- a specific alternative hypothesis.
+ of a false null hypothesis)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gregory05a"
+literal "false"
+
+\end_inset
+
+ requires the definition an alternative hypothesis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Klauenberg2019"
+literal "false"
+
+\end_inset
+
+.
  In the present case, there is a infinity of ways to realize the 
 \begin_inset Formula $s_{1}\ne s_{2}$
 \end_inset
 
- alternative, so the power estimation is intractable.
+ alternative, so the power estimation is practically intractable.
  
 \end_layout
 
@@ -23740,8 +23829,20 @@ name "sec:Simulated-example"
 \begin_layout Standard
 This example is intended to outline the advantages of Harrell and Davis
  (HD) algorithm for quantiles estimation, notably when associated with bootstrap
- sampling.
- One considers the values 
+ sampling, as suggested by Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+One considers the values 
 \begin_inset Formula $s_{1}$
 \end_inset
 
@@ -23753,7 +23854,7 @@ This example is intended to outline the advantages of Harrell and Davis
 \begin_inset Formula $S$
 \end_inset
 
- on two datasets 
+ for two datasets 
 \begin_inset Formula $E_{1}$
 \end_inset
 
@@ -23805,7 +23906,7 @@ noprefix "false"
 \begin_inset Formula $Q_{95}$
 \end_inset
 
- are obtained as described in Ref.
+ are obtained as described in a previous article
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -23818,9 +23919,18 @@ literal "false"
 \end_inset
 
 .
- Those values are fairly representative of some problems treated in the
- case studies.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Those values are fairly representative of some problems treated in the case
+ studies.
  
+\end_layout
+
+\end_inset
+
+
 \begin_inset Float table
 placement !tb
 wide false
@@ -24085,11 +24195,11 @@ noprefix "false"
 \end_layout
 
 \begin_layout Subsection
-Comparison to quantiles estimated with 
+Comparison of HD and 
 \begin_inset Formula $\hat{Q}_{7}$
 \end_inset
 
-
+ quantiles 
 \begin_inset CommandInset label
 LatexCommand label
 name "subsec:Quantiles-estimation-by"
@@ -24100,21 +24210,12 @@ name "subsec:Quantiles-estimation-by"
 \end_layout
 
 \begin_layout Standard
-The numerical case is based on the distribution for 
-\begin_inset Formula $E_{2}$
-\end_inset
 
-, as presented above.
- In a first test, 
-\begin_inset Formula $E_{2}$
-\end_inset
-
- sets of increasing sizes between 20 and 500 were generated by random sampling
- from the corresponding normal distribution, and 
+\color brown
 \begin_inset Formula $Q_{95}$
 \end_inset
 
- was estimated by two algorithms: the HD algorithm and the 
+ is estimated by two algorithms: the HD algorithm and the 
 \begin_inset Formula $\hat{Q}_{7}$
 \end_inset
 
@@ -24166,10 +24267,8 @@ literal "false"
 \end_inset
 
 .
- 
-\color teal
-It is more efficient for small samples, but more computationally demanding
- 
+ The latter is more efficient for small samples, but more computationally
+ demanding 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Harrell1982"
@@ -24178,8 +24277,7 @@ literal "false"
 \end_inset
 
 .
-\color orange
-
+ 
 \begin_inset Note Note
 status collapsed
 
@@ -24196,7 +24294,27 @@ Advantage of HD?
 \end_layout
 
 \begin_layout Standard
-The above procedure is repeated 10000 times, and the distributions of 
+
+\color brown
+In a first test, data sets of increasing sizes, between 
+\begin_inset Formula $N=20$
+\end_inset
+
+ and 500, are generated by random sampling from the normal distribution
+ for 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is estimated for each sample by both algorithms.
+ This procedure is repeated 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ times, and the distributions of 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
@@ -24215,14 +24333,20 @@ noprefix "false"
 
 \end_inset
 
-.
- This simulation shows that the HD quantiles converge faster than the reference
- one, with less bias for small samples (
+(a).
+ This simulation shows that the HD quantiles converge faster to the true
+ value (1.97) than the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ ones, with less bias for small samples (
 \begin_inset Formula $N<100$
 \end_inset
 
 ).
  
+\color inherit
+
 \begin_inset Float figure
 placement !tb
 wide false
@@ -24281,7 +24405,11 @@ Comparison of
 \end_inset
 
 % probability intervals.
- 
+ The black dashed line represents the theoretical value for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ (1.97).
 \end_layout
 
 \end_inset
@@ -24295,7 +24423,9 @@ Comparison of
 \end_layout
 
 \begin_layout Standard
-In the second test, a unique 
+
+\color brown
+In a second test, a unique 
 \begin_inset Formula $E_{2}$
 \end_inset
 
@@ -24304,7 +24434,11 @@ In the second test, a unique
 \end_inset
 
  is generated, and subsets of increasing size are taken as initial data
- for a bootstrap procedure (10000 repeats).
+ for a bootstrap procedure (
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ repeats).
  The bootstrap samples are analyzed as above and plotted in Fig.
 \begin_inset space \thinspace{}
 \end_inset
@@ -24320,9 +24454,13 @@ noprefix "false"
 \end_inset
 
 (b).
- The difference between both quantile algorithms is less striking, but the
- reference algorithm seems to produce quite asymmetric distributions, where
- the median is close to one of the quartiles.
+ The difference of convergence between both quantile algorithms is less
+ striking, but bootstrap for the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ algorithm seems to produce quite asymmetric distributions, where the median
+ is close to one of the quartiles.
  If one looks at the histograms of sampled values for 
 \begin_inset Formula $N=100$
 \end_inset
@@ -24341,12 +24479,12 @@ noprefix "false"
 
 \end_inset
 
-(c)), one sees that the HD algorithms produces a much smoother distribution,
- where 
+(c)), one sees that the HD algorithms produces a much smoother bootstrap
+ sample histogram, where 
 \begin_inset Formula $\hat{Q}_{7}$
 \end_inset
 
- produces rugged histograms.
+ produces ragged histograms.
  The same features are still visible, to a lesser extent, for 
 \begin_inset Formula $N=400$
 \end_inset
@@ -24366,7 +24504,7 @@ noprefix "false"
 \end_inset
 
 (d)).
- This feature of the HD method explains its good performances for small
+ This property of the HD method explains its good performances for small
  samples, when used in conjunction with the bootstrap 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -24376,6 +24514,8 @@ literal "false"
 \end_inset
 
 .
+
+\color inherit
  
 \begin_inset Note Note
 status collapsed
@@ -24663,6 +24803,8 @@ name "sec:The-g-and-h-distribution"
 \end_layout
 
 \begin_layout Standard
+
+\color brown
 The g-and-h distribution 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -24671,15 +24813,8 @@ literal "false"
 
 \end_inset
 
- is used in the following sections to study the impact of the distributions
- shapes on several statistics.
- 
-\end_layout
-
-\begin_layout Standard
-
-\color teal
-If 
+ is typically used to study the impact of distribution shapes on statistics.
+ If 
 \begin_inset Formula $z$
 \end_inset
 
@@ -24695,9 +24830,7 @@ ze^{\frac{h}{2}z^{2}} & \mathrm{if}\thinspace g=0
 \end_inset
 
 has a g-and-h distribution.
- 
-\color inherit
-Its shape is defined by parameters 
+ Its shape is defined by parameters 
 \begin_inset Formula $g$
 \end_inset
 
@@ -24732,7 +24865,6 @@ literal "false"
 \end_inset
 
 ).
- These four cases will be considered below.
  
 \end_layout
 
