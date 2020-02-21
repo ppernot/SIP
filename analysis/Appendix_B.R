@@ -9,7 +9,7 @@ nMC = 1000
 N = 100
 
 # Threshold to avoid singularity
-seqrxy = pmax(pmin(seq(-1,1,by=0.05),0.999),-0.999)
+seqrxy = pmax(pmin(seq(-1,1,by=0.1),0.999),-0.999)
 
 scores = c('mue', 'mse', 'q95hd')
 
@@ -60,9 +60,9 @@ for (g in c(0,0.2)) {
     colChoice = cols[c(1,2,4,6)]
     matplot(
       x,y, type = 'b',
-      pch = 16:19, col=colChoice, cex=0.8,
-      xlab = 'Data CC',  xlim = xlim,
-      ylab = 'Score CC', ylim = c(-0.1,1),
+      pch = 16:19, col=colChoice, cex=1,
+      xlab = expression(rho),  xlim = xlim,
+      ylab = expression(cor(s[1],s[2])), ylim = c(-0.1,1),
       main = ''
     )
     grid()
@@ -70,10 +70,10 @@ for (g in c(0,0.2)) {
     abline(0,-1,lty=2)
     lines(x,x^2,lty=3)
     for(i in 1:length(scores))
-      segments(x,yl[,i],x,yu[,i],lty=1,lwd=2,col=colChoice[i])
+      segments(x,yl[,i],x,yu[,i],lty=1,lwd=4,col=colChoice[i])
     legend('top', bty='n', ncol=2,
            legend = toupper(scores),
-           lty = 1, pch=16:19, cex=0.8,
+           lty = 1, pch=16:19, cex=1, lwd = 4,
            col=colChoice)
     box()
     mtext(
@@ -135,9 +135,9 @@ xlim = range(x,y)
 colChoice = cols[c(1,2,4,6)]
 matplot(
   x,y, type = 'b',
-  pch = 16:19, col=colChoice, cex=0.8,
-  xlab = 'Data CC',  xlim = xlim,
-  ylab = 'Score CC', ylim = c(-0.1,1),
+  pch = 16:19, col=colChoice, cex=1,
+  xlab = expression(rho),  xlim = xlim,
+  ylab = expression(cor(s[1],s[2])), ylim = c(-0.1,1),
   main = ''
 )
 grid()
@@ -145,10 +145,10 @@ abline(0,1,lty=2)
 abline(0,-1,lty=2)
 lines(x,x^2,lty=3)
 for(i in 1:length(scores))
-  segments(x,yl[,i],x,yu[,i],lty=1,lwd=2,col=colChoice[i])
+  segments(x,yl[,i],x,yu[,i],lty=1,lwd=4,col=colChoice[i])
 legend('top', bty='n', ncol=2,
        legend = toupper(scores),
-       lty = 1, pch=16:19, cex=0.8,
+       lty = 1, pch=16:19, cex=1, lwd=4,
        col=colChoice)
 box()
 mtext(
@@ -207,9 +207,9 @@ xlim = range(x,y)
 colChoice = cols[c(1,2,4,6)]
 matplot(
   x,y, type = 'b',
-  pch = 16:19, col=colChoice, cex=0.8,
-  xlab = 'Data CC',  xlim = xlim,
-  ylab = 'Score CC', ylim = c(-0.1,1),
+  pch = 16:19, col=colChoice, cex=1,
+  xlab = expression(rho),  xlim = xlim,
+  ylab = expression(cor(s[1],s[2])), ylim = c(-0.1,1),
   main = ''
 )
 grid()
@@ -217,10 +217,10 @@ abline(0,1,lty=2)
 abline(0,-1,lty=2)
 lines(x,x^2,lty=3)
 for(i in 1:length(scores))
-  segments(x,yl[,i],x,yu[,i],lty=1,lwd=2,col=colChoice[i])
+  segments(x,yl[,i],x,yu[,i],lty=1,lwd=4,col=colChoice[i])
 legend('top', bty='n', ncol=2,
        legend = toupper(scores),
-       lty = 1, pch=16:19, cex=0.8,
+       lty = 1, pch=16:19, cex=1, lwd=4,
        col=colChoice)
 box()
 mtext(

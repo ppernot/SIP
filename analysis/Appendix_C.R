@@ -171,7 +171,7 @@ stop()
 
 source('0-Setup.R')
 
-caseName = 'testPower'
+caseName = 'AppC'
 
 for (score in c('MUE','Q95')) {
   A = read.csv(file=paste0('pow',score,'.csv'),sep=' ')
@@ -201,17 +201,17 @@ for (score in c('MUE','Q95')) {
             col = cols[iplot],
             pch = iplot,
             xlab = 'N',
-            ylab = expression(hat(alpha)),
+            ylab = expression(alpha),
             ylim = c(0.04,0.14),
             main = paste0(score,' (g = ',g,', h = ',h,')')
           )
           grid()
-          abline(h=0.1,  lty=2, lwd = 6, col='red')
+          # abline(h=0.1,  lty=2, lwd = 6, col='red')
           abline(h=0.075,lty=2, lwd = 6, col='gray50')
           if(ig == 1)
             legend(
               'topright',
-              cex = 0.75,
+              cex = 0.85,
               title = expression(rho),
               legend = rhos,
               lty = 1, lwd = 6,
