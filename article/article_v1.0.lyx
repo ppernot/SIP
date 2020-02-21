@@ -114,7 +114,7 @@ fix-cm
 Probabilistic performance estimators for computational chemistry methods:
  Systematic Improvement Probability and Ranking Probability Matrix
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 
@@ -149,6 +149,7 @@ CNRS, Université Paris-Saclay,
 \end_layout
 
 \begin_layout Author Email
+
 Pascal.Pernot@universite-paris-saclay.fr
 \begin_inset Newline newline
 \end_inset
@@ -173,6 +174,7 @@ Sorbonne Universités, 75252 Paris, France
 \end_layout
 
 \begin_layout Author Email
+
 Andreas.Savin@lct.jussieu.fr
 \end_layout
 
@@ -248,14 +250,22 @@ literal "false"
  In a vast majority of benchmark studies, the MUE, or some variant of it,
  is used to compare methods performance.
 \begin_inset Note Note
-status collapsed
+status open
 
 \begin_layout Plain Layout
 If the ranking of methods is precious for developers who want to assess
  the impact of their latest methods, it might be of less interest for final
  users.
  In particular, it does not generally offer the choice and criteria for
- picking another method than the 'best one'.
+ picking another method than the 
+\begin_inset Quotes eld
+\end_inset
+
+best one
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -15588,7 +15598,7 @@ literal "false"
  This dataset was used by Jensen to study the impact of error cancellations
  when using standard or optimized medium-sized basis sets.
  Six basis sets are considered (pop2 = 6-31G(d,p), pop3 = 6-311G(2df,2pd),
- pcseg-1, pcseg-4, pop2-opt and pcseg1-opt), where the '-opt' ones have
+ pcseg-1, pcseg-4, pop2-opt and pcseg1-opt), where the "-opt" ones have
  optimized contraction coefficients with respect to the reference data.
 \end_layout
 
@@ -15597,7 +15607,7 @@ Correlations.
 \end_layout
 
 \begin_layout Standard
-The error sets of the '-opt' methods are practically uncorrelated to the
+The error sets of the "-opt" methods are practically uncorrelated to the
  other sets (Fig.
 \begin_inset space \thinspace{}
 \end_inset
@@ -15732,7 +15742,7 @@ noprefix "false"
 \end_inset
 
 .
- All statistics show that the ranking between both '-opt' methods is not
+ All statistics show that the ranking between both "-opt" methods is not
  strict.
 \begin_inset Float table
 placement !tb
@@ -16865,7 +16875,7 @@ Ranking.
 \end_layout
 
 \begin_layout Standard
-The leading position of the '-opt' methods is solid and confirmed by our
+The leading position of the "-opt" methods is solid and confirmed by our
  three scores (Fig.
 \begin_inset space \thinspace{}
 \end_inset
@@ -21777,13 +21787,6 @@ kcal/mol).
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage clearpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 Discussion
 \end_layout
@@ -21838,7 +21841,7 @@ ne human processing.
 
 \begin_layout Standard
 So, unless the structure of the data is complex, and this should not be
- the case for most benchmark studies, it is warmly recommended to use 'flat'
+ the case for most benchmark studies, it is warmly recommended to use "flat"
  numerical tables stored in an open format, such as CSV, and to avoid to
  put more than one information in each cell.
  
@@ -22160,8 +22163,15 @@ noprefix "false"
 \end_inset
 
 ), with SIP values reaching 0.95, close to the full systematic improvement.
- But, we did not find in the studied cases a 'best method' which fully improves
- the results of all lower rank methods.
+ But, we did not find in the studied cases a 
+\begin_inset Quotes eld
+\end_inset
+
+best method
+\begin_inset Quotes erd
+\end_inset
+
+ which fully improves the results of all lower rank methods.
  Because of the well known error compensations in computational chemistry
  methods 
 \begin_inset CommandInset citation
@@ -22184,7 +22194,23 @@ even physics-based improvements in DFAs do not lead to systematic improvements
 
 % of the systems (BOR2019).
  In fact, there is often a non-negligible percentage of systems for which
- a 'bad' method is better than a 'good' one, all across Jacob's ladder.
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+bad
+\begin_inset Quotes erd
+\end_inset
+
+ method is better than a 
+\begin_inset Quotes eld
+\end_inset
+
+good
+\begin_inset Quotes erd
+\end_inset
+
+ one, all across Jacob's ladder.
  
 \begin_inset Note Note
 status collapsed
@@ -22207,24 +22233,6 @@ We have also introduced the mean SIP as a possible ranking statistic.
  being compared and it is not transferable to comparisons out of its definition
  set.
  
-\end_layout
-
-\begin_layout Standard
-
-\color red
-\begin_inset Note Greyedout
-status open
-
-\begin_layout Plain Layout
-
-\color red
-SIP vs.
- Pinv ???
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Subsection
@@ -22450,26 +22458,26 @@ Supplementary Information
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+Datasets and R code to reproduce the results of the article are accessible
+ at 
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-\color red
-TBD: Datasets and R code to reproduce the results of the article GIT address.
+https://github.com/ppernot/SIP
 \end_layout
 
 \end_inset
 
+ or 
+\begin_inset Flex URL
+status open
 
+\begin_layout Plain Layout
+
+http://doi.org/10.5281/zenodo.3678481
 \end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset bibtex
-LatexCommand bibtex
-btprint "btPrintCited"
-bibfiles "packages,NN"
-options "bibtotoc,unsrturlPP"
 
 \end_inset
 
@@ -25829,9 +25837,6 @@ https://www.itl.nist.gov/div898/handbook/eda/section4/eda43.htm##Snedecor
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status collapsed
 
@@ -25864,6 +25869,18 @@ status collapsed
 
 
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "packages,NN"
+options "bibtotoc,unsrturlPP"
 
 \end_inset
 
