@@ -112,6 +112,34 @@ for (score in c('q95hd','msip'))
   }
 ###
 
+# Figs 4 SPLIT ####
+ifig=0
+gParLoc = gPars
+for (score in c('mue','q95hd','msip'))
+  for (type in c('levels')) {
+    png(
+      file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'_split.png'),
+      width = 1.5*gPars$reso,
+      height = 1.5*gPars$reso
+    )
+    ifig = ifig + 1
+    cex.lab = 1
+    if(type == 'ci'){
+      cex.lab = 1.1
+      gParLoc$cex = 1.2*gPars$cex
+    }
+    ErrViewLib::plotRankMat(
+      E = Errors,
+      score = score,
+      type = type,
+      label = ifig,
+      cex.lab = cex.lab,
+      gPars = gParLoc
+    )
+    dev.off()
+  }
+###
+
 # Fig. 5 ####
 cex.lab = 1.25
 png(

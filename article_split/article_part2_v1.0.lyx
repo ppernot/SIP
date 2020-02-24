@@ -127,7 +127,6 @@ Institut de Chimie Physique, UMR8000, CNRS, Université Paris-Saclay, 91405
 \end_layout
 
 \begin_layout Author Email
-
 Pascal.Pernot@universite-paris-saclay.fr
 \begin_inset Newline newline
 \end_inset
@@ -145,7 +144,6 @@ Laboratoire de Chimie Théorique, CNRS and UPMC Université Paris 06, Sorbonne
 \end_layout
 
 \begin_layout Author Email
-
 Andreas.Savin@lct.jussieu.fr
 \end_layout
 
@@ -3375,7 +3373,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename ../results/figs/PER2018_figRanks_mue_levels.png
+	filename ../results/figs/PER2018_figRanks_mue_levels_split.png
 	lyxscale 25
 	width 32col%
 	BoundingBox 300bp 400bp 1800bp 1700bp
@@ -3385,7 +3383,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/PER2018_figRanks_q95hd_levels.png
+	filename ../results/figs/PER2018_figRanks_q95hd_levels_split.png
 	lyxscale 25
 	width 32col%
 	BoundingBox 300bp 400bp 1800bp 1700bp
@@ -3395,7 +3393,7 @@ status open
 
 
 \begin_inset Graphics
-	filename ../results/figs/PER2018_figRanks_msip_levels.png
+	filename ../results/figs/PER2018_figRanks_msip_levels_split.png
 	lyxscale 25
 	width 32col%
 	BoundingBox 300bp 400bp 1800bp 1700bp
@@ -3418,18 +3416,11 @@ name "fig:pernot2"
 
 \end_inset
 
-Case PER2018: ranking probability matrix for
-\color red
- (a) 
+Case PER2018: ranking probability matrix for (a) MUE, (b) 
 \begin_inset Formula $Q_{95}$
 \end_inset
 
- and (b) MSIP.
-
-\color inherit
- 
-\color red
-LABELS
+ and (c) MSIP.
 \end_layout
 
 \end_inset
