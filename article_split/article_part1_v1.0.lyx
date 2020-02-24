@@ -1,0 +1,5640 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass revtex4-1
+\begin_preamble
+\usepackage{datetime}
+\usepackage{refstyle}
+\usepackage{longtable}
+\usepackage{url}
+\usepackage[title,toc,page,header]{appendix} 
+%%\usepackage[nosort,super]{cite}
+
+\pdfminorversion=5 
+\pdfcompresslevel=9
+\pdfobjcompresslevel=5
+\end_preamble
+\options aip, preprint
+\use_default_options false
+\begin_modules
+fixltx2e
+fix-cm
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding utf8
+\fontencoding T1
+\font_roman "lmodern" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype true
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement !t
+\paperfontsize 11
+\spacing single
+\use_hyperref true
+\pdf_title "Comparison of methods"
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle false
+\pdf_quoted_options "citecolor =blue, linkcolor = blue,  urlcolor  = blue"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 2
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Probabilistic performance estimators for computational chemistry methods:
+ Systematic Improvement Probability and Ranking Probability Matrix - Part
+ I.
+ Theory
+\end_layout
+
+\begin_layout Author
+Pascal PERNOT
+\end_layout
+
+\begin_layout Affiliation
+Institut de Chimie Physique, UMR8000, CNRS, Université Paris-Saclay, 91405
+ Orsay, France
+\end_layout
+
+\begin_layout Author Email
+
+Pascal.Pernot@universite-paris-saclay.fr
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Author
+Andreas SAVIN 
+\end_layout
+
+\begin_layout Affiliation
+Laboratoire de Chimie Théorique, CNRS and UPMC Université Paris 06, Sorbonne
+ Universités, 75252 Paris, France
+\end_layout
+
+\begin_layout Author Email
+
+Andreas.Savin@lct.jussieu.fr
+\end_layout
+
+\begin_layout Abstract
+The comparison of benchmark error sets is an essential tool for the evaluation
+ of theories in computational chemistry.
+ The standard ranking of methods by their Mean Absolute Error is unsatisfactory
+ for several reasons linked to the non-normality of the error distributions
+ and the presence of underlying trends.
+ Complementary statistics have recently been proposed to palliate such deficienc
+ies, such as quantiles of the absolute errors distribution or the mean predictio
+n uncertainty.
+ We introduce here a new score, the systematic improvement probability (SIP),
+ based on the direct pair-wise comparison of absolute errors, bypassing
+ the need of other descriptive statistics.
+ Independently of the chosen scoring rule, the uncertainty of the statistics
+ due to the incompleteness of the benchmark data sets is also generally
+ overlooked.
+ However, this uncertainty is essential to appreciate the robustness of
+ score-based rankings.
+ In the present article, we develop two indicators based on robust statistics
+ to address this problem: 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+, the inversion probability between two values of a statistic, and 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+, the ranking probability matrix.
+ We demonstrate also the essential contribution of the correlations between
+ error sets in these scores comparisons.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Benchmarks are a central tool for the evaluation of new theories/methods
+ in quantum chemistry 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Mata2017"
+literal "false"
+
+\end_inset
+
+.
+ Amongst many possible metrics 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Civalleri2012"
+literal "false"
+
+\end_inset
+
+, the most common benchmarking statistics are the mean unsigned error (MUE/MAD/M
+AE...), mean signed error (MSE), root mean squared error (RMSE) and root mean
+ squared deviation (RMSD).
+ The explicit definition of these scores is given in a previous article
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+.
+ In a vast majority of benchmark studies, the MUE, or some variant of it,
+ is used to compare methods performance.
+ Recently 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+, we proposed a more informative probabilistic score, the 95th percentile
+ of the absolute errors distribution (
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+).
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+We argued that 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is more informative than the MUE, because the latter provides probabilistic
+ information only if the errors distribution is zero-centered normal, a
+ rather unlikely occurrence.
+ In contrast, 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ gives us the error level that one has only 5
+\begin_inset space \thinspace{}
+\end_inset
+
+% chance to exceed in a new calculation (provided that the reference dataset
+ is representative of the systems for which predictions are sought).
+ The end-users can easily check if this threshold meets their expectations.
+ We recently realized that the 90th percentile (noted 
+\begin_inset Formula $P_{90}$
+\end_inset
+
+) has been used by Thakkar and colleagues in the same spirit 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Thakkar2015,Wu2015b"
+literal "false"
+
+\end_inset
+
+.
+ We think 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is more appropriate because of its direct link to the enlarged uncertainty
+ 
+\begin_inset Formula $u_{95}$
+\end_inset
+
+ recommended in the thermochemistry literature 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ruscic2014,Pernot2018"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Whichever the statistic used, the question remains of the robustness of
+ such scores and rankings with respect to the choice of the reference dataset.
+ One easily conceives that the values of these statistics change unpredictably
+ when one adds or removes points in the dataset.
+ Benchmarks implicitly assume that the error sets are representative samples
+ of unknown distributions characterizing model errors for each method –
+ the more systems in the dataset, the best the approximation of the underlying
+ distributions.
+ The quest for large datasets incurs heavy computer charges to perform benchmark
+s, and there is also a trend to reduce this burden by looking for small,
+ optimally representative, datasets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Gould2018,Morgante2019"
+literal "false"
+
+\end_inset
+
+.
+ Besides, there are several properties for which the reference data are
+ rather sparse, leading to rather small datasets.
+ Another trend, enhanced by the development of machine learning is to replace
+ experimental values by gold standard calculations, with limitations on
+ the size of accessible systems 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Ramakrishnan2015,Zaspel2019"
+literal "false"
+
+\end_inset
+
+.
+ As the estimated values of the statistics and their uncertainties depend
+ on the size of the dataset, it is important to assess this size effect
+ and its impact on statistics comparison and ranking.
+ 
+\end_layout
+
+\begin_layout Standard
+This question has been considered recently by Proppe and Reiher 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Proppe2017"
+literal "false"
+
+\end_inset
+
+, who used bootstrapping to assess the impact of dataset size and reference
+ data uncertainty on the first place in an intercomparison of M
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+o
+\end_layout
+
+\end_inset
+
+ssbauer isomer shifts estimated by a dozen of DFAs.
+ They concluded that for their dataset of 
+\begin_inset Formula $N=39$
+\end_inset
+
+ values, at least three methods were competing for the first place, with
+ a slight probabilistic advantage for PBE0.
+ This is a very interesting contribution to the quality assessment of benchmarki
+ng tools.
+ We recently considered another approach to this problem by defining an
+ inversion probability 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+ for the ranking of two methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+.
+ Our definition, which was based on the assumption of a normal distribution
+ of statistics differences and neglected error sets correlations, deserves
+ a more general setup.
+ 
+\end_layout
+
+\begin_layout Standard
+In the present study, we revisit the ranking uncertainty problem along several
+ complementary lines:
+\end_layout
+
+\begin_layout Enumerate
+we consider the statistical significance of the difference between two values
+ of a statistic: it depends both on the uncertainty on the estimated values,
+ which is notably influenced by the dataset size, and on the correlation
+ between these values, which is due in a large part to the use of a common
+ reference dataset 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nicholls2016"
+literal "false"
+
+\end_inset
+
+.
+ A few specific points have also to be considered: the non-normality of
+ the error sets distributions, the small size of some datasets, the uncertainty
+ on reference data, and some properties of quantiles estimators.
+ 
+\end_layout
+
+\begin_layout Enumerate
+we define a ranking probability matrix 
+\begin_inset Formula $\mathrm{P}_{r}$
+\end_inset
+
+, generalizing the proposition of Proppe and Reiher 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Proppe2017"
+literal "false"
+
+\end_inset
+
+, which enables us to propose an efficient visual assessment of the robustness
+ of rankings.
+\end_layout
+
+\begin_layout Enumerate
+we introduce a new statistic (the systematic improvement probability, SIP)
+ that conveys the proportion of systems in the benchmark data set for which
+ one method has smaller absolute errors than the other, and the expected
+ gain or loss when switching between methods.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the next section, we consider the uncertainty sources impacting the values
+ of benchmarking statistics (scores) and we present the tools best adapted
+ to estimate the uncertainty on statistics and to compare them.
+ In the companion paper (Part
+\begin_inset space \thinspace{}
+\end_inset
+
+II) of this study, these methods are validated on several datasets taken
+ from the recent benchmarking literature and covering a wide range of dataset
+ sizes and properties.
+ The discussion considers the impact of these observations on the benchmarking
+ practice and proposes several suggestions on their reporting, as well as
+ on the best practice to share benchmark data.
+\end_layout
+
+\begin_layout Section
+Statistical methods
+\end_layout
+
+\begin_layout Subsection
+Error sets, their uncertainty and correlation
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Error-sets,-their"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Benchmarking of a method 
+\begin_inset Formula $M$
+\end_inset
+
+ is based on the statistical analysis of its error set (
+\begin_inset Formula $E_{M}=\left\{ e_{i}(M)\right\} _{i=1}^{N}$
+\end_inset
+
+), based on a set of 
+\begin_inset Formula $N$
+\end_inset
+
+ calculated (
+\begin_inset Formula $C_{M}=\left\{ c_{i}(M)\right\} _{i=1}^{N}$
+\end_inset
+
+) and reference data (
+\begin_inset Formula $R=\left\{ r_{i}\right\} _{i=1}^{N}$
+\end_inset
+
+), where
+\begin_inset Formula 
+\begin{equation}
+e_{i}(M)=r_{i}-c_{i}(M)\label{eq:errors-def}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Uncertainty.
+\end_layout
+
+\begin_layout Standard
+As the reference data or even the calculated values can be uncertain, one
+ should consider that the error sets contain uncertain values when estimating
+ and comparing statistics.
+ Experimental or computational uncertainties being typically estimated by
+ standard deviations, one can use the method of combination of variances
+ to get the uncertainty on the errors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GUM"
+literal "false"
+
+\end_inset
+
+,
+\begin_inset Formula 
+\begin{equation}
+u(e_{i})=\sqrt{u(r_{i})^{2}+u(c_{i})^{2}}\label{eq:ue-def}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ is the uncertainty on 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ This formula assumes that the individual errors on the reference data and
+ calculated values are uncorrelated.
+ For an experimental reference value 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+, 
+\begin_inset Formula $u(r_{i})$
+\end_inset
+
+ would typically be a measurement uncertainty.
+ For a computed reference value 
+\begin_inset Formula $r_{i}$
+\end_inset
+
+ and for a calculated value 
+\begin_inset Formula $c_{i}$
+\end_inset
+
+, uncertainty might come from numerical uncertainty due to the use of finite
+ precision arithmetics and discretization errors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Janes2011,Cances2017"
+literal "false"
+
+\end_inset
+
+, statistical uncertainty (
+\emph on
+e.g.
+\emph default
+, for Monte Carlo methods 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Reynolds_1982,Cailliez2011"
+literal "false"
+
+\end_inset
+
+), or parametric uncertainty (
+\emph on
+e.g.
+\emph default
+, for calibrated methods 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Mortensen2005,Cailliez2011,Pernot2017b,Bakowies2019,Bakowies2020"
+literal "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+We consider here deterministic computational chemistry methods with assumed
+ low and controlled arithmetic uncertainty.
+ The uncertainty on errors is then equal to the reference data uncertainty
+ 
+\begin_inset Formula $u(e_{i})\equiv u(r_{i})$
+\end_inset
+
+.
+ For the sake of generality, the 
+\begin_inset Formula $u(e_{i})$
+\end_inset
+
+ notation is preserved in the following.
+\end_layout
+
+\begin_layout Paragraph
+Correlation.
+\end_layout
+
+\begin_layout Standard
+Let us consider a set of 
+\begin_inset Formula $K$
+\end_inset
+
+ methods 
+\begin_inset Formula $\left\{ M_{i}\right\} _{i=1}^{K}$
+\end_inset
+
+.
+ The covariance 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Snedecor1989"
+literal "false"
+
+\end_inset
+
+ of the error sets for two method can be decomposed as
+\begin_inset Formula 
+\begin{align}
+\mathrm{cov}(E_{i},E_{j}) & =\mathrm{cov}(R-C_{i},R-C_{j})\\
+ & =\mathrm{var}(R)+\mathrm{cov}(C_{i},C_{j})-\mathrm{cov}(R,C_{i})-\mathrm{cov}(R,C_{j})
+\end{align}
+
+\end_inset
+
+where, for brevity, we use shortened notations such as 
+\begin_inset Formula $E_{i}\equiv E_{M_{i}}$
+\end_inset
+
+.
+ It is not possible to predict the sign and amplitude of  
+\begin_inset Formula $\mathrm{cov}(E_{i},E_{j})$
+\end_inset
+
+ from this decomposition, but a few considerations might be helpful:
+\end_layout
+
+\begin_layout Itemize
+when comparing computational chemistry methods, it is very likely that their
+ prediction sets are strongly positively correlated (covariant).
+ It is also very likely that the predictions of good methods have a strong
+ positive covariance with the reference data, if the latter are not dominated
+ by measurement errors.
+ Besides, one can expect that the variance of the reference data is of the
+ same order (possibly larger if there are notable experimental errors) as
+ the variance/covariances of the predictions.
+ So, in a typical comparison scenario, 
+\begin_inset Formula $\mathrm{cov}(E_{i},E_{j})$
+\end_inset
+
+ results from the compensation of terms with similar magnitudes, and one
+ should not expect a null covariance of error sets.
+\end_layout
+
+\begin_layout Itemize
+if reference data uncertainties are larger than prediction errors, the covarianc
+e should be dominated by 
+\begin_inset Formula $\mathrm{var}(R)$
+\end_inset
+
+, and all error sets should be strongly positively correlated.
+\end_layout
+
+\begin_layout Standard
+Instead of covariances, it is easier to work with the correlation coefficients
+ between error sets (normalized covariances)
+\begin_inset Formula 
+\begin{align}
+\mathrm{cor}(E_{i},E_{j}) & =\frac{\mathrm{cov}(E_{i},E_{j})}{\sigma_{E_{i}}\sigma_{E_{j}}}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma_{E_{i}}$
+\end_inset
+
+is the standard deviation of the error set 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+, assumed finite.
+ We will show through case studies that the correlation matrix contains
+ relevant information on the quality of datasets and the proximity of methods.
+\end_layout
+
+\begin_layout Paragraph
+Representation.
+\end_layout
+
+\begin_layout Standard
+Correlation matrices can be represented by combining a color scheme and
+ an ellipse model 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Murdoch1996"
+literal "false"
+
+\end_inset
+
+ (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), such that a blue right-slanted ellipse stands for a positive correlation,
+ a red left-slanted ellipse for a negative one, and a white (invisible)
+ disk for a null correlation.
+ The larger the absolute value of the correlation, the darker the color
+ and the thinner the ellipse.
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/WU2015_CorrMat_Data_Spearman.png
+	lyxscale 20
+	width 45text%
+	BoundingBox 200bp 250bp 1800bp 1800bp
+	clip
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/WU2015_CorrMat_Errors_Spearman0.png
+	lyxscale 20
+	width 45text%
+	BoundingBox 200bp 250bp 1800bp 1800bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:cmat-example"
+
+\end_inset
+
+Rank correlation matrices between (a) data sets and (b) errors sets for
+ case WU2015 (see companion article).
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the example showcased in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a), one sees that all the datasets 
+\begin_inset Formula $C_{i}$
+\end_inset
+
+ are all strongly positively correlated.
+ By contrast, the error sets 
+\begin_inset Formula $E_{i}$
+\end_inset
+
+ present a more relaxed pattern (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:cmat-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b)), with weaker positive correlations, and even a very small negative
+ correlation for MP2 with all the other error sets.
+ Having noticed this, one can remark that MP2 data present also smaller
+ correlation coefficients with other datasets, although this is barely visible
+ on the figure (the difference bears on the third digit of the correlation
+ coefficients).
+ In the following, we present correlation matrices for error sets only.
+\end_layout
+
+\begin_layout Subsection
+Statistics, their uncertainty and correlation
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Statistics,-their-uncertainty"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Uncertainty.
+\end_layout
+
+\begin_layout Standard
+The value 
+\begin_inset Formula $s$
+\end_inset
+
+ of a statistic 
+\begin_inset Formula $S$
+\end_inset
+
+ (MSE, MUE, 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+...) estimated on an error set is generally uncertain, with uncertainty estimated
+ by its standard error 
+\begin_inset Formula $u(s)$
+\end_inset
+
+.
+ Two main uncertainty sources should be considered: (1) the limited size
+ 
+\begin_inset Formula $N$
+\end_inset
+
+ of the reference data sample, and (2) the errors uncertainties, 
+\begin_inset Formula $u(e_{i})$
+\end_inset
+
+ (Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Error-sets,-their"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Unless the dataset is exhaustive (
+\emph on
+e.g.
+\emph default
+, a dataset containing a property for a complete class of systems), the
+ first source is always present.
+ For experimental reference data, the second source is also always present,
+ but experimental uncertainties are rarely available for large datasets,
+ and a common practice seems to be to ignore them in the statistical analysis
+ (although they are often discussed to assess the quality of the dataset).
+ Some studies considered the effect of representative uncertainty levels
+ on benchmarking conclusions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,DeWaele2016,Proppe2017"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Estimation-of-the"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, the impact of both uncertainty sources is illustrated on the mean value
+ (MSE), for which analytical formulae are available.
+ The strategy to handle reference data uncertainty depends on their distribution.
+ If the reference data uncertainties are uniform over the dataset, the hypothesi
+s of 
+\emph on
+i.i.d.
+
+\emph default
+ errors holds, and standard statistical procedures can be applied (unless
+ one is interested in quantifying specifically model errors 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,Proppe2017"
+literal "false"
+
+\end_inset
+
+).
+ Otherwise, weighted statistics have to be used 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,Proppe2017"
+literal "false"
+
+\end_inset
+
+, which will not be considered here.
+ Instead, we assume that datasets should not include data with extreme uncertain
+ty values.
+\end_layout
+
+\begin_layout Standard
+Simple formulae for standard errors, such as those for the mean (a linear
+ statistic), are not available for non-linear statistics such as the MUE
+ or 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+.
+ Moreover, in order to avoid some of the limitations implied by such formulae
+ (
+\emph on
+e.g.
+\emph default
+, normality hypothesis), one can use a general method to estimate the standard
+ error of any statistic: the bootstrap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Efron1979,Efron1991,Hesterberg2015"
+literal "false"
+
+\end_inset
+
+.
+ It is a Monte Carlo sampling method which consists in random draws with
+ replacement of 
+\begin_inset Formula $N'$
+\end_inset
+
+ values from a dataset of size 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ In the standard bootstrap, one uses 
+\begin_inset Formula $N'=N$
+\end_inset
+
+, 
+\emph on
+i.e.
+\emph default
+, the generated samples have the same size than the original set.
+ The bootstrap has been shown to provide reliable estimations of uncertainties,
+ but the mean values unavoidably reflect the bias due to the original data
+ set 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hesterberg2015"
+literal "false"
+
+\end_inset
+
+.
+ In consequence, we estimate in the following the mean values from the original
+ sample and the uncertainties from the bootstrap samples.
+ The main limitation of the bootstrap is its hypothesis of 
+\begin_inset Formula $i.i.d.$
+\end_inset
+
+ data, but it is consistent with our choice to avoid weighted statistics
+ and to avoid reference datasets with a large uncertainty range.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Correlation.
+\end_layout
+
+\begin_layout Standard
+The statistics covariance 
+\begin_inset Formula $\mathrm{cov}(s_{1},s_{2})$
+\end_inset
+
+ derives from the mathematical expression of 
+\begin_inset Formula $S$
+\end_inset
+
+ and from the variances and covariance of the error sets, 
+\begin_inset Formula $\mathrm{cov}(E_{1},E_{2})$
+\end_inset
+
+.
+ To estimate 
+\begin_inset Formula $\mathrm{cov}(s_{1},s_{2})$
+\end_inset
+
+ in the case of a linear statistic, one can directly apply the generalization
+ of the combination of variances to several model outputs 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GUM-Supp2"
+literal "false"
+
+\end_inset
+
+.
+ For the MSE, it is easy to demonstrate that the covariance is transferred
+ in totality: 
+\begin_inset Formula $\mathrm{cov}(\overline{e}_{1},\overline{e}_{2})=\mathrm{cov}(E_{1},E_{2})$
+\end_inset
+
+.
+ More generally, for linear statistics, 
+\begin_inset Formula $\mathrm{cov}(E_{1},E_{2})=0\Longrightarrow\mathrm{cov}(s_{1},s_{2})=0$
+\end_inset
+
+.
+ For non-linear statistics, such as the MUE or 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+, the combination of covariances is unsuitable, and Monte Carlo strategies
+ are used.
+ 
+\end_layout
+
+\begin_layout Standard
+To illustrate the transfer of correlation from error sets to non-linear
+ statistics, we performed a Monte Carlo study, detailed in Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Covariance-of-scores"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, with scenarii implying diverse distribution shapes.
+ A few global trends can be derived from this study, notably that for the
+ MUE and 
+\begin_inset Formula $Q_{95},$
+\end_inset
+
+ 
+\begin_inset Formula $\mathrm{cor}(s_{1},s_{2})$
+\end_inset
+
+ is a convex, positive function of 
+\begin_inset Formula $\mathrm{cor}(E_{1},E_{2})$
+\end_inset
+
+.
+ Moreover, for a given value of 
+\begin_inset Formula $\mathrm{cor}(E_{1},E_{2})$
+\end_inset
+
+ one observes that 
+\begin_inset Formula $\mathrm{cor}(MUE_{1},MUE_{2})\ge\mathrm{cor}(Q_{95,1},Q_{95,2})$
+\end_inset
+
+.
+ As we explored only a fraction of the possible scenarii for the errors
+ distributions, these trends should not be considered as general.
+ Our main point is that the correlation of error sets is at least partially
+ transferred to the derived statistics, a fact to be considered when comparing
+ the values of these statistics.
+\end_layout
+
+\begin_layout Subsection
+Pair-wise comparison of errors
+\end_layout
+
+\begin_layout Standard
+The systematic improvement probability (SIP) between two methods 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+ is defined as the proportion of systems in the reference set for which
+ the absolute error decreases when using 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ instead of 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+.
+ It is estimated as
+\begin_inset Formula 
+\begin{align}
+\mathrm{SIP}_{i,j} & =\frac{D_{i,j}}{N}\\
+D_{i,j} & =\sum_{k=1}^{N}\mathbf{1}_{\Delta_{k}(M_{i},M_{j})<0}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{1}_{X}$
+\end_inset
+
+ is the indicator function, taking for value 1 if 
+\begin_inset Formula $X$
+\end_inset
+
+ is true and 0 otherwise, and
+\begin_inset Formula 
+\begin{equation}
+\Delta_{k}(M_{i},M_{j})=|e_{k}(M_{i})|-|e_{k}(M_{j})|
+\end{equation}
+
+\end_inset
+
+Note that, because of the possible presence of ties, one has 
+\begin_inset Formula $\mathrm{SIP}_{i,j}+\mathrm{SIP}_{j,i}\apprle1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Paragraph
+Interpretation.
+\end_layout
+
+\begin_layout Standard
+A line of the SIP matrix, provides the SIP values for the corresponding
+ method over all the other ones.
+ If a new method 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ provides systematic improvement over 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+, in the sense that it has smaller absolute errors for all systems in the
+ reference set, one should have 
+\begin_inset Formula $\mathrm{SIP}_{1,2}=1$
+\end_inset
+
+.
+ Values smaller than 0.5 indicate a degradation.
+ Note however that 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ can achieve small values of the SIP and still have better scores (MUE,
+ 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+), as a few large improvements might overwhelm many small degradations.
+ The interest of the SIP indicator is mainly to alert the user that using
+ a 
+\begin_inset Quotes eld
+\end_inset
+
+better method
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ can lead to a degradation of results with respect to 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+, with a probability close to 
+\begin_inset Formula $(1-\mathrm{SIP}_{1,2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Mean SIP.
+\end_layout
+
+\begin_layout Standard
+In order to compare and rank a set of 
+\begin_inset Formula $K$
+\end_inset
+
+ methods, one defines the Mean SIP (MSIP) as the mean value of a line of
+ the SIP matrix (excluding the diagonal)
+\begin_inset Formula 
+\begin{equation}
+\mathrm{MSIP}(M_{i})=\frac{1}{K}\sum_{j=1}^{K}\mathrm{SIP}_{i,j}\,(1-\delta_{ij})\label{eq:MSIP}
+\end{equation}
+
+\end_inset
+
+The largest MSIP value points to a method which in average provides the
+ best level of improvement over the other methods in the set.
+ Note that the MSIP is not transferable for comparisons with new methods
+ out of its definition set.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Representation.
+\end_layout
+
+\begin_layout Standard
+In the same spirit as for correlation matrices, we represent SIP matrices
+ by a combination of color levels and disks.
+ Here, the color scale goes from blue (0.0) to red (1.0) with a white midpoint
+ (0.5), and the area of the disks is proportional to the SIP value.
+ The diagonal is null.
+ The matrix should be read by row: a row with a majority of red patches
+ signal a method with good SIP performances.
+ A contrario, a majority of blue patches on a row indicate a method with
+ poor SIP performances.
+ The methods are ordered by decreasing value of MSIP.
+ 
+\end_layout
+
+\begin_layout Standard
+Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:SIPMAT-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ provides an example extracted from case PER2018 in the companion article.
+ It shows clearly that BH&HLYP is problematic, with a row of small blue
+ disks, for this dataset and is systematically and strongly outperformed
+ by all other methods.
+ At the opposite, the line for CAM-B3LYP is the only one to contain exclusively
+ values above 0.5 (reddish disks), albeit CAM-B3LYP does not achieve the
+ best MUE or 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ scores within this set of methods.
+ 
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/PER2018_SIPHeatmap.png
+	lyxscale 25
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:SIPMAT-example"
+
+\end_inset
+
+SIP matrix for a set of 9 methods compared on the G99 set of enthalpies
+ (case PER2018, companion article).
+ A line with a majority of red patches signals a method with good SIP performanc
+es.
+ The SIP value is color-coded and the area of a disk is proportional to
+ the corresponding value.
+ The methods are ordered by decreasing value of MSIP (Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:MSIP"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Paragraph
+Mean gain and loss.
+\end_layout
+
+\begin_layout Standard
+In order to appreciate the amplitude of the possible losses or gains when
+ switching between two methods, we define the mean gain (MG) as the mean
+ of the positive values of 
+\begin_inset Formula $\Delta_{k}(M_{i},M_{j})$
+\end_inset
+
+, which is only defined if 
+\begin_inset Formula $\mathrm{SIP}_{i,j}>0$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align}
+\mathrm{MG}_{i,j} & =\frac{1}{D_{i,j}}\sum_{k=1}^{N}\mathbf{1}_{\Delta_{k}(M_{i},M_{j})<0}\,\Delta_{k}(M_{i},M_{j})\\
+\mathrm{ML}_{i,j} & =-\mathrm{MG}_{j,i}
+\end{align}
+
+\end_inset
+
+where the mean loss (ML) is the opposite of the mean gain for the reciprocal
+ comparison.
+ These statistics are intended to convey an amplitude of the improvement
+ of 
+\begin_inset Formula $M_{i}$
+\end_inset
+
+ over 
+\begin_inset Formula $M_{j}$
+\end_inset
+
+: MG is therefore a negative value (corresponding to a decrease of absolute
+ errors), and ML a positive value.
+ Moreover, the SIP, MG and ML provide a decomposition of the MUE difference
+ between two methods:
+\begin_inset Formula 
+\begin{align}
+\Delta_{\mathrm{MUE}_{i,j}} & =\mathrm{MUE}(M_{i})-\mathrm{MUE}(M_{j})\\
+ & =\mathrm{SIP}_{i,j}*\mathrm{MG}_{i,j}+\mathrm{SIP}_{j,i}*\mathrm{ML}_{i,j}
+\end{align}
+
+\end_inset
+
+This shows that, except for method pairs with an extreme SIP value, any
+ MUE difference is the balance between losses and gains distributed over
+ the systems.
+ One should not expect that a method with a smaller MUE will systematically
+ provide better results.
+ 
+\end_layout
+
+\begin_layout Paragraph
+ECDF of 
+\begin_inset Formula $\Delta_{k}(M_{i},M_{j})$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The scores (SIP, MG and ML) can be visualized on a single graph of the Empirical
+ Cumulated Density Function (ECDF) of the differences of absolute errors
+ between two methods, as shown in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Delta-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b).
+ This example is extracted from case BOR2019 in the companion article, on
+ the prediction of band gaps.
+ It compares mBJ (MUE = 0.50
+\begin_inset space \thinspace{}
+\end_inset
+
+eV) and LDA (MUE = 1.17
+\begin_inset space \thinspace{}
+\end_inset
+
+eV), showing that the large MUE difference (
+\begin_inset Formula $\Delta_{\mathrm{MUE}}$
+\end_inset
+
+) between these methods is the balance of a mean gain 
+\begin_inset Formula $\mathrm{MG}=-0.86$
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+eV for 85
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the systems (SIP), and a mean loss 
+\begin_inset Formula $\mathrm{ML}=0.37$
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+eV for 15
+\begin_inset space \thinspace{}
+\end_inset
+
+% of the systems.
+ In the hypothesis of a representative dataset, a user switching from LDA
+ to mBJ has to accept a 15
+\begin_inset space \thinspace{}
+\end_inset
+
+% risk to see his LDA results degraded in average by 0.37
+\begin_inset space \thinspace{}
+\end_inset
+
+eV, up to 1
+\begin_inset space \thinspace{}
+\end_inset
+
+eV.
+ 
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/BOR2019_compareECDF.png
+	lyxscale 25
+	width 45text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/BOR2019_deltaECDF.png
+	lyxscale 25
+	width 45text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Delta-example"
+
+\end_inset
+
+Statistics of absolute errors on band gaps for methods mBJ and LDA (case
+ BOR2019, companion article) and their pair-wise differences: (a) ECDF of
+ two error sets to be compared.
+ The MUE values are depicted by vertical dotted lines, and the 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+values
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+ by vertical dashed lines; (b) ECDF of the difference of absolute errors
+ (blue curve).
+ The green- and red-shaded bands represent 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% confidence intervals for the reported statistics (SIP: systematic improvement
+ probability; MG: mean gain; ML: mean loss, 
+\begin_inset Formula $\Delta_{MUE}$
+\end_inset
+
+: MUE difference).
+ The orange bar represents an estimated level of uncertainty in the dataset.
+ It is a visual aid to evaluate the pertinence of the observed differences.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that this information is not accessible when considering the ECDFs
+ of the absolute errors (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Delta-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a)).
+ For the chosen example, the comparison of these ECDFs might leave the false
+ impression that mBJ has consistently smaller absolute errors than LDA,
+ which is an artifact due to the ignorance of data pairing (correlation)
+ in this representation.
+ 
+\end_layout
+
+\begin_layout Subsection
+Pair-wise comparison of statistics
+\end_layout
+
+\begin_layout Subsubsection
+The testing framework
+\end_layout
+
+\begin_layout Standard
+Using the error sets for two methods 
+\begin_inset Formula $M_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $M_{2}$
+\end_inset
+
+, one calculates the values 
+\begin_inset Formula $s_{1}=S(E_{1})$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}=S(E_{2})$
+\end_inset
+
+ of a statistic 
+\begin_inset Formula $S$
+\end_inset
+
+.
+ A cpmmon procedure to compare these two values is to test if their difference
+ is significantly larger than their combined uncertainty, 
+\emph on
+i.e.
+\emph default
+
+\begin_inset Formula 
+\begin{equation}
+|s_{1}-s_{2}|>\kappa\thinspace u(s_{1}-s_{2})\label{eq:compare}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $u(s_{1}-s_{2})$
+\end_inset
+
+ is the uncertainty on the difference, and 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ is an enlargement factor typically taken as 
+\begin_inset Formula $\kappa=2$
+\end_inset
+
+ (or 1.96) in metrology 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kacker2010"
+literal "false"
+
+\end_inset
+
+.
+ In the hypothesis of a normal distribution for the statistics difference,
+ 
+\begin_inset Formula $\kappa=1.96$
+\end_inset
+
+ corresponds to a confidence level of 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% for a two-sided test, implied by the absolute value in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:compare"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ If one has evidence that the distribution of differences is not normal,
+ 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ has to be chosen as the uncertainty enlargement factor providing a 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% confidence interval for this distribution.
+ If the test is positive, there is less than 5
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability that the difference between 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ is due to sampling effects.
+\end_layout
+
+\begin_layout Standard
+Assuming that 
+\begin_inset Formula $u(s_{1}-s_{2})$
+\end_inset
+
+ cannot be null nor infinite, it is convenient to recast the test by using
+ a discrepancy factor
+\begin_inset Formula 
+\begin{equation}
+\xi(s_{1},s_{2})=\frac{|s_{1}-s_{2}|}{u(s_{1}-s_{2})}\label{eq:discFac-1}
+\end{equation}
+
+\end_inset
+
+to be compared to the threshold 
+\begin_inset Formula $\kappa$
+\end_inset
+
+.
+ A probability value (
+\begin_inset Formula $p$
+\end_inset
+
+-value) corresponding to 
+\begin_inset Formula $\xi$
+\end_inset
+
+ is derived from the cumulated density function of the expected distribution
+ for 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ For instance
+\begin_inset Formula 
+\begin{align}
+p_{t} & =1-\Phi_{H}(\xi)\label{eq:pt-1}\\
+ & =2*\left(1-\Phi(\xi)\right)\label{eq:pt}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $\Phi_{H}(.)$
+\end_inset
+
+ is the cumulative distribution function (CDF) of the standard half-normal
+ distribution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Leone1961"
+literal "false"
+
+\end_inset
+
+, and 
+\begin_inset Formula $\Phi(.)$
+\end_inset
+
+ is the CDF of the standard normal distribution.
+ The half-normal distribution is used to account for the absolute value
+ in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:discFac-1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The 
+\begin_inset Formula $t$
+\end_inset
+
+ index of 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ refers here to the analogy with the two-sample 
+\begin_inset Formula $t$
+\end_inset
+
+-test for equal means 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Snedecor1989"
+literal "false"
+
+\end_inset
+
+.
+ For testing, the probability threshold corresponding to 
+\begin_inset Formula $P(\xi>\kappa=1.96)$
+\end_inset
+
+ is 
+\begin_inset Formula $0.05$
+\end_inset
+
+.
+ For 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ above this value, one chooses not to reject the hypothesis that the observed
+ difference between two values is due to chance.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+To overpass the normality hypothesis, one needs to characterize the CDF
+ of 
+\begin_inset Formula $\xi$
+\end_inset
+
+.
+ As for a given dataset one has single values for 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+, this requires to generate alternative datasets by some sampling strategy
+ (Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Bootstrap-based-comparison-of"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to be able to estimate 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+, one needs to evaluate the uncertainty on the difference of 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+.
+ Formally, it can be obtained by the combination of variances 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GUM"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+u(s_{1}-s_{2})=\sqrt{u^{2}(s_{1})+u^{2}(s_{2})-2\mathrm{cov}(s_{1},s_{2})}\label{eq:u-diff-stat}
+\end{equation}
+
+\end_inset
+
+The usefulness of this formula depends on several assumptions (theoretical
+ limits of the statistics not within a high probability interval around
+ their values, symmetry of error intervals...
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Nicholls2014,Nicholls2016"
+literal "false"
+
+\end_inset
+
+).
+ Nevertheless, it shows that the covariance between statistics can have
+ a major effect on the amplitude of 
+\begin_inset Formula $u(s_{1}-s_{2})$
+\end_inset
+
+.
+ In the limit of very strong positive correlation, the uncertainty on the
+ difference can become very small, impacting 
+\begin_inset Formula $\xi(s_{1},s_{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+To estimate the effect of correlation on the comparison of scores, we introduce
+ a variant 
+\begin_inset Formula $p_{unc}$
+\end_inset
+
+ (uncorrelated) of 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+, based on a version of the discrepancy ignoring correlation
+\begin_inset Formula 
+\begin{align}
+\xi_{unc}(s_{1},s_{2}) & =\frac{|s_{1}-s_{2}|}{\sqrt{u(s_{1})^{2}+u(s_{2})^{2}}}\label{eq:xiUnc}\\
+p_{unc} & =2*\left(1-\Phi(\xi_{unc})\right)\label{eq:Punc}
+\end{align}
+
+\end_inset
+
+In the hypothesis of  mostly positive correlations for the statistics of
+ interest (MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+; Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Covariance-of-scores"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), 
+\begin_inset Formula $p_{unc}$
+\end_inset
+
+ is expected to overestimate 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsubsection
+Bootstrap-based comparison of statistics
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Bootstrap-based-comparison-of"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Several strategies can be considered to compare pairs of statistics 
+\begin_inset Formula $(s_{1},s_{2})$
+\end_inset
+
+ through a 
+\begin_inset Formula $p$
+\end_inset
+
+-value.
+\end_layout
+
+\begin_layout Paragraph
+Estimate 
+\begin_inset Formula $u(s_{1})$
+\end_inset
+
+, 
+\begin_inset Formula $u(s_{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathrm{cov}(s_{1},s_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The uncertainty on the statistics of interest (except for the MSE and RMSD)
+ and their covariance are not, to our knowledge, available in analytical
+ form.
+ In consequence, one has to use a numerical procedure, such as the bootstrap
+ to estimate them 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Efron1979,Hesterberg2015"
+literal "false"
+
+\end_inset
+
+.
+ The application of the bootstrap to individual terms of Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u-diff-stat"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ will result in an accumulation of statistical uncertainties.
+ Besides, the estimation of covariances is very sensitive to outliers.
+ This approach is clearly suboptimal and is not recommended.
+\end_layout
+
+\begin_layout Paragraph
+Estimate directly 
+\begin_inset Formula $u(s_{1}-s_{2})$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+A better approach in the present context is to estimate directly (by bootstrap)
+ the uncertainty on the difference of scores.
+ This relieves some distributional hypotheses in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u-diff-stat"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, and enables the explicit correlation of samples of 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ through paired-data sampling.
+ However, estimating a discrepancy factor leads us to use Eq.
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:pt"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ to estimate the 
+\begin_inset Formula $p$
+\end_inset
+
+-value, with the associated normality hypothesis.
+ 
+\begin_inset Float algorithm
+placement !t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+Input: Two paired error sets 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ of size 
+\begin_inset Formula $N$
+\end_inset
+
+, a statistic estimator 
+\begin_inset Formula $S$
+\end_inset
+
+, and a number of bootstrap samples 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bootstrap the statistics difference
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $j=1:B$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Generate a 
+\begin_inset Formula $N$
+\end_inset
+
+-sample of paired data with replacement 
+\begin_inset Formula $\longrightarrow\left(E_{1}^{*},E_{2}^{*}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Estimate 
+\begin_inset Formula $d_{j}=S(E_{1}^{*})-S(E_{2}^{*})$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Calculate a generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value to test 
+\begin_inset Formula $S(E_{1})=S(E_{2})$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula $p_{g}=2\min(p^{*},1-p^{*})$
+\end_inset
+
+, where
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula $p^{*}=(A+0.5C)/B$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $A=\sum_{i=1}^{B}1_{d_{i}<0}$
+\end_inset
+
+ 
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset Formula $C=\sum_{i=1}^{B}1_{d_{i}=0}$
+\end_inset
+
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:methodM"
+
+\end_inset
+
+Method M: testing the equality of a statistic 
+\begin_inset Formula $S$
+\end_inset
+
+ for two paired samples by bootstrap and a generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value (
+\begin_inset Formula $p_{g}$
+\end_inset
+
+) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value.
+ 
+\end_layout
+
+\begin_layout Standard
+The use of the generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value (
+\begin_inset Formula $p_{g}$
+\end_inset
+
+), as proposed by Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Liu1997,Wilcox2012"
+literal "false"
+
+\end_inset
+
+ (method M; 
+\emph on
+cf.
+
+\emph default
+ Algorithm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:methodM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), conveniently avoids to estimate 
+\begin_inset Formula $u(s_{1}-s_{2})$
+\end_inset
+
+, and the incurring normality hypothesis of 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+.
+ It is based on a simple counting of null and negative bootstrapped differences
+ of statistics with paired samples.
+ If 
+\begin_inset Formula $S(E_{1})=S(E_{2})$
+\end_inset
+
+, one expects that the bootstrap sample will generate positive and negative
+ values of their difference in equal amounts.
+ In this case, 
+\begin_inset Formula $p^{*}\simeq1-p^{*}\simeq0.5$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ is close to 1.
+ Note that the null values in the differences sample are shared equally
+ between the positive and negative values.
+ On the opposite, if there is a small proportion 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ of negative values, the mean of the differences sample should be positive,
+ different from zero.
+ The smaller 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ the farther the mean from zero, and the lower the probability of the null,
+ 
+\begin_inset Formula $S(E_{1})=S(E_{2})$
+\end_inset
+
+ hypothesis.
+ The symmetric case occurs for large values of 
+\begin_inset Formula $p^{*}$
+\end_inset
+
+ (small values of 
+\begin_inset Formula $1-p^{*}$
+\end_inset
+
+).
+ As the sign of the difference is irrelevant, a factor two is applied to
+ estimate 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+.
+ The identity of this algorithm with the analytical 
+\begin_inset Formula $p$
+\end_inset
+
+-value for the comparison of normal samples means is established in Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Estimation-of--values"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The use of paired samples is essential to capture inter-statistics correlations.
+ Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ have shown that their method M provides a well controlled level of type
+ I errors (false positive) for the comparison of quantiles at the 0.05 level.
+ They estimated that dataset sizes of 
+\begin_inset Formula $N\ge30$
+\end_inset
+
+ are necessary when comparing quantiles up to 0.9.
+ Using the same protocol, we estimated that for the comparison of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ values at the same 0.05 level, 
+\begin_inset Formula $N\ge60$
+\end_inset
+
+ is requested.
+ Details are presented in Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Type-I-error"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Rank inversion probability 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Rank-inversion-probability"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a previous article 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+, we defined a ranking inversion probability 
+\begin_inset Formula 
+\begin{equation}
+P_{inv}=P(S_{1}<S_{2}|s_{1}>s_{2})\label{eq:defPinv}
+\end{equation}
+
+\end_inset
+
+based on the normal distribution.
+ Using Equations
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:xiUnc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Punc"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+ can be reformulated as 
+\begin_inset Formula 
+\begin{align}
+P_{inv} & =\Phi(0;\mu=s_{1}-s_{2},\sigma=\sqrt{u^{2}(s_{1})+u^{2}(s_{2})})\\
+ & =\Phi(0;\mu=\xi_{unc})\\
+ & =\Phi(-\xi_{unc})\\
+ & =1-\Phi(\xi_{unc})\\
+ & =p_{unc}\thinspace/\thinspace2
+\end{align}
+
+\end_inset
+
+where the unspecified parameters of the normal cumulative distribution function
+ 
+\begin_inset Formula $\Phi(x;\mu,\sigma)$
+\end_inset
+
+ are their standard values (
+\begin_inset Formula $\mu=0$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma=1$
+\end_inset
+
+).
+ The link to 
+\begin_inset Formula $p_{unc}$
+\end_inset
+
+ shows the limitations of our previous definition of 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+, 
+\emph on
+i.e.
+\emph default
+, the normality hypothesis and the neglect of error sets correlations.
+ 
+\end_layout
+
+\begin_layout Standard
+Using the same difference statistics used for 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ (Algorithm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:methodM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), one can generalize Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defPinv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ by defining 
+\begin_inset Formula $P_{inv}$
+\end_inset
+
+ as the probability to have differences in the bootstrap sample with a sign
+ opposite to the reference one (
+\begin_inset Formula $\mathrm{sign}(s_{1}-s_{2})$
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{align}
+P_{inv} & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{\mathrm{sign}(d_{i})\ne\mathrm{sign}(s_{1}-s_{2})}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\label{eq:pinv-new}
+\end{align}
+
+\end_inset
+
+where 
+\begin_inset Formula $B$
+\end_inset
+
+ is the number of bootstrap samples and the null differences (with sign
+ 0) are compensated for.
+ Enforcing the condition 
+\begin_inset Formula $s_{1}>s_{2}$
+\end_inset
+
+ in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defPinv"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, one gets 
+\begin_inset Formula $\mathrm{sign}(s_{1}-s_{2})=1$
+\end_inset
+
+, and finally
+\begin_inset Formula 
+\begin{align}
+P_{inv} & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{\mathrm{sign}(d_{i})\ne1}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
+ & =\frac{1}{B}\left(\sum_{i=1}^{B}1_{d_{i}\le0}-\sum_{i=1}^{B}1_{d_{i}=0}\right)\\
+ & =\frac{1}{B}\sum_{i=1}^{B}1_{d_{i}<0}\\
+ & \simeq p_{g}\thinspace/\thinspace2\label{eq:pinv-vs-pg}
+\end{align}
+
+\end_inset
+
+where the relation to 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ (Algoritm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:methodM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) assumes a negligible probability to have null statistics differences and
+ exploits the fact that 
+\begin_inset Formula $\sum_{i=1}^{B}1_{d_{i}<0}<\sum_{i=1}^{B}1_{d_{i}>0}$
+\end_inset
+
+ if 
+\begin_inset Formula $s_{1}>s_{2}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsubsection
+Ranking probability matrix 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Ranking-probability-matrix"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A measure of the reliability of a statistic-based ranking can be estimated
+ by bootstrap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hall2009"
+literal "false"
+
+\end_inset
+
+.
+ This approach has notably been used by Proppe and Reiher 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Proppe2017"
+literal "false"
+
+\end_inset
+
+ to study how the sample size affects the probability for a DFA to be ranked
+ at first place on the basis of its prediction uncertainty.
+ We apply it here to compute, for a set of 
+\begin_inset Formula $K$
+\end_inset
+
+ methods scored by a statistic 
+\begin_inset Formula $S$
+\end_inset
+
+, a ranking probability matrix 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+ giving, for each method, its probability to have any rank
+\begin_inset Formula 
+\begin{equation}
+P_{r,jk}=P(\mathrm{rank}(S_{j})=k);\thinspace j,k=1,\ldots,K
+\end{equation}
+
+\end_inset
+
+The algorithm to generate this matrix is described in Algorithm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:bs-rank"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Float algorithm
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+Input: 
+\begin_inset Formula $K$
+\end_inset
+
+ paired error sets, 
+\begin_inset Formula $E_{1},\ldots,E_{K}$
+\end_inset
+
+ of size 
+\begin_inset Formula $N$
+\end_inset
+
+, a statistic estimator 
+\begin_inset Formula $S$
+\end_inset
+
+, and a number of bootstrap samples 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Bootstrap the ranks
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+For 
+\begin_inset Formula $j=1:B$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Generate a 
+\begin_inset Formula $N$
+\end_inset
+
+-sample of paired data with replacement 
+\begin_inset Formula $\longrightarrow\left(E_{1}^{*},\ldots,E_{K}^{*}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Enumerate
+Estimate the statistics vector 
+\begin_inset Formula $S^{*}=\left(S(E_{1}^{*}),\ldots,S(E_{K}^{*})\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Estimate the ranks by increasing order of 
+\begin_inset Formula $S^{*}$
+\end_inset
+
+: 
+\begin_inset Formula $O_{j}^{*}=\mathrm{order}(S^{*})$
+\end_inset
+
+, 
+\begin_inset Newline newline
+\end_inset
+
+where 
+\begin_inset Formula $O_{j}^{*}$
+\end_inset
+
+ is a 
+\begin_inset Formula $K$
+\end_inset
+
+-vector of integer values.
+ 
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Estimate for each method its probability to have any rank
+\end_layout
+
+\begin_deeper
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+P_{r,jk}=\frac{1}{B}\sum_{i=1}^{B}1_{O_{ij}^{*}=k}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:bs-rank"
+
+\end_inset
+
+Estimating the rank probabilities for a set of methods.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Representations.
+\end_layout
+
+\begin_layout Standard
+Two representations for this matrix are used by Hall and Miller 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hall2009"
+literal "false"
+
+\end_inset
+
+, either a combined color-levels
+\begin_inset space \thinspace{}
+\end_inset
+
+/
+\begin_inset space \thinspace{}
+\end_inset
+
+symbol-size image (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bsRank"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a)), or a summary by mode and probability intervals (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:bsRank"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b)).
+ In the following, we will use mostly the levels image representation which
+ we find easier to read and interpret.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+A summary in results tables can also be considered, by reporting for each
+ method its mode in ranking probability and the corresponding probability,
+ which indicates the strength of this rank.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/PER2018_figRanks_mue_levels.png
+	lyxscale 25
+	height 7cm
+	BoundingBox 300bp 400bp 1800bp 1700bp
+	clip
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/PER2018_figRanks_mue_ci.png
+	lyxscale 25
+	height 7cm
+	BoundingBox 0bp 170bp 1800bp 1800bp
+	clip
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:bsRank"
+
+\end_inset
+
+Graphical representations of a MUE ranking probability matrix 
+\begin_inset Formula $\mathbf{P}_{r}$
+\end_inset
+
+ : (left) color levels image of the ranking probability matrix; (right)
+ summary of the ranking probability matrix by the modes (diamonds) and 90
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability intervals.
+ The data are taken from the case PER2018 (see companion article).
+ Both representations indicate a possible ranking inversion between B97-1,
+ CAM-B3LYP and PBE0, 
+\emph on
+i.e.
+\emph default
+, the reference ranking based on the MUE is not certain for this trio.
+ Similar problems occur within two other groups, notably BLYP and PW86PBE.
+ The ranks of PBE (8) and BH&HLYP (9) are well established.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Remarks.
+\end_layout
+
+\begin_layout Itemize
+As discussed by Hall and Miller 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hall2009"
+literal "false"
+
+\end_inset
+
+, the standard bootstrap used in the present article (
+\begin_inset Formula $N$
+\end_inset
+
+-out
+\begin_inset space \thinspace{}
+\end_inset
+
+of-
+\begin_inset Formula $N$
+\end_inset
+
+ sampling) tends to underestimate the dispersion of the ranks.
+ Better estimates would be obtained by a 
+\begin_inset Formula $N'$
+\end_inset
+
+-out
+\begin_inset space \thinspace{}
+\end_inset
+
+of-
+\begin_inset Formula $N$
+\end_inset
+
+ sampling (
+\begin_inset Formula $N'<N$
+\end_inset
+
+), but the best choice of 
+\begin_inset Formula $N'$
+\end_inset
+
+ is problem-dependent and is left to the appreciation of the analyst.
+ For the sake of simplicity, and until further guidance on the optimal choice
+ of 
+\begin_inset Formula $N'$
+\end_inset
+
+, we consider here that the standard method provides a reasonable qualitative
+ appreciation of ranking uncertainties.
+ An example with 
+\begin_inset Formula $N'=N/3$
+\end_inset
+
+ is presented in case DAS2019 (companion article).
+\end_layout
+
+\begin_layout Itemize
+As a general trend, one expects that ranking uncertainty will increase for
+ smaller error sets, but might also increase with the number 
+\begin_inset Formula $K$
+\end_inset
+
+ of compared methods, notably if several methods have similar performances.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ (
+\emph on
+cf.
+
+\emph default
+ Section
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Caldeweyher2019"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+We did not explore further this aspect of the problem, but there should
+ be an optimal balance between the minimal dataset size and the number of
+ methods that can be effectively ranked.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Implementation
+\end_layout
+
+\begin_layout Standard
+Calculations have been made in the
+\family typewriter
+ R
+\family default
+ language 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CiteR"
+literal "false"
+
+\end_inset
+
+, using several packages, notably for bootstrap
+\family typewriter
+ (boot
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "R-boot"
+literal "false"
+
+\end_inset
+
+).
+ Bootstrap estimates are based on 1000 replicates.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Quantiles.
+\end_layout
+
+\begin_layout Standard
+Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ recommend the use of the Harrell and Davis method for quantiles estimation
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+, which provides a better stability for the bootstrap sampling of quantiles.
+ The relevance of this choice is illustrated in Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Simulated-example"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ In the case studies of the companion article (Part
+\begin_inset space \thinspace{}
+\end_inset
+
+II), all quantiles are estimated by the Harrell and Davis method 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+, as implemented in package 
+\family typewriter
+WSR2
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012,Wilcox2018,R-WRS2"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Correlation.
+\end_layout
+
+\begin_layout Standard
+The estimation of correlation coefficients by the standard Pearson method
+ is reputed to be very sensitive to the presence of outliers 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2018"
+literal "false"
+
+\end_inset
+
+.
+ As the presence of a small amount of outliers is a frequent feature of
+ the benchmarking data sets, we use the more robust rank-correlation (Spearman)
+ method, unless otherwise specified.
+ 
+\end_layout
+
+\begin_layout Paragraph
+Code.
+\end_layout
+
+\begin_layout Standard
+The application 
+\family typewriter
+ErrView
+\family default
+ implementing the methods described in this article (and more) and the correspon
+ding datasets are archived at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/ppernot/ErrView
+\end_layout
+
+\end_inset
+
+ (DOI: 10.5281/zenodo.3628489); a test web interface is also freely accessible
+ at 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://upsa.shinyapps.io/ErrView
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section*
+Supplementary Information
+\end_layout
+
+\begin_layout Standard
+The data that support the findings of this study are openly available in
+ Zenodo at
+\begin_inset Newline newline
+\end_inset
+
+ 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://doi.org/10.5281/zenodo.3678481"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citep
+key "SIPdata2020"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+appendixpage
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Estimation of the mean value and its uncertainty
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Estimation-of-the"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us consider the mean (signed) value of the errors (MSE).
+ In absence of uncertainty, it is defined as
+\begin_inset Formula 
+\begin{equation}
+\overline{e}=\frac{1}{N}\sum_{i=1}^{N}e_{i}
+\end{equation}
+
+\end_inset
+
+and its uncertainty (standard error) is estimated as
+\begin_inset Formula 
+\begin{equation}
+u(\overline{e})=\sqrt{\frac{s_{e}^{2}}{N}}\label{eq:uref}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $s_{e}^{2}$
+\end_inset
+
+ is a sample-based estimator of the population variance 
+\begin_inset Formula 
+\begin{equation}
+s_{e}^{2}=\frac{1}{N-1}\sum_{i=1}^{N}(e_{i}-\overline{e})^{2}
+\end{equation}
+
+\end_inset
+
+Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uref"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ gives the well-known dependence of the MSE uncertainty with the dataset
+ size for independent and identically distributed (
+\emph on
+i.i.d.) 
+\emph default
+errors, assuming a finite variance, which might exclude error sets with
+ heavy-tailed distributions, 
+\emph on
+e.g.
+\emph default
+, Cauchy.
+ 
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Note that 
+\begin_inset Formula $u(\overline{e})$
+\end_inset
+
+ in Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uref"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ does not account for the uncertainty on 
+\begin_inset Formula $s_{e}$
+\end_inset
+
+.
+ Taking this factor into account leads to a larger uncertainty, which can
+ be estimated as 
+\begin_inset Formula $u(\overline{e})=\sqrt{(N-1)/(N-3)}\thinspace s_{e}/\sqrt{N}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kacker2003"
+literal "false"
+
+\end_inset
+
+.
+ This formula is based on the properties of the Student's-
+\emph on
+t
+\emph default
+ distribution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Evans2000"
+literal "false"
+
+\end_inset
+
+.
+ The impact of the correction factor is notable only for very small datasets
+ (smaller than 3
+\begin_inset space \thinspace{}
+\end_inset
+
+% for 
+\begin_inset Formula $N\ge30$
+\end_inset
+
+), and we will consider the standard formula .
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If uncertainty on errors 
+\begin_inset Formula $u(e_{i})$
+\end_inset
+
+ is negligible, 
+\begin_inset Formula $s_{e}$
+\end_inset
+
+ is an estimation of the standard deviation of the errors distribution 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, which represents the dispersion of model errors.
+ If the reference data are uncertain, 
+\begin_inset Formula $s_{e}$
+\end_inset
+
+ quantifies a dispersion due to both model errors and reference data uncertainty.
+ In consequence, it overestimates the dispersion of model errors, and specific
+ models have to be designed if one wishes to estimate this specific contribution
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,Proppe2017"
+literal "false"
+
+\end_inset
+
+.
+ This points to the necessity of using accurate reference data if the benchmark
+ based on standard statistics is to reflect the properties of the studied
+ methods.
+\end_layout
+
+\begin_layout Standard
+To be more specific, in the presence of uncertainty on errors, the weighted
+ mean is the maximum likelihood estimator of the distribution mean under
+ normality assumptions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bevington1992"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align}
+\overline{e} & =\sum_{i=1}^{N}w_{i}e_{i}\\
+w_{i} & =\frac{u(e_{i})^{-2}}{\sum_{j=1}^{N}u(e_{j})^{-2}}\label{eq:wRefUnc}
+\end{align}
+
+\end_inset
+
+giving less weight to the more uncertain data.
+ Direct application of the combination of variances to this expression leads
+ to 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bevington1992"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+u(\overline{e})^{2}=\frac{1}{\sum_{j=1}^{N}u(e_{j})^{-2}}
+\end{equation}
+
+\end_inset
+
+Note that in the case of identical uncertainty for all data, one recovers
+ the expression for the unweighted case (Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uref"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+The validity of this estimation has to be tested by computing the weighted
+ chi-squared
+\begin_inset Formula 
+\begin{equation}
+\chi_{w}^{2}=\sum_{i}\frac{(e_{i}-\overline{e})^{2}}{u(e_{i})^{2}}\label{eq:Birge}
+\end{equation}
+
+\end_inset
+
+If the errors on the reference data are assumed to be normally distributed,
+ 
+\begin_inset Formula $\chi_{w}^{2}$
+\end_inset
+
+ has a chi-squared distribution with 
+\begin_inset Formula $N-1$
+\end_inset
+
+ degrees of freedom (
+\begin_inset Formula $\chi_{N-1}^{2}$
+\end_inset
+
+).
+ 
+\begin_inset Formula $\chi_{w}^{2}$
+\end_inset
+
+ should be close to the mean of this distribution, 
+\begin_inset Formula $N-1$
+\end_inset
+
+, and lie within its 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% high probability interval.
+ If 
+\begin_inset Formula $\chi_{w}^{2}$
+\end_inset
+
+ is too small, the 
+\begin_inset Formula $u(e_{i})$
+\end_inset
+
+ are over-estimated and should be reconsidered, or the benchmarked method
+ is over-fitting the data, which is unlikely, unless the method is parametric
+ and has been calibrated on this same dataset.
+ If 
+\begin_inset Formula $\chi_{w}^{2}$
+\end_inset
+
+ is too large, there is an excess of variance in the 
+\begin_inset Formula $E_{M}$
+\end_inset
+
+ error set 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kacker2004,Rukhin2009,Rivier2014"
+literal "false"
+
+\end_inset
+
+.
+ In the typical benchmarking of computational chemistry methods, this is
+ generally the case because of the extraneous dispersion due to model errors.
+ To ensure the statistical validity of the weighted mean and its uncertainty,
+ one has therefore to define a more complex error model, considering explicitly
+ the two sources of dispersion, and to redefine the weights, accounting
+ for the excess of variance and possible biases in the error sets 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Lejaeghere2014,Lejaeghere2014a,Pernot2015,DeWaele2016,Proppe2017"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+If one stipulates that the dispersion of the errors is the combined effect
+ of model error and reference data uncertainty, one can redefine the weights
+ as 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Rukhin2009"
+literal "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+w_{i}=\frac{\left(\sigma^{2}+u(e_{i})^{2}\right)^{-1}}{\sum_{j=1}^{N}\left(\sigma^{2}+u(e_{j})^{2}\right)^{-1}}\label{eq:weights-IRWLS}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ is the variance of model errors.
+ With these new weights, 
+\begin_inset Formula 
+\begin{equation}
+u(\overline{e})^{2}=\frac{1}{\sum_{j=1}^{N}\left(\sigma^{2}+u(e_{j})^{2}\right)^{-1}}\label{eq:uwmean}
+\end{equation}
+
+\end_inset
+
+converges properly to the standard limit when the reference data errors
+ become negligible before the model errors.
+ The model error variance 
+\begin_inset Formula $\sigma^{2}$
+\end_inset
+
+ can be estimated by decomposing the total variance of the errors into the
+ variance of model errors plus the mean variance of the data (known as Cochran's
+ ANOVA estimate 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kacker2004,Rivier2014"
+literal "false"
+
+\end_inset
+
+)
+\begin_inset Formula 
+\begin{equation}
+\mathrm{var}(e)=\sigma^{2}+\frac{1}{N}\sum_{j=1}^{N}u(e_{j})^{2}\label{eq:dispmod}
+\end{equation}
+
+\end_inset
+
+This variance analysis ensures that 
+\begin_inset Formula $\chi_{w}^{2}$
+\end_inset
+
+ is correct.
+ Note that other reweighting schemes exist 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Kacker2004,Rivier2014"
+literal "false"
+
+\end_inset
+
+, but Cochran's is the simplest.
+ Besides, all reweighting methods are iterative: 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ depends on 
+\begin_inset Formula $\overline{e}$
+\end_inset
+
+, which itself depends on 
+\begin_inset Formula $\sigma$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+If the dispersion of reference data uncertainties is small, 
+\emph on
+i.e.
+\emph default
+, smaller than the model errors contribution, one can reasonably consider
+ that the weights are identical and that the unweighted mean can be used.
+ Formally, its uncertainty (Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uwmean"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) depends on 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, which can be directly estimated through Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dispmod"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, but by construction, one will recover results given by Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uref"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+One will therefore consider that, unless a large dispersion of reference
+ data uncertainty is observed, these uncertainties can be ignored in the
+ estimation of the mean and its standard error.
+ Otherwise, one should use the weighted mean with the standard uncertainty
+ estimate.
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Note that the dispersion of model errors 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ is related to the model prediction uncertainty and is a score of interest
+ for the ranking of models 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,Pernot2018"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+An advanced modeling of uncertainty sources is crucial if one wishes a reliable
+ estimate of the MSE, and of the various uncertainty contributions 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015"
+literal "false"
+
+\end_inset
+
+.
+ In standard benchmarking, the aim is mostly to compare methods, knowing
+ that the reference datasets are incomplete.
+ If reference data uncertainty plays a significant role – that would be
+ the case if data with very different uncertainty levels were aggregated
+ in the dataset – one might assume that its impact will be the same for
+ all methods to be compared.
+ The values of the dispersion statistics will be consistently overestimated
+ for all methods.
+ As long as one is not interested in the accurate estimation of the underlying
+ properties of the error distributions, such as the model prediction uncertainty
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2015,Proppe2017"
+literal "false"
+
+\end_inset
+
+, it is simpler to rely on unweighted schemes and properly curated datasets.
+\end_layout
+
+\begin_layout Section
+Numerical study of the correlation of nonlinear statistics
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Covariance-of-scores"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To illustrate the transfer of correlation from errors sets 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ to their statistics, one assumes that they are described by a bivariate
+ distribution with prescribed correlation coefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ From this distribution, one generates random samples 
+\begin_inset Formula $E_{1}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}^{*}$
+\end_inset
+
+ and one estimates the statistics values 
+\begin_inset Formula $s_{1}^{*}=S(E_{1}^{*})$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}^{*}=S(E_{2}^{*})$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathrm{cor}(s_{1},s_{2})$
+\end_inset
+
+ is finally estimated from 
+\begin_inset Formula $s_{1}^{*}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}^{*}$
+\end_inset
+
+ samples.
+ 
+\end_layout
+
+\begin_layout Standard
+The error sets correlation coefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is varied between -1 and 1, and the resulting correlation coefficients
+ are estimated for the MSE, MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ statistics.
+ The dataset size is 
+\begin_inset Formula $N=100$
+\end_inset
+
+ and Monte Carlo samples size is 
+\begin_inset Formula $M=10^{3}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+The results for four representative cases of the g-and-h distribution used
+ by Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ (Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-g-and-h-distribution"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) of error sets are reported in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:corrScore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a-d).
+ In this example, both error sets 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ have the same distribution with unit variance, only their correlation varies.
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScores_g_0h_0.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScores_g_0h_0.2.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScores_g_0.2h_0.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScores_g_0.2h_0.2.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScoresNormDec.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/AppB_corrScoresStudDec.png
+	lyxscale 25
+	width 32text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:corrScore"
+
+\end_inset
+
+Correlation coefficients 
+\begin_inset Formula $\mathrm{cor}(s_{1},s_{2})$
+\end_inset
+
+ of statistics (
+\begin_inset Formula $S=$
+\end_inset
+
+
+\begin_inset space \thinspace{}
+\end_inset
+
+MUE, MSE, 
+\begin_inset Formula $Q_{95})$
+\end_inset
+
+ for two samples as a function of the correlation coefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+ of these samples.
+ The error bars represent 95
+\begin_inset space \thinspace{}
+\end_inset
+
+% intervals for sampling errors.
+ Four cases of the g-and-h distribution are considered for the error sets:
+ (a) normal (
+\begin_inset Formula $g=h=0$
+\end_inset
+
+); (b) heavy-tailed symmetric (
+\begin_inset Formula $g=0;\thinspace h=0.2$
+\end_inset
+
+); (c) light-tailed asymmetric (
+\begin_inset Formula $g=0.2;\thinspace h=0$
+\end_inset
+
+); (d) heavy-tailed asymmetric (
+\begin_inset Formula $g=h=0.2$
+\end_inset
+
+).
+ Additional cases with shifted distributions, 
+\begin_inset Formula $\mu$
+\end_inset
+
+= (-0.2,0.5) : (e) Normal ; (f) Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ (
+\begin_inset Formula $\nu$
+\end_inset
+
+= 5).
+ All distributions have unit variance.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These simulations confirm the full correlation transfer to the MSE, independentl
+y of the underlying distribution.
+ The correlation coefficients for the other, non-linear, statistics are
+ mostly positive (within numerical uncertainty) and systematically smaller
+ than 
+\begin_inset Formula $|\rho|$
+\end_inset
+
+.
+ They are symmetrical with respect to 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+ for symmetrical error distributions.
+ The values for the MUE are consistently larger than, or equal to, the values
+ for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+.
+ In all cases, the correlation coefficient for the MUE is very close to
+ 
+\begin_inset Formula $\rho^{2}$
+\end_inset
+
+.
+ For negative values of 
+\begin_inset Formula $\rho$
+\end_inset
+
+, the correlation coefficient of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is sensitive to the asymmetry or the errors distribution.
+\end_layout
+
+\begin_layout Standard
+The same procedure has been applied to shifted means (
+\begin_inset Formula $\overline{e}_{1}=-0.2$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{e}_{2}=0.5$
+\end_inset
+
+) for normal and Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ distribution with 5 degrees of freedom (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:corrScore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(e,f)).
+ For the normal distribution the symmetry observed above is broken, as well
+ as the pure quadratic trend for the MUE.
+ For the Student's-
+\begin_inset Formula $t$
+\end_inset
+
+ distribution, the correlations lie above a positive threshold and one can
+ have 
+\begin_inset Formula $\mathrm{cor}(s_{1},s_{2})>|\rho|$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Simulation of correlated error samples enabled us to illustrate properties
+ of correlation transfer to statistics: identical correlation for the MSE,
+ and smaller, mostly positive, correlations for the MUE and 
+\begin_inset Formula $Q_{95.}$
+\end_inset
+
+.
+ As we covered only a limited set of scenarii, these features cannot be
+ considered as universal.
+ Indeed, the case studies in the second part of this study.
+\end_layout
+
+\begin_layout Section
+Type I error Probabilities of for the comparison of MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ pairs
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Type-I-error"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A false positive (type I error) is obtained when a true null hypothesis
+ is rejected by a test 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gregory05a,Klauenberg2019"
+literal "false"
+
+\end_inset
+
+.
+ Type I errors can be kept at a minimum by choosing appropriate data set
+ sizes.
+ Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ estimated the probability of type I errors for the comparison of quantiles
+ of correlated data sets with their method M (Algorithm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:methodM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) and determined the sample size 
+\begin_inset Formula $N$
+\end_inset
+
+ required to reach a probability of type I errors 
+\begin_inset Formula $\hat{\alpha}$
+\end_inset
+
+ close to the statistical testing threshold.
+ For their study, the authors used the g-and-h distribution (Appendix
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:The-g-and-h-distribution"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) to generate the data samples, and compared quantiles up two 0.9 for two
+ levels of correlation, 
+\begin_inset Formula $\rho=0$
+\end_inset
+
+ and 
+\begin_inset Formula $0.7$
+\end_inset
+
+.
+ In these conditions, they concluded that 
+\begin_inset Formula $N\ge30$
+\end_inset
+
+ was necessary to achieve a correct level of type I error, considering that
+ it should not exceed 
+\begin_inset Formula $0.075$
+\end_inset
+
+ for a test at the 0.05 level 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bradley1978"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+As these test cases did not include our conditions of interest in terms
+ of correlation (often above 
+\begin_inset Formula $\rho=0.9$
+\end_inset
+
+) and quantile level (0.95 for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+), we performed new simulations, using the same procedure and functions
+ provided in 
+\family typewriter
+R
+\family default
+ packages 
+\family typewriter
+WRS
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R-WRS"
+literal "false"
+
+\end_inset
+
+ and 
+\family typewriter
+WRS2
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "R-WRS2"
+literal "false"
+
+\end_inset
+
+.
+ After assessing the reproducibility of the original results, we kept the
+ same generative distribution and scenarii for 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ parameters, and we extended the exploration for dataset size from 
+\begin_inset Formula $N=20$
+\end_inset
+
+ to 70, and correlation coefficient 
+\begin_inset Formula $\rho=0,\thinspace0.5,\thinspace0.9$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+The procedure is the following: one draws two samples 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ of size 
+\begin_inset Formula $N$
+\end_inset
+
+ from the same distribution and compute 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ for the comparison of the values of a statistic S, 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+, respectively.
+ A value of 
+\begin_inset Formula $p_{g}<0.05$
+\end_inset
+
+ leads to the rejection of the true null hypothesis 
+\begin_inset Formula $s_{1}=s_{2}$
+\end_inset
+
+.
+ The process is repeated 
+\begin_inset Formula $M$
+\end_inset
+
+ times, and the proportion of rejections provides an estimation of the probabili
+ty 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ of type I errors.
+ For compatibility with the original study, the number of replications is
+ kept to 
+\begin_inset Formula $M=2000$
+\end_inset
+
+, and the number of bootstrap samples to 
+\begin_inset Formula $B=1000$
+\end_inset
+
+.
+ The results for the comparison of MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ pairs are reported in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:power1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppC_Alpha_MUE.png
+	lyxscale 25
+	width 49text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ../results/figs/AppC_Alpha_Q95.png
+	lyxscale 25
+	width 49text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:power1"
+
+\end_inset
+
+Probability of type I errors 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ for the MUE (left) and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ (right), as a function of dataset size 
+\begin_inset Formula $N$
+\end_inset
+
+.
+ Each graph corresponds to a type of g-and-h distribution for the data samples
+ (see text for details).
+ The points and lines correspond to a value of the datasets correlation
+ coefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ The black dashed line depicts the upper safety limit (0.075).
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the MUE, the safety region (
+\begin_inset Formula $\alpha\le0.075$
+\end_inset
+
+; black dashed line) 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Bradley1978"
+literal "false"
+
+\end_inset
+
+ is reached in all cases for 
+\begin_inset Formula $N\ge30$
+\end_inset
+
+.
+ Above 
+\begin_inset Formula $N=40$
+\end_inset
+
+, all values of 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ are close to the nominal value (0.05).
+ There is no remarkable trend with respect to the type of g-and-h distribution,
+ nor the correlation coefficient.
+ We have estimated previously 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+ that the MUE is typically located between the 0.5 and 0.75 quantiles, for
+ which Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+ have concluded that the minimal dataset size is 
+\begin_inset Formula $N\ge30$
+\end_inset
+
+, which is confirmed here.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+, one sees that for 
+\begin_inset Formula $N=40$
+\end_inset
+
+, the situation is more favorable for the normal distribution, but in all
+ cases, the recommended limit is reached in all cases for 
+\begin_inset Formula $N\ge60$
+\end_inset
+
+.
+ Strong correlation coefficients (
+\begin_inset Formula $\rho=0.9$
+\end_inset
+
+) seem also to be almost systematically more favorable, and one observes
+ a slight deleterious effect below 
+\begin_inset Formula $N=50$
+\end_inset
+
+ for heavy-tailed distributions (
+\begin_inset Formula $h=0.2$
+\end_inset
+
+).
+ Nevertheless, even for 
+\begin_inset Formula $N=40$
+\end_inset
+
+, 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ does not exceed notably the 10
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability of type I error.
+\end_layout
+
+\begin_layout Paragraph
+Remark.
+\end_layout
+
+\begin_layout Standard
+Establishing the power of the test (
+\begin_inset Formula $1-\beta$
+\end_inset
+
+), where 
+\begin_inset Formula $\beta$
+\end_inset
+
+ is the probability of type II errors (false negative, or the non-rejection
+ of a false null hypothesis)
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Gregory05a"
+literal "false"
+
+\end_inset
+
+ requires the definition an alternative hypothesis 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Klauenberg2019"
+literal "false"
+
+\end_inset
+
+.
+ In the present case, there is a infinity of ways to realize the 
+\begin_inset Formula $s_{1}\ne s_{2}$
+\end_inset
+
+ alternative, so the power estimation is practically intractable.
+ 
+\end_layout
+
+\begin_layout Section
+Numerical study of the Harrell and Davis algorithm
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Simulated-example"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This example is intended to outline the advantages of Harrell and Davis
+ (HD) algorithm for quantiles estimation, notably when associated with bootstrap
+ sampling, as suggested by Wilcox and Erceg-Hurn 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+One considers the values 
+\begin_inset Formula $s_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{2}$
+\end_inset
+
+ of a statistic 
+\begin_inset Formula $S$
+\end_inset
+
+ for two datasets 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+, which are drawn from a bivariate normal distribution 
+\begin_inset Formula 
+\begin{equation}
+(E_{1},E_{2})\sim\mathcal{N}\left(\boldsymbol{\mu}=(\mu_{1},\mu_{2}),\boldsymbol{\Sigma}=\left(\begin{array}{cc}
+\sigma_{1}^{2} & \rho\sigma_{1}\sigma_{2}\\
+\rho\sigma_{1}\sigma_{2} & \sigma_{2}^{2}
+\end{array}\right)\right)\label{eq:bivnorm}
+\end{equation}
+
+\end_inset
+
+where the error samples have different means 
+\begin_inset Formula $(\mu_{1},\mu_{2})$
+\end_inset
+
+ and variances 
+\begin_inset Formula $(\sigma_{1}^{2},\sigma_{2}^{2})$
+\end_inset
+
+, and 
+\begin_inset Formula $\mathrm{cov}(E_{1},E_{2})=\rho\sigma_{1}\sigma_{2}$
+\end_inset
+
+.
+ The values of the parameters for the simulations and the corresponding
+ statistics are given in Table
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Exact-values"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The values for the MUE and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ are obtained as described in a previous article
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Pernot2018"
+literal "false"
+
+\end_inset
+
+.
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+Those values are fairly representative of some problems treated in the case
+ studies.
+ 
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Set
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MSE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RMSD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MUE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{1}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.88
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.16
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $E_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.80
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.97
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Exact-values"
+
+\end_inset
+
+Reference values for the univariate statistics of datasets 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ described by Eq.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bivnorm"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, for 
+\begin_inset Formula $\mu_{1}=0$
+\end_inset
+
+, 
+\begin_inset Formula $\mu_{2}=0.1$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma_{1}=1.1$
+\end_inset
+
+ and 
+\begin_inset Formula $\sigma_{2}=1.0$
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Comparison of HD and 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ quantiles 
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Quantiles-estimation-by"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is estimated by two algorithms: the HD algorithm and the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ method of Hyndman and Fan 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hyndman1996"
+literal "false"
+
+\end_inset
+
+, which is the default algorithms in the 
+\family typewriter
+quantile()
+\family default
+ function of 
+\family typewriter
+R
+\family default
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "CiteR"
+literal "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ is one of a family of quantile estimators based on the linear combination
+ of one or two order statistics 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hyndman1996"
+literal "false"
+
+\end_inset
+
+, whereas the HD algorithm is based on the linear combination of all order
+ statistics for a sample 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+.
+ The latter is more efficient for small samples, but more computationally
+ demanding 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Harrell1982"
+literal "false"
+
+\end_inset
+
+.
+ 
+\begin_inset Note Note
+status collapsed
+
+\begin_layout Plain Layout
+ It is not proposed in the base R quantile function options.
+ 
+\color orange
+Advantage of HD?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a first test, data sets of increasing sizes, between 
+\begin_inset Formula $N=20$
+\end_inset
+
+ and 500, are generated by random sampling from the normal distribution
+ for 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+, and 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ is estimated for each sample by both algorithms.
+ This procedure is repeated 
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ times, and the distributions of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ values are summarized by a set of five quantiles (0.05, 0.25, 0.5, 0.75, 0.95).
+ The results are presented in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simul1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a).
+ This simulation shows that the HD quantiles converge faster to the true
+ value (1.97) than the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ ones, with less bias for small samples (
+\begin_inset Formula $N<100$
+\end_inset
+
+).
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppD_Compare_Q95.png
+	lyxscale 30
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:simul1"
+
+\end_inset
+
+Comparison of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ estimation algorithms, 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ and HD: (a) Monte Carlo sampling; (b) bootstrap sampling; (c) bootstrap
+ sample histogram for 
+\begin_inset Formula $N=100$
+\end_inset
+
+; (d) idem for 
+\begin_inset Formula $N=400$
+\end_inset
+
+.
+ The thicker bars in (a,b) represent 25-75
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability intervals and the finer bars 5-95
+\begin_inset space \thinspace{}
+\end_inset
+
+% probability intervals.
+ The black dashed line represents the theoretical value for 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ (1.97).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In a second test, a unique 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ sample of size 
+\begin_inset Formula $N=500$
+\end_inset
+
+ is generated, and subsets of increasing size are taken as initial data
+ for a bootstrap procedure (
+\begin_inset Formula $10^{4}$
+\end_inset
+
+ repeats).
+ The bootstrap samples are analyzed as above and plotted in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simul1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b).
+ The difference of convergence between both quantile algorithms is less
+ striking, but bootstrap for the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ algorithm seems to produce quite asymmetric distributions, where the median
+ is close to one of the quartiles.
+ If one looks at the histograms of sampled values for 
+\begin_inset Formula $N=100$
+\end_inset
+
+ (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simul1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(c)), one sees that the HD algorithms produces a much smoother bootstrap
+ sample histogram, where 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ produces a ragged histograms.
+ The same features are still visible, to a lesser extent, for 
+\begin_inset Formula $N=400$
+\end_inset
+
+ (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:simul1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(d)).
+ This property of the HD method explains its good performances for small
+ samples, when used in conjunction with the bootstrap 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Subsection
+Estimation of 
+\begin_inset Formula $p$
+\end_inset
+
+-values
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Estimation-of--values"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The estimation of 
+\begin_inset Formula $p$
+\end_inset
+
+-values is obtained by Monte Carlo sampling of 
+\begin_inset Formula $E_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $E_{2}$
+\end_inset
+
+ sets of size 
+\begin_inset Formula $N$
+\end_inset
+
+ varying between 20 and 500 (
+\begin_inset Formula $\rho=0.9$
+\end_inset
+
+).
+ One first checks that the generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ (Algorithm
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:methodM"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) is identical to the analytical value of 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ for the comparison of mean values (Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scoreBS"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(a)).
+ 
+\end_layout
+
+\begin_layout Standard
+Then, the interest of the Harrell-Davis algorithm for the estimation of
+ 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ values for the comparison of quantiles is shown in Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:scoreBS"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+(b): reaching the 0.05 threshold requires about 250 points for the HD method,
+ whereas the 
+\begin_inset Formula $\hat{Q}_{7}$
+\end_inset
+
+ reference quantile algorithm requires about 380 points.
+ Besides, the HD curve is smoother than the reference one, due to the smoothness
+ properties of the HD estimator shown above.
+ 
+\begin_inset Float figure
+placement !tb
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename ../results/figs/AppD_scoresBS.png
+	lyxscale 30
+	width 90col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:scoreBS"
+
+\end_inset
+
+Validation of methodological choices for 
+\begin_inset Formula $p$
+\end_inset
+
+-value estimation: (a) generalized 
+\begin_inset Formula $p$
+\end_inset
+
+-value 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ for the comparison of means (MSE) compared to the analytical result 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ ; (b) impact of the quantile estimation algorithms on 
+\begin_inset Formula $p_{g}$
+\end_inset
+
+ for the comparison of 
+\begin_inset Formula $Q_{95}$
+\end_inset
+
+ (see text).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+The g-and-h distribution
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:The-g-and-h-distribution"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The g-and-h distribution 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Hoaglin1985"
+literal "false"
+
+\end_inset
+
+ is typically used to study the impact of distribution shapes on statistics.
+ If 
+\begin_inset Formula $z$
+\end_inset
+
+ has a standard normal distribution, its transform
+\begin_inset Formula 
+\begin{equation}
+X=\begin{cases}
+\frac{1}{g}(e^{gz}-1)e^{\frac{h}{2}z^{2}}, & \mathrm{if}\thinspace g>0\\
+ze^{\frac{h}{2}z^{2}} & \mathrm{if}\thinspace g=0
+\end{cases}
+\end{equation}
+
+\end_inset
+
+has a g-and-h distribution.
+ Its shape is defined by parameters 
+\begin_inset Formula $g$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+, and contains the normal distribution as a special case (
+\begin_inset Formula $g=h=0$
+\end_inset
+
+).
+ Besides the normal, three typical cases are proposed by Wilcox and Erceg-Hurn
+ 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Wilcox2012"
+literal "false"
+
+\end_inset
+
+: heavy-tailed symmetric (
+\begin_inset Formula $g=0;\thinspace h=0.2$
+\end_inset
+
+), light-tailed asymmetric (
+\begin_inset Formula $g=0.2;\thinspace h=0$
+\end_inset
+
+), and heavy-tailed asymmetric (
+\begin_inset Formula $g=h=0.2$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "packages,NN"
+options "bibtotoc,unsrturlPP"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
