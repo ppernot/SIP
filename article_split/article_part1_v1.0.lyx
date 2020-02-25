@@ -1470,7 +1470,15 @@ eV) and LDA (MUE = 1.17
 \begin_inset space \thinspace{}
 \end_inset
 
-eV), showing that the large MUE difference (
+eV).
+ Each point of the ECDF corresponds to a system of the dataset.
+ Systems with negative differences are those for which mBJ performs better
+ than LDA.
+ 
+\end_layout
+
+\begin_layout Standard
+The large MUE difference (
 \begin_inset Formula $\Delta_{\mathrm{MUE}}$
 \end_inset
 
@@ -1508,7 +1516,7 @@ eV for 15
 \begin_inset space \thinspace{}
 \end_inset
 
-eV, up to 1
+eV, and up to 1
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1661,7 +1669,7 @@ Using the error sets for two methods
 \end_inset
 
 .
- A cpmmon procedure to compare these two values is to test if their difference
+ A common procedure to compare two values is to test if their difference
  is significantly larger than their combined uncertainty, 
 \emph on
 i.e.
@@ -2650,7 +2658,7 @@ where the relation to
 \begin_inset Formula $p_{g}$
 \end_inset
 
- (Algoritm
+ (Algorithm
 \begin_inset space \thinspace{}
 \end_inset
 
