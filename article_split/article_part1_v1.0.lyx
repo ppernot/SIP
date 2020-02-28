@@ -150,14 +150,14 @@ Andreas.Savin@lct.jussieu.fr
 \begin_layout Abstract
 The comparison of benchmark error sets is an essential tool for the evaluation
  of theories in computational chemistry.
- The standard ranking of methods by their Mean Absolute Error is unsatisfactory
+ The standard ranking of methods by their Mean Unsigned Error is unsatisfactory
  for several reasons linked to the non-normality of the error distributions
  and the presence of underlying trends.
  Complementary statistics have recently been proposed to palliate such deficienc
 ies, such as quantiles of the absolute errors distribution or the mean predictio
 n uncertainty.
  We introduce here a new score, the systematic improvement probability (SIP),
- based on the direct pair-wise comparison of absolute errors.
+ based on the direct system-wise comparison of absolute errors.
  Independently of the chosen scoring rule, the uncertainty of the statistics
  due to the incompleteness of the benchmark data sets is also generally
  overlooked.
@@ -441,7 +441,7 @@ we introduce a new statistic (the systematic improvement probability, SIP)
 \end_layout
 
 \begin_layout Standard
-The article is structures as follows.
+The article is structured as follows.
  In Section
 \begin_inset space \thinspace{}
 \end_inset
@@ -487,7 +487,7 @@ noprefix "false"
 
 \end_inset
 
-) introduces the SIP, based on the pairwise comparison of absolute errors,
+ introduces the SIP, based on the system-wise comparison of absolute errors,
  and Section
 \begin_inset space \thinspace{}
 \end_inset
@@ -1193,6 +1193,14 @@ literal "false"
 \begin_inset Formula $\mathrm{cov}(\overline{e}_{1},\overline{e}_{2})=\mathrm{cov}(E_{1},E_{2})$
 \end_inset
 
+, where 
+\begin_inset Formula $\bar{x}$
+\end_inset
+
+ is the mean value of 
+\begin_inset Formula $X$
+\end_inset
+
 .
  More generally, for linear statistics, 
 \begin_inset Formula $\mathrm{cov}(E_{1},E_{2})=0\Longrightarrow\mathrm{cov}(s_{1},s_{2})=0$
@@ -1432,7 +1440,8 @@ noprefix "false"
 
 \end_inset
 
- provides an example extracted from case PER2018 in Paper
+ provides an example extracted from a benchmark for intensive atomization
+ energies (case PER2018 in Paper
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -1444,7 +1453,7 @@ literal "false"
 
 \end_inset
 
-.
+).
  It shows clearly that, for this dataset, BH&HLYP is problematic, with a
  row of small blue disks, and is systematically and strongly outperformed
  by all other methods.
@@ -2073,15 +2082,11 @@ literal "false"
 \end_inset
 
 , is true.
- For testing, the probability threshold corresponding to 
-\begin_inset Formula $P(\xi>\kappa=1.96)$
+ For testing, one chooses a probability threshold corresponding to 
+\begin_inset Formula $P(\xi>\kappa=1.96)=0.05$
 \end_inset
 
- is 
-\begin_inset Formula $0.05$
-\end_inset
-
-.
+ .
  For 
 \begin_inset Formula $p_{t}$
 \end_inset
@@ -4095,7 +4100,7 @@ literal "false"
 \end_inset
 
 , but Cochran's is the simplest.
- Besides, all reweighting methods are iterative: 
+ Besides, reweighting methods are iterative: 
 \begin_inset Formula $\sigma$
 \end_inset
 

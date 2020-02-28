@@ -148,7 +148,7 @@ Andreas.Savin@lct.jussieu.fr
 \end_layout
 
 \begin_layout Abstract
-In the first part of this study (Paper I), we introduces the systematic
+In the first part of this study (Paper I), we introduced the systematic
  improvement probability (SIP) as a tool to assess the level of improvement
  on absolute errors to be expected when switching between two computational
  chemistry methods.
@@ -164,8 +164,8 @@ In the first part of this study (Paper I), we introduces the systematic
 , the ranking probability matrix.
  In this second part, these indicators are applied to nine data sets extracted
  from the recent benchmarking literature.
- We illustrate also how the correlation between the error sets contain pertinent
- information on the benchmark dataset quality, notably when experimental
+ We illustrate also how the correlation between the error sets might contain
+ useful information on the benchmark dataset quality, notably when experimental
  data are used as reference.
 \end_layout
 
@@ -187,9 +187,9 @@ literal "false"
 \end_inset
 
 , we considered the uncertainty sources impacting the values of benchmarking
- statistics (scores) and we presented robust tools to estimate the uncertainty
+ statistics (scores) and we presented tools to estimate the uncertainty
  on statistics and to compare them.
- 
+ We briefly summarize them here.
 \end_layout
 
 \begin_layout Standard
@@ -12380,18 +12380,29 @@ noprefix "false"
 % confidence interval (CI) for the SIP value of 0.61 for PBE0-D4-ATM over
  PBE0-D3 does not exclude the neutral value (0.5), with a tiny advantage
  of the mean gain over the mean loss.
- One can note also that, despite their large error bars, the small MUE differenc
-e 
-\begin_inset Formula $\Delta_{MUE}$
+ One can note also that, despite the large uncertainty on the MUE values
+ 2.3(3) and 2.6(4), the small difference 
+\begin_inset Formula $\Delta_{MUE}=0.3$
 \end_inset
 
  between these two methods is significantly different from 0 (its 95
 \begin_inset space \thinspace{}
 \end_inset
 
-% confidence interval excludes 0), an effect of the correlation between
- error sets.
- 
+% confidence interval excludes 0), an effect of the strong positive correlation
+ between the error sets (0.98) as discussed in Paper
+\begin_inset space \thinspace{}
+\end_inset
+
+I 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Pernot2020"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -18964,8 +18975,8 @@ literal "false"
 
 \begin_layout Standard
 Note that for some of the cases we gathered here, we were able to extract
- data from PDF articles or SI files, but not without some difficulty, involving
- several steps of manual operations.
+ data from PDF articles or supplementary information files, but not without
+ some difficulty, involving several steps of manual operations.
  Typical problems for the data extraction from tables in PDF documents are:
  excessive numerical truncation, empty cells or complex table mapping, typograph
 ical (
@@ -19105,9 +19116,9 @@ literal "false"
 \end_inset
 
 .
- This is one way to avoid the ranking uncertainty resulting from the direct
- comparison of many methods, as illustrated for instance in case CAL2019
- (Section
+ This is one way to reduce the ranking uncertainty that is likely to result
+ from the direct comparison of a large number of methods, as illustrated
+ for instance in case CAL2019 (Section
 \begin_inset space \thinspace{}
 \end_inset
 
@@ -19115,6 +19126,20 @@ literal "false"
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "subsec:Caldeweyher2019"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, Fig.
+\begin_inset space \thinspace{}
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:caldewheyerRPmat"
 plural "false"
 caps "false"
 noprefix "false"
@@ -19157,15 +19182,11 @@ distance
 \end_layout
 
 \begin_layout Standard
-
-\emph on
-A contrario
-\emph default
-, when the methods set contains unrelated methods, a uniform strongly positive
- correlation matrix should raise an alert.
- We have seen in cases DAS2019 and THA2019 that outliers and/or large reference
- data errors could dominate the correlation matrix and influence the benchmark
- statistics.
+As a consequence, when the methods set contains unrelated methods, a uniform
+ strongly positive correlation matrix should raise an alert.
+ We have seen in cases DAS2019 and THA2015/WU2015 that outliers and/or large
+ reference data errors could dominate the correlation matrix and influence
+ the benchmark statistics.
  Outliers common to all error sets (global outliers) can be efficiently
  identified on a parallel plot, as shown in case DAS2019 (Fig.
 \begin_inset space \thinspace{}
