@@ -3,6 +3,8 @@
 
 # SIP
 
-Codes and data to reproduce the results of the paper:
+Codes and data to reproduce the results of:
 
-* _Probabilistic performance estimators for computational chemistry methods: Systematic Improvement Probability and Ranking Probability Matrix_, by P. Pernot and A. Savin. WIP...
+* P. Pernot and A. Savin (2020) _Probabilistic performance estimators for computational chemistry methods: Systematic Improvement Probability and Ranking Probability Matrix. I. Theory_, [_J. Chem. Phys._ __152__:164108](http://dx.doi.org/10.1063/5.0006202).
+
+* P. Pernot and A. Savin (2020) _Probabilistic performance estimators for computational chemistry methods: Systematic Improvement Probability and Ranking Probability Matrix. II. Applications_, [_J. Chem. Phys._ __152__:164109](http://dx.doi.org/10.1063/5.0006204).

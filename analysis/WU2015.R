@@ -60,7 +60,7 @@ sink()
 
 # Figures ####
 
-# Fig. 1 ####
+# Fig. I-1 ####
 cex.lab = 1.0
 ifig = 1
 png(file = paste0(figRepo, caseName,'_CorrMat_Data_Spearman.png'),
@@ -87,7 +87,7 @@ ErrViewLib::plotCorMat(
   gPars = gPars)
 dev.off()
 
-# Fig. 24 ####
+# Fig. II-21 ####
 cex.lab=1.0
 ifig = 1
 png(file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -131,7 +131,7 @@ ErrViewLib::plotCorMat(
 dev.off()
 ###
 
-# Fig. 26(b) ####
+# Fig. II-23(b) ####
 png(
   file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
   width =  13/12*gPars$reso,
@@ -143,7 +143,7 @@ ErrViewLib::plotSIPMat(statBS$sip,
 dev.off()
 ###
 
-# Fig. 27 bottom ####
+# Fig. II-24(g-i) ####
 cex.lab=1
 ifig = 6
 for (score in c('mue','q95hd','msip'))

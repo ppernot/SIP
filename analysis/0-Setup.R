@@ -15,7 +15,7 @@ for (lib in libs) {
   }
 }
 ## Load packages and generate biblio
-repmis::LoadandCite(libs,file='../article/packages.bib')
+repmis::LoadandCite(libs) #,file='../article/packages.bib')
 
 ## Github package
 lib = "ErrViewLib"

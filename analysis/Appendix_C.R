@@ -167,7 +167,7 @@ stop()
 
 # Analysis ####
 
-## Fig. 31
+## Fig. I-6 ####
 
 source('0-Setup.R')
 

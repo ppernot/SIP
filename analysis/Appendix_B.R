@@ -2,7 +2,7 @@ source('0-Setup.R')
 
 caseName = 'AppB'
 
-# Fig. 30 ####
+# Fig. I-5 ####
 
 ## g-and-h Samples CC
 nMC = 1000

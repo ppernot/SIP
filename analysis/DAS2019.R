@@ -76,20 +76,9 @@ sink()
 
 # Figures ####
 
-# Fig. 19 ####
-png(filename = paste0(figRepo,caseName,'_ParPlot.png'),
-    width=reso,height=reso)
-ErrViewLib::plotParallel(
-  Errors,
-  rescale = TRUE,
-  labels = systems,
-  outliers = 'no',
-  lab.thresh = 1,
-  gPars=gPars)
-dev.off()
-###
 
-# Fig. 20 ####
+
+# Fig. II-16 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -173,7 +162,21 @@ ErrViewLib::plotCorMat(
 dev.off()
 ###
 
-# Fig. 21 ####
+# Fig. II-17 ####
+png(filename = paste0(figRepo,caseName,'_ParPlot.png'),
+    width=reso,height=reso)
+ErrViewLib::plotParallel(
+  Errors,
+  rescale = TRUE,
+  labels = systems,
+  outliers = 'no',
+  outLabCex = 3,
+  lab.thresh = 1,
+  gPars=gPars)
+dev.off()
+###
+
+# Fig. II-18 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_SIPHeatmap_Pruned.png'),
@@ -209,7 +212,7 @@ ErrViewLib::plotDeltaCDF(
 dev.off()
 ###
 
-# Fig. 22 ####
+# Fig. II-19 ####
 ifig = 0
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {

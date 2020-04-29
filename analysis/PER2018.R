@@ -33,7 +33,6 @@ gParsExt$cols     = colsExt
 gParsExt$cols_tr  = colsExt_tr
 gParsExt$cols_tr2 = colsExt_tr2
 
-
 # Generate stats ####
 
 statBS = ErrViewLib::estBS1(Errors,props = c("mue", "q95hd"))
@@ -55,7 +54,7 @@ sink()
 
 # Figures ####
 
-# Fig 2 ####
+# Fig. II-2 ####
 png(
   file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
   width = 13/12*gPars$reso,
@@ -65,54 +64,8 @@ ErrViewLib::plotSIPMat(statBS$sip, gPars = gPars)
 dev.off()
 
 ###
-# Figs 4 and 7 ####
-ifig=0
-gParLoc = gPars
-for (score in c('mue'))
-  for (type in c('levels','ci')) {
-    png(
-      file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'.png'),
-      width = 1.5*gPars$reso,
-      height = 1.5*gPars$reso
-    )
-    ifig = ifig + 1
-    cex.lab = 1
-    if(type == 'ci'){
-      cex.lab = 1.1
-      gParLoc$cex = 1.2*gPars$cex
-    }
-    ErrViewLib::plotRankMat(
-      E = Errors,
-      score = score,
-      type = type,
-      label = ifig,
-      cex.lab = cex.lab,
-      gPars = gParLoc
-    )
-    dev.off()
-  }
 
-ifig=0
-for (score in c('q95hd','msip'))
-  for (type in c('levels')) {
-    png(
-      file = paste0(figRepo, caseName,'_figRanks_',score,'_',type,'.png'),
-      width = 1.5*gPars$reso,
-      height = 1.5*gPars$reso
-    )
-    ifig = ifig + 1
-    ErrViewLib::plotRankMat(
-      E = Errors,
-      score = score,
-      type = type,
-      label = ifig,
-      gPars = gPars
-    )
-    dev.off()
-  }
-###
-
-# Figs 4 SPLIT ####
+# Fig. II-4 ####
 ifig=0
 gParLoc = gPars
 for (score in c('mue','q95hd','msip'))
@@ -140,7 +93,7 @@ for (score in c('mue','q95hd','msip'))
   }
 ###
 
-# Fig. 5 ####
+# Fig. II-1 ####
 cex.lab = 1.25
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -208,7 +161,7 @@ h = hist(X[lower.tri(X)],breaks = seq(-1.1,1.1,by=0.2),
 dev.off()
 ###
 
-# Fig. 6 ####
+# Fig. II-3 ####
 ifig =1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)

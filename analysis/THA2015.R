@@ -93,7 +93,7 @@ sink()
 
 # Figures ####
 cex.lab = 1.0
-# Fig. 23 ####
+# Fig. II-20 ####
 ifig = 1
 png(file = paste0(figRepo, caseName,'_CorrMat_Errors.png'),
     width =  1.5*gPars$reso,
@@ -175,7 +175,7 @@ ErrViewLib::plotCorMat(
 dev.off()
 ###
 
-# Fig.25 ####
+# Fig. II-22 ####
 sel = c(1,2,4,7)
 ifig = 1
 png(file=paste0(figRepo,caseName,'_compareECDF_Pruned.png'),
@@ -207,7 +207,7 @@ ErrViewLib::plotUncEcdf(
 dev.off()
 ###
 
-# Fig. 26(a) ####
+# Fig. II-23(a) ####
 ifig = 1
 png(file = paste0(figRepo, caseName,'_SIPHeatmap_Pruned.png'),
     width =  13/12*gPars$reso,
@@ -217,7 +217,7 @@ dev.off()
 ###
 
 
-# Fig. 27 top-middle ####
+# Fig. II-24-(a-f) ####
 ifig = 0
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {

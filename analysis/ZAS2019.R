@@ -60,7 +60,7 @@ sink()
 
 # Figures ####
 
-# Fig. 28 ####
+# Fig. II-25 ####
 cex.lab = 1.0
 ifig=1
 png(
@@ -108,7 +108,7 @@ ErrViewLib::plotCorMat(
 dev.off()
 ###
 
-# Fig. 29 ####
+# Fig. II-26 ####
 ifig=1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width= gPars$reso,height= gPars$reso)

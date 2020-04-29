@@ -62,7 +62,7 @@ b1l = boot(X, statistic = ErrViewLib::q95,R = nMC)
 b2l = boot(X, statistic = ErrViewLib::q95hd,R = nMC)
 
 
-# Fig. 32 ####
+# Fig. I-7 ####
 png(
   file = paste0(figRepo,caseName,'_Compare_Q95.png'),
   width = 1.75*gPars$reso,
@@ -332,7 +332,7 @@ for(score in scores) {
 
 # save(resp,file = 'scoresBS.Rda')
 
-# Fig. 33 ####
+# Fig. I-8 ####
 ifig=0
 png(
   file = paste0(figRepo,caseName,'_scoresBS.png'),

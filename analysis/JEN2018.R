@@ -50,7 +50,7 @@ sink()
 
 # Figures ####
 
-# Fig. 16 ####
+# Fig. II-13 ####
 ifig=1
 png(
   file = paste0(figRepo, caseName,'_CorrMat_Errors_Spearman.png'),
@@ -94,7 +94,7 @@ ErrViewLib::plotCorMat(
 dev.off()
 ###
 
-# Fig. 17 ####
+# Fig. II-14 ####
 ifig=1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)
@@ -146,7 +146,7 @@ ErrViewLib::plotDeltaCDF(
 dev.off()
 ###
 
-# Fig. 18 ####
+# Fig. II-15 ####
 ifig = 0
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {

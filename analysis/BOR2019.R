@@ -100,7 +100,7 @@ sink()
 # Figures ####
 eps = 0.2 # eV : uncertainty level ("a few tenths of eV")
 
-# Fig. 3 ####
+# Fig. I-3 ####
 ifig =1
 png(file=paste0(figRepo,caseName,'_compareECDF.png'),
     width=gPars$reso,height=gPars$reso)
@@ -130,7 +130,7 @@ ErrViewLib::plotDeltaCDF(
 dev.off()
 ###
 
-# Fig. 8 ####
+# Fig. II-5 ####
 png(
   file = paste0(figRepo, caseName,'_Cormat_Errors_Spearman.png'),
   width = 13/12*gPars$reso,
@@ -141,7 +141,7 @@ ErrViewLib::plotCorMat(cErr, order = 'hclust', gPars=gPars)
 dev.off()
 ###
 
-# Fig. 9 ####
+# Fig. II-6 ####
 ifig =1
 png(file=paste0(figRepo,caseName,'_compareECDF2.png'),
     width=gPars$reso,height=gPars$reso)
@@ -171,7 +171,7 @@ ErrViewLib::plotDeltaCDF(
 dev.off()
 ####
 
-# Fig. 10 ####
+# Fig. II-7 ####
 png(
   file = paste0(figRepo, caseName,'_SIPHeatmap.png'),
   width = 13/12*gPars$reso,
@@ -181,7 +181,7 @@ ErrViewLib::plotSIPMat(statBS$sip, gPars = gPars)
 dev.off()
 ###
 
-# Fig. 11 ####
+# Fig. II-8 ####
 ifig = 0
 for (score in c('mue','q95hd','msip'))
   for (type in c('levels','ci')[1]) {

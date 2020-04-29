@@ -1,2 +1,0 @@
-gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -dPDFSETTINGS=/printer -dColorImageResolution=200 -sOutputFile=out.pdf $1
-

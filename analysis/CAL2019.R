@@ -60,7 +60,7 @@ sink()
 
 # Figures ####
 
-# Fig. 14 ####
+# Fig. II-11 ####
 # Selection of Delta CDF figs
 dfas = unique(sapply(methList,function(x) strsplit(x,'-D')[[1]][1]))
 
@@ -85,7 +85,7 @@ for(dfa in dfas[c(4,5,10)]) {
 }
 ###
 
-# Fig. 15 ####
+# Fig. II-12 ####
 # D4-ATM and D3
 sel1 = sort(c(seq(1,ncol(Errors),by=3),seq(3,ncol(Errors),by=3)))
 ifig = 0
